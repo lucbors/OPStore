@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="LogonPageDef" Package="Logon">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="Logon_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.Logon.result}"/>
+      <variable Type="java.lang.String" Name="Logon_userName" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="Logon_passWord" IsQueriable="false"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <methodAction id="Logon" RequiresUpdateModel="true" Action="invokeMethod" MethodName="Logon"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.Logon_ServicesWrapper_dataProvider_Logon_result">
+      <NamedData NDName="userName" NDType="java.lang.String" NDValue="${bindings.Logon_userName}"/>
+      <NamedData NDName="passWord" NDType="java.lang.String" NDValue="${bindings.Logon_passWord}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="userName">
+      <AttrNames>
+        <Item Value="Logon_userName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="passWord">
+      <AttrNames>
+        <Item Value="Logon_passWord"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

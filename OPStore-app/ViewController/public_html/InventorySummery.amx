@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Inventory Summary" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Visualize" action="visualize"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" text="Cart" icon="/images/cart-512.png" action="cart"/>
+    </amx:facet>
+    <amx:panelGroupLayout id="pgl1">
+      <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv3" inlineStyle="background-color:White;">
+        <amx:listItem id="li2" showLinkIcon="false">
+          <amx:tableLayout id="tl1" cellSpacing="0" cellPadding="0" width="100%">
+            <amx:rowLayout id="rl3">
+              <amx:cellFormat id="cf11">
+                <amx:spacer id="s3" height="10"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2">
+              <amx:cellFormat id="cf7" columnSpan="1">
+                <amx:outputText id="ot4"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf6" columnSpan="1" rowSpan="1" width="30%">
+                <amx:outputText value="Name" id="ot5" inlineStyle="color:Navy;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf8">
+                <amx:outputText value="Last Order" id="ot7" inlineStyle="color:Navy;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf9">
+                <amx:outputText value="In Stock" id="ot8" inlineStyle="color:Navy;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf10">
+                <amx:outputText value="To Order" id="ot9" inlineStyle="color:Navy;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf3" rendered="false">
+                <amx:outputText value="Total" id="ot11" inlineStyle="color:Maroon;"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+        </amx:listItem>
+      </amx:listView>
+    </amx:panelGroupLayout>
+    <amx:panelGroupLayout id="pgl5" layout="vertical">
+      <amx:iterator var="row" value="#{bindings.Product1.collectionModel}" id="i2">
+        <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv1">
+          <amx:listItem showLinkIcon="false" id="li1" inlineStyle="list-style-type:disc;" shortDesc="Hello My name">
+            <amx:tableLayout id="t92" styleClass="cust-Ord" width="100%">
+              <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf95" height="100px">
+                  <amx:spacer id="s9" width="10"/>
+                  <amx:image id="i4" source="/images/#{row.imagePath}.jpg" inlineStyle="height:70%;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf1" width="30%">
+                  <amx:outputText value="#{row.name}" id="ot33" inlineStyle="font-weight:bold; color:Navy;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf2">
+                  <amx:outputText value="#{row.lastOrderQuantity}" id="ot2" inlineStyle="font-weight:bold;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf5">
+                  <amx:outputText value="#{row.inventoryQuantity}" id="ot3" inlineStyle="font-weight:bold;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf13">
+                  <amx:outputText value="#{row.lastOrderQuantity-row.inventoryQuantity}" id="ot10"
+                                  inlineStyle="font-weight:bold;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf14" rendered="false">
+                  <amx:outputText value="#{row.inventoryQuantity*row.salePrice}" id="ot6"
+                                  inlineStyle="color:Maroon; font-weight:bold;">
+                    <amx:convertNumber id="cn2" maxFractionDigits="2"/>
+                  </amx:outputText>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:setPropertyListener id="spl1" to="#{pageFlowScope.productSalePrice}" from="#{row.salePrice}"
+                                     type="action"/>
+            <amx:setPropertyListener id="spl4" from="#{row.salePrice}" to="#{pageFlowScope.productListPrice}"/>
+            <amx:setPropertyListener id="spl2" from="#{row.name}" to="#{pageFlowScope.productName}"/>
+            <amx:setPropertyListener id="spl3" from="#{row.inventoryQuantity}"
+                                     to="#{pageFlowScope.productInventoryQuantity}"/>
+            <amx:setPropertyListener id="spl5" from="#{row.lastOrderQuantity-row.inventoryQuantity}"
+                                     to="#{pageFlowScope.productToOrder}"/>
+            <amx:showPopupBehavior id="spb1" popupId="productDetails" alignId="li1"/>
+          </amx:listItem>
+        </amx:listView>
+      </amx:iterator>
+    </amx:panelGroupLayout>
+  </amx:panelPage>
+  <amx:popup id="productDetails">
+    <amx:commandLink id="cl1">
+      <amx:tableLayout id="tl2">
+        <amx:rowLayout id="rl7">
+          <amx:cellFormat id="cf18">
+            <amx:outputText value="#{pageFlowScope.productName}" id="ot17"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl4">
+          <amx:cellFormat id="cf4">
+            <amx:outputText value="List Price:" id="ot15"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf19">
+            <amx:outputText value="#{pageFlowScope.productListPrice}" id="ot18">
+              <amx:convertNumber id="cn1" maxFractionDigits="2"/>
+            </amx:outputText>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl5">
+          <amx:cellFormat id="cf16">
+            <amx:outputText value="Sale Price:" id="ot14"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf12">
+            <amx:outputText value="#{pageFlowScope.productSalePrice}" id="ot12">
+              <amx:convertNumber id="cn3" maxFractionDigits="2"/>
+            </amx:outputText>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl6">
+          <amx:cellFormat id="cf15">
+            <amx:outputText value="Inventory:" id="ot13"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf17">
+            <amx:outputText value="#{pageFlowScope.productInventoryQuantity}" id="ot16"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl8">
+          <amx:cellFormat id="cf20">
+            <amx:outputText value="On Order" id="ot19"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf21">
+            <amx:outputText value="#{pageFlowScope.productToOrder}" id="ot20"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl9">
+          <amx:cellFormat id="cf22">
+            <amx:outputText value="Total:" id="ot21"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf23">
+            <amx:outputText value="#{pageFlowScope.productSalePrice*pageFlowScope.productToOrder}" id="ot22">
+              <amx:convertNumber id="cn4" maxFractionDigits="2"/>
+            </amx:outputText>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+      <amx:closePopupBehavior id="cpb1"/>
+    </amx:commandLink>
+  </amx:popup>
+</amx:view>

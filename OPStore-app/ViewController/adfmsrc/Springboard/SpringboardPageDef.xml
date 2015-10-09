@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="SpringboardPageDef"
+                Package="Springboard">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="gotoFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="featureId" NDValue="${bindings.gotoFeature_featureId}" NDType="java.lang.String" NDOption="1"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

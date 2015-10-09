@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="OrderApprovalPageDef"
+                Package="OrderApproval">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="int" Name="getConfirmedOrdersItemsSize_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getConfirmedOrdersItemsSize.result}"/>
+    </variableIterator>
+    <methodIterator Binds="getSelectedStore.result" DataControl="ServicesWrapper" RangeSize="25"
+                    BeanClass="mobile.Store" id="getSelectedStoreIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="variables" id="Return">
+      <AttrNames>
+        <Item Value="getConfirmedOrdersTotalAmount_Return"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="Return1">
+      <AttrNames>
+        <Item Value="getConfirmedOrdersItemsSize_Return"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getSelectedStore" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getSelectedStore"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getSelectedStore_ServicesWrapper_dataProvider_getSelectedStore_result"/>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="address">
+      <AttrNames>
+        <Item Value="address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="id">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getService" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getService"
+                  IsViewObjectMethod="false" DataControl="SubmitOrder" InstanceName="data.SubmitOrder"
+                  ReturnName="data.SubmitOrder.methodResults.getService_SubmitOrder_getService_result">
+      <NamedData NDName="MAIN_USERNAME_0" NDType="java.lang.String"/>
+      <NamedData NDName="MAIN_PASSWORD_0" NDType="java.lang.String"/>
+      <NamedData NDName="S_CUSTOMER_ID_0" NDType="java.lang.String"/>
+      <NamedData NDName="S_ORD_DATE_ORDERED_1" NDType="java.lang.String"/>
+      <NamedData NDName="S_ORD_SALES_REP_ID_1" NDType="java.lang.String"/>
+      <NamedData NDName="S_ORD_TOTAL_1" NDType="java.lang.String"/>
+      <NamedData NDName="S_ORD_PAYMENT_TYPE_1" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="city">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="zipCode">
+      <AttrNames>
+        <Item Value="zipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getConfirmedOrdersItemsSize" InstanceName="data.ServicesWrapper.dataProvider"
+                  DataControl="ServicesWrapper" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getConfirmedOrdersItemsSize" IsViewObjectMethod="false"
+                  ReturnName="data.ServicesWrapper.methodResults.getConfirmedOrdersItemsSize_ServicesWrapper_dataProvider_getConfirmedOrdersItemsSize_result"/>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="state">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getConfirmedOrdersTotalAmountAsString" InstanceName="data.ServicesWrapper.dataProvider"
+                  DataControl="ServicesWrapper" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getConfirmedOrdersTotalAmountAsString" IsViewObjectMethod="false"
+                  ReturnName="data.ServicesWrapper.methodResults.getConfirmedOrdersTotalAmountAsString_ServicesWrapper_dataProvider_getConfirmedOrdersTotalAmountAsString_result"/>
+  </bindings>
+</pageDefinition>

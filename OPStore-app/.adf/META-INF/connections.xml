@@ -1,0 +1,164 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="getStoresList" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/getStoresListByState?wsdl" service="{http://services.octa44.com}getStoresListByStateService">
+                  <model name="{http://services.octa44.com}getStoresListByStateService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}getStoresListByStateService">
+                        <port name="getStoresListByState" binding="{http://services.octa44.com}getStoresListByStateSoapBinding">
+                           <soap addressUrl="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/getStoresListByState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="getService">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="getServiceRequest"/>
+                              <output name="getServiceResponse"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="getStoreListByState" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/getStoresListByState?wsdl" service="{http://services.octa44.com}getStoresListByStateService">
+                  <model name="{http://services.octa44.com}getStoresListByStateService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}getStoresListByStateService">
+                        <port name="getStoresListByState" binding="{http://services.octa44.com}getStoresListByStateSoapBinding">
+                           <soap addressUrl="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/getStoresListByState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="getService">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="getServiceRequest"/>
+                              <output name="getServiceResponse"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="getStoresListByState" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/getStoresListByState?wsdl" service="{http://services.octa44.com}getStoresListByStateService">
+                  <model name="{http://services.octa44.com}getStoresListByStateService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}getStoresListByStateService">
+                        <port name="getStoresListByState" binding="{http://services.octa44.com}getStoresListByStateSoapBinding">
+                           <soap addressUrl="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/getStoresListByState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="getService">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="getServiceRequest"/>
+                              <output name="getServiceResponse"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="SubmitOrder" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/createOrder?wsdl" service="{http://services.octa44.com}createOrderService">
+                  <model name="{http://services.octa44.com}createOrderService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}createOrderService">
+                        <port name="createOrder" binding="{http://services.octa44.com}createOrderSoapBinding">
+                           <soap addressUrl="http://ec2-54-214-88-131.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/createOrder" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="getService">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="getServiceRequest"/>
+                              <output name="getServiceResponse"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="searchCustomersByState" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="file:/Users/yossinakash/jdeveloper/myWork11124/OPStore/ViewController/mobile/y_SearchCustomerStateService.wsdl" service="{http://services.octa44.com}y_SearchCustomerStateService">
+                  <model name="{http://services.octa44.com}y_SearchCustomerStateService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}y_SearchCustomerStateService">
+                        <port name="y_SearchCustomerStateServicePort" binding="{http://services.octa44.com}y_SearchCustomerStateServiceSoapBinding">
+                           <soap addressUrl="http://localhost:7101/OPStore-ViewController-context-root/searchCustomersByStateService" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="y_SearchCustomerState">
+                              <soap soapAction="y_SearchCustomerState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <output name="y_SearchCustomerStateResponse"/>
+                              <input name="y_SearchCustomerStateRequest"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="getCustomersByState" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-203-157-52.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/y_SearchCustomerState?wsdl" service="{http://services.octa44.com}y_SearchCustomerStateService">
+                  <model name="{http://services.octa44.com}y_SearchCustomerStateService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}y_SearchCustomerStateService">
+                        <port name="y_SearchCustomerStateServicePort" binding="{http://services.octa44.com}y_SearchCustomerStateServiceSoapBinding">
+                           <soap addressUrl="http://ec2-54-203-157-52.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/y_SearchCustomerState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="y_SearchCustomerState">
+                              <soap soapAction="y_SearchCustomerState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <output name="y_SearchCustomerStateResponse"/>
+                              <input name="y_SearchCustomerStateRequest"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="CreateNewOrder" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-203-157-52.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/s_createNewOrder2?wsdl" service="{http://services.octa44.com}s_createNewOrder2Service">
+                  <model name="{http://services.octa44.com}s_createNewOrder2Service" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.octa44.com}s_createNewOrder2Service">
+                        <port name="s_createNewOrder2ServicePort" binding="{http://services.octa44.com}s_createNewOrder2ServiceSoapBinding">
+                           <soap addressUrl="http://ec2-54-203-157-52.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/s_createNewOrder2" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="s_createNewOrder2">
+                              <soap soapAction="s_createNewOrder2" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <output name="s_createNewOrder2Response"/>
+                              <input name="s_createNewOrder2Request"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

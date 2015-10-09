@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="OrderConfirmationPageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <invokeAction Binds="getSubmitOrderConfirmationNumber" id="get_confirmation_number"/>
+    <invokeAction Binds="getSubmitOrderErrorMessage" id="get_error_message"/>
+  </executables>
+  <bindings>
+    <methodAction id="getSubmitOrderConfirmationNumber" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getSubmitOrderConfirmationNumber" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getSubmitOrderConfirmationNumber_ServicesWrapper_dataProvider_getSubmitOrderConfirmationNumber_result"/>
+    <methodAction id="getSubmitOrderErrorMessage" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getSubmitOrderErrorMessage" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getSubmitOrderErrorMessage_ServicesWrapper_dataProvider_getSubmitOrderErrorMessage_result"/>
+  </bindings>
+</pageDefinition>

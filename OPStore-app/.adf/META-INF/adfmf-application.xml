@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
+                   version="1.0" name="OPStore" id="com.company.OPStore" appControllerFolder="ApplicationController">
+  <adfmf:featureReference id="Logon"/>
+  <adfmf:featureReference id="Springboard" showOnNavigationBar="false" showOnSpringboard="false"/>
+  <adfmf:featureReference id="StoreLocator"/>
+  <adfmf:featureReference id="ManualInventory"/>
+  <adfmf:featureReference id="OrderApproval"/>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="false" showSpringboardAtStartup="false" width="114"
+                       displayGotoSpringboardControl="true"/>
+    <adfmf:navigationBar enabled="false" displayHideShowNavigationBarControl="false"/>
+  </adfmf:navigation>
+</adfmf:application>

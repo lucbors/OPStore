@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+    <amx:panelPage id="pp1" inlineStyle="background-color:White;">
+        <amx:facet name="header">
+            <amx:outputText value="Locate Store - #{bindings.name.inputValue}" id="ot12"
+                            inlineStyle="background-color:transparent;"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="commandButton2" text="Store visit" action="replenishment" iconPosition="trailing"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton text="Logout" id="cb5" action="logout"/>
+        </amx:facet>
+        <amx:panelSplitter id="panelSplitter1" inlineStyle="position:absolute; right:0; left:0; background-color:White;"
+                           selectedItem="#{pageFlowScope.empPanel}" animation="flipRight" position="300px">
+            <amx:facet name="navigator">
+                <amx:selectOneButton id="sob1"
+                                     inlineStyle="width:100%; vertical-align:middle; text-align:center; padding:10px 0px 0px; background-color:White;"
+                                     value="#{OPStore.searchBySelection}" simple="true">
+                    <amx:selectItem id="si1" label="Alphabetical " value="0"/>
+                    <amx:selectItem label="By Location" id="si2" value="1"/>
+                </amx:selectOneButton>
+                <amx:panelGroupLayout id="pgl1" rendered="#{OPStore.searchBySelection==0}"
+                                      inlineStyle="background-color:White;">
+                    <amx:tableLayout id="tl1" width="100%" shortDesc="Table" inlineStyle="background-color:White;">
+                        <amx:rowLayout id="rl1">
+                            <amx:cellFormat id="cf2" width="100%" shortDesc="Cell"
+                                            inlineStyle="background-color:White;">
+                                <amx:inputText value="#{bindings.Return.inputValue}" simple="true" id="it1"
+                                               hintText="Search for Store"
+                                               valueChangeListener="#{OPStore.StoreSearchFilterChanged}"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf4" width="48px" halign="center" shortDesc="Cell"
+                                            inlineStyle="background-color:White;">
+                                <amx:commandButton id="cb1" shortDesc="Search Link" icon="/images/search_36.png"
+                                                   actionListener="#{OPStore.FilterStoreBynameListener}">
+                                    <amx:setPropertyListener id="spl6" from="#{true}" to="#{OPStore.searchOn}"/>
+                                </amx:commandButton>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf1" shortDesc="ClearFilter Cell" width="48px" halign="center"
+                                            rendered="#{OPStore.searchOn==true}" inlineStyle="background-color:White;">
+                                <amx:commandButton id="cb2" shortDesc="ClearFilter Button" icon="/images/clear_36.png"
+                                                   styleClass="adfmf-commandButton-alert"
+                                                   actionListener="#{OPStore.FilterStoreBynameListener}">
+                                    <amx:setPropertyListener id="spl2" from="#{}" to="#{OPStore.currentFilter}"/>
+                                    <amx:setPropertyListener id="spl7" from="#{false}" to="#{OPStore.searchOn}"/>
+                                    <amx:actionListener id="al2" binding="#{bindings.getStoreSearchFilter.execute}"/>
+                                </amx:commandButton>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:listView var="row" value="#{bindings.storesList1.collectionModel}"
+                                  fetchSize="#{bindings.storesList1.rangeSize}" id="lv1"
+                                  rendered="#{OPStore.searchBySelection==0}" inlineStyle="background-color:White;">
+                        <amx:listItem id="li1"
+                                      actionListener="#{bindings.getStoreByIndex.execute}"
+                                      rendered="#{row.filter==false}" inlineStyle="background-color:White;">
+                            <amx:outputText value="#{row.name}" id="ot10" inlineStyle="background-color:White;"/>
+                            <amx:setPropertyListener to="#{OPStore.selectedStoreIndex}" id="spl4" type="action"
+                                                     from="#{row.id}"/>
+                            <amx:actionListener id="al1" binding="#{bindings.getOrderHistoryOfStoreByIndex.execute}"/>
+                        </amx:listItem>
+                    </amx:listView>
+                </amx:panelGroupLayout>
+                <dvtm:geographicMap id="map1" rendered="#{OPStore.searchBySelection==1}"
+                                    inlineStyle="background-color:White;">
+                    <dvtm:pointDataLayer value="#{bindings.storesList2.collectionModel}" id="pdl2" var="row"
+                                         selectionListener="#{bindings.getStoreByIndex.execute}">
+                        <dvtm:pointLocation address="#{row.fullAddress}" id="ptl8" type="address"
+                                            rendered="#{row.filter==false}">
+                            <dvtm:marker id="mrk2">
+                                <amx:setPropertyListener id="spl1" from="#{row.id}"
+                                                         to="#{OPStore.selectedStoreIndex}"/>
+                                <amx:showPopupBehavior id="spb1" popupId="mapmarker" alignId="map1"/>
+                                <amx:setPropertyListener id="spl3" from="#{row.name}" to="#{pageFlowScope.StoreName}"/>
+                                <amx:setPropertyListener id="spl5"
+                                                         from="#{OPStore.selectedStore.city}, #{OPStore.selectedStore.state}"
+                                                         to="#{pageFlowScope.StoreLocation}"/>
+                            </dvtm:marker>
+                        </dvtm:pointLocation>
+                    </dvtm:pointDataLayer>
+                </dvtm:geographicMap>
+            </amx:facet>
+            <amx:panelItem id="viewpanel" rendered="true" inlineStyle="background-color:White;">
+                <amx:tableLayout id="tl3" width="100%" shortDesc="Detail Table"
+                                 inlineStyle="padding:20px 20px 0px; background-color:White;">
+                    <amx:rowLayout id="rl5">
+                        <amx:cellFormat id="cf9" height="50%" shortDesc="Cell" valign="top" rowSpan="3"
+                                        inlineStyle="padding:0px 10px 0px 0px;">
+                            <amx:image id="i3" source="/images/#{bindings.imagePath.inputValue}.jpg"
+                                       inlineStyle="width:100%; height:96.5%;"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf8" height="50%" shortDesc="Cell" valign="top"
+                                        inlineStyle="padding:10px 10px 10px 10px;">
+                            <amx:listView id="lvprofile" styleClass="adfmf-listView-insetList"
+                                          inlineStyle="margin-top:0">
+                                <amx:listItem id="lip4" shortDesc="Org listIem" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl4" shortDesc="Org Table">
+                                        <amx:rowLayout id="prl41">
+                                            <amx:cellFormat width="10px" halign="center" rowSpan="2" id="pcf41"
+                                                            shortDesc="Org Image Cell"/>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf42"
+                                                            shortDesc="Org Text Cell">
+                                                <amx:outputText value="Store Name" id="ot41"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl42">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf43"
+                                                            shortDesc="Org Data Cell">
+                                                <amx:outputText value="#{bindings.name.inputValue}" id="ot2"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip5" shortDesc="Salary listIem" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl5" shortDesc="Salary Table">
+                                        <amx:rowLayout id="prl51">
+                                            <amx:cellFormat width="10px" halign="center" rowSpan="2" id="pcf51"
+                                                            shortDesc="Salary Image Cell"/>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf52"
+                                                            shortDesc="Salary Text Cell">
+                                                <amx:outputText value="Address" id="ot51"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl52">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf53"
+                                                            shortDesc="Salary Data Cell">
+                                                <amx:outputText value="#{bindings.address.inputValue}" id="ot6"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip3" shortDesc="Mgr listIem" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl3" shortDesc="Mgr Table">
+                                        <amx:rowLayout id="prl31">
+                                            <amx:cellFormat width="44px" halign="center" rowSpan="2" id="pcf31"
+                                                            shortDesc="Mgr Image Cell">
+                                                <amx:image source="/images/organizationManager_58.png" id="i4"
+                                                           inlineStyle="height:34px;width:34px;margin-top:4px"
+                                                           shortDesc="Org Image"/>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf32"
+                                                            shortDesc="Mgr Text Cell">
+                                                <amx:outputText value="Contact Name" id="ot31"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl32">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf33"
+                                                            shortDesc="Mgr Data Cell">
+                                                <amx:outputText value="#{bindings.contactName.inputValue}" id="ot3"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip1" shortDesc="Phone listItem"
+                                              actionListener="#{bindings.sendSMS.execute}"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl1" shortDesc="Phone table">
+                                        <amx:rowLayout id="prl11">
+                                            <amx:cellFormat width="44px" halign="center" rowSpan="2" id="pcf11"
+                                                            shortDesc="Phone Image Cell">
+                                                <amx:image source="/images/phone_58.png" id="im1"
+                                                           inlineStyle="height:34px;width:34px;margin-top:4px"
+                                                           shortDesc="Phone Image"/>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf12"
+                                                            shortDesc="Phone Text Cell">
+                                                <amx:outputText value="Phone" id="ot11"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl12">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf13"
+                                                            shortDesc="Phone Number Cell">
+                                                <amx:outputText value="#{bindings.phoneNumber.inputValue}" id="ot4"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip2" shortDesc="Email listIem"
+                                              actionListener="#{bindings.sendEmail.execute}"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl2" shortDesc="Email Table">
+                                        <amx:rowLayout id="prl21">
+                                            <amx:cellFormat width="44px" halign="center" rowSpan="2" id="pcf21"
+                                                            shortDesc="Email Image Cell">
+                                                <amx:image source="/images/email_58.png" id="i2"
+                                                           inlineStyle="height:34px;width:34px;margin-top:4px"
+                                                           shortDesc="Email Image "/>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf22"
+                                                            shortDesc="Email Text Cell">
+                                                <amx:outputText value="Email" id="ot21"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl22">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf23"
+                                                            shortDesc="Email Data Cell">
+                                                <amx:outputText value="#{bindings.email.inputValue}" id="ot5"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip71" shortDesc="HireDate listIem" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl71" shortDesc="HireDate Table">
+                                        <amx:rowLayout id="prl711">
+                                            <amx:cellFormat width="44px" halign="center" rowSpan="2" id="pcf711"
+                                                            shortDesc="HireDate Image Cell">
+                                                <amx:image source="/images/hireDate_58.png" id="i71"
+                                                           inlineStyle="height:34px;width:34px;margin-top:4px"
+                                                           shortDesc="HireDate Image"/>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf721"
+                                                            shortDesc="HireDate Text Cell">
+                                                <amx:outputText value="Last Order Date" id="ot711"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl721">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf731"
+                                                            shortDesc="HireDate Data Cell">
+                                                <amx:outputText value="#{bindings.lastOrderDate.inputValue}" id="ot7">
+                                                    <amx:convertDateTime pattern="#{bindings.lastOrderDate.format}"
+                                                                         id="cdt1"/>
+                                                </amx:outputText>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip7" shortDesc="HireDate listIem" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl7" shortDesc="HireDate Table">
+                                        <amx:rowLayout id="prl71">
+                                            <amx:cellFormat width="44px" halign="center" rowSpan="2" id="pcf71"
+                                                            shortDesc="HireDate Image Cell">
+                                                <amx:image source="/images/salary_58.png" id="i5"
+                                                           inlineStyle="height:34px;width:34px;margin-top:4px"
+                                                           shortDesc="Salary Image"/>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf72"
+                                                            shortDesc="HireDate Text Cell">
+                                                <amx:outputText value="Monthly Average" id="ot71"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl72">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf73"
+                                                            shortDesc="HireDate Data Cell">
+                                                <amx:outputText value="#{bindings.monthlyAverage.inputValue}" id="ot8">
+                                                    <amx:convertNumber id="cn2" type="currency" currencyCode="$"
+                                                                       currencySymbol="$" minFractionDigits="2"
+                                                                       maxFractionDigits="2"/>
+                                                </amx:outputText>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                                <amx:listItem id="lip6" shortDesc="Comm listIem" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl6" shortDesc="Comm Table">
+                                        <amx:rowLayout id="prl61">
+                                            <amx:cellFormat width="44px" halign="center" rowSpan="2" id="pcf61"
+                                                            shortDesc="Comm Image Cell">
+                                                <amx:image source="/images/salary_58.png" id="i6"
+                                                           inlineStyle="height:34px;width:34px;margin-top:4px"
+                                                           shortDesc="Comm Image"/>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat width="100%" height="12px" id="pcf62"
+                                                            shortDesc="Comm Text Cell">
+                                                <amx:outputText value="Credit Rating" id="ot61"
+                                                                styleClass="adfmf-listItem-captionText"
+                                                                inlineStyle="margin-top:1px;margin-bottom:-5px"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="prl62">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf63"
+                                                            shortDesc="Comm Data Cell">
+                                                <amx:outputText value="#{bindings.credit.inputValue}" id="ot9"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                            </amx:listView>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <dvtm:barChart var="row" value="#{bindings.OrderHistoryItem.collectionModel}" id="bc2"
+                               animationDownColor="rgb(244,102,50)" animationOnDisplay="auto" animationDuration="1000"
+                               rolloverBehavior="dim" animationOnDataChange="auto"
+                               inlineStyle="padding:10px 10px 10px 10px;">
+                    <amx:facet name="dataStamp">
+                        <dvtm:chartDataItem value="#{row.orderAmount}" group="#{row.quarter}" color="rgb(224,0,0)"
+                                            series="serie1" id="cdi4"/>
+                    </amx:facet>
+                    <dvtm:legend rendered="false" id="l2"/>
+                </dvtm:barChart>
+            </amx:panelItem>
+        </amx:panelSplitter>
+    </amx:panelPage>
+    <amx:popup id="mapmarker" shortDesc="Map Marker Popup" autoDismiss="true">
+        <amx:panelGroupLayout id="pglmarker">
+            <amx:tableLayout id="tl4">
+                <amx:rowLayout id="rl4">
+                    <amx:cellFormat id="cf6">
+                        <amx:outputText value="#{pageFlowScope.StoreName}" id="cntryname"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl3">
+                    <amx:cellFormat id="cf5">
+                        <amx:spacer id="s2" height="5"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl6">
+                    <amx:cellFormat id="cf7">
+                        <amx:outputText value="#{pageFlowScope.StoreLocation}"
+                                        id="citystate"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:commandButton id="cb3" icon="/images/clear_36.png" styleClass="adfmf-commandButton-alert">
+            <amx:closePopupBehavior id="cpb1" popupId="mapmarker"/>
+        </amx:commandButton>
+        <amx:commandButton text="Select" id="cb4" actionListener="#{bindings.getStoreByIndex.execute}">
+            <amx:closePopupBehavior id="cpb5"/>
+        </amx:commandButton>
+    </amx:popup>
+</amx:view>

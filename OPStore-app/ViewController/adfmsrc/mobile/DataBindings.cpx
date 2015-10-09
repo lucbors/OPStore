@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.64.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="mobile" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Logon/Logon.amx" usageId="mobile_LogonPageDef"/>
+    <page path="/StoreLocator.amx" usageId="mobile_StoreLocatorPageDef"/>
+    <page path="/SearchStore.amx" usageId="mobile_SearchStorePageDef"/>
+    <page path="/Springboard/Springboard.amx" usageId="mobile_SpringboardPageDef"/>
+    <page path="/ScanInventory.amx" usageId="mobile_ScanInventoryPageDef"/>
+    <page path="/ManualInventory/manualInventory.amx" usageId="mobile_manualInventoryPageDef"/>
+    <page path="/InventorySummery.amx" usageId="mobile_InventorySummeryPageDef"/>
+    <page path="/Visualize.amx" usageId="mobile_VisualizePageDef"/>
+    <page path="/LastMinute.amx" usageId="mobile_LastMinutePageDef"/>
+    <page path="/OrderSummery.amx" usageId="mobile_OrderSummeryPageDef"/>
+    <page path="/Replenishment.amx" usageId="mobile_ReplenishmentPageDef"/>
+    <page path="/LastMinuteAdditions.amx" usageId="mobile_LastMinuteAdditionsPageDef"/>
+    <page path="/OrderApproval/OrderApproval.amx" usageId="mobile_OrderApprovalPageDef"/>
+    <page path="/StoreSearch.amx" usageId="mobile_StoreSearchPageDef"/>
+    <page path="/OrderConfirmation.amx" usageId="mobile_OrderConfirmationPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="mobile_LogonPageDef" path="Logon.LogonPageDef"/>
+    <page id="mobile_StoreLocatorPageDef" path="mobile.pageDefs.StoreLocatorPageDef"/>
+    <page id="mobile_SearchStorePageDef" path="mobile.pageDefs.SearchStorePageDef"/>
+    <page id="mobile_SpringboardPageDef" path="Springboard.SpringboardPageDef"/>
+    <page id="mobile_ScanInventoryPageDef" path="mobile.pageDefs.ScanInventoryPageDef"/>
+    <page id="mobile_manualInventoryPageDef" path="ManualInventory.manualInventoryPageDef"/>
+    <page id="mobile_InventorySummeryPageDef" path="mobile.pageDefs.InventorySummeryPageDef"/>
+    <page id="mobile_VisualizePageDef" path="mobile.pageDefs.VisualizePageDef"/>
+    <page id="mobile_LastMinutePageDef" path="mobile.pageDefs.LastMinutePageDef"/>
+    <page id="mobile_OrderSummeryPageDef" path="mobile.pageDefs.OrderSummeryPageDef"/>
+    <page id="mobile_ReplenishmentPageDef" path="mobile.pageDefs.ReplenishmentPageDef"/>
+    <page id="mobile_LastMinuteAdditionsPageDef" path="mobile.pageDefs.LastMinuteAdditionsPageDef"/>
+    <page id="mobile_OrderApprovalPageDef" path="OrderApproval.OrderApprovalPageDef"/>
+    <page id="mobile_StoreSearchPageDef" path="mobile.pageDefs.StoreSearchPageDef"/>
+    <page id="mobile_OrderConfirmationPageDef" path="mobile.pageDefs.OrderConfirmationPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="CreateNewOrder" path="mobile.CreateNewOrder"/>
+    <dc id="getCustomersByState" path="mobile.getCustomersByState"/>
+    <dc id="searchCustomersByState" path="mobile.searchCustomersByState"/>
+    <dc id="getStoresListByState" path="mobile.getStoresListByState"/>
+    <dc id="SubmitOrder" path="mobile.SubmitOrder"/>
+    <dc id="DeviceFeatures" path="application.DeviceFeatures"/>
+    <dc id="ApplicationFeatures" path="application.ApplicationFeatures"/>
+    <dc id="ServicesWrapper" path="mobile.ServicesWrapper"/>
+  </dataControlUsages>
+</Application>

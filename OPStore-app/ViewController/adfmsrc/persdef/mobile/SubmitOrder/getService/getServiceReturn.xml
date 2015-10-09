@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE PDefViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<PDefViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="getServiceReturn">
+  <DesignTime>
+    <Attr Name="_DCName" Value="mobile.DataControls.SubmitOrder"/>
+    <Attr Name="_SDName" Value="mobile.SubmitOrder.getService.getServiceReturn"/>
+  </DesignTime>
+</PDefViewObject>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="StoreLocatorPageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="ServicesWrapper" id="ServicesWrapperIterator"/>
+    <accessorIterator MasterBinding="ServicesWrapperIterator" Binds="storesList" RangeSize="-1"
+                      DataControl="ServicesWrapper" BeanClass="mobile.Store" id="storesListIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="storesListIterator" id="storesList">
+      <nodeDefinition DefName="mobile.Store" Name="storesList0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getStoreByIndex"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getStoreByIndex_ServicesWrapper_dataProvider_getStoreByIndex_result">
+      <NamedData NDName="index" NDValue="#{pageFlowScope.storeRowIndex}" NDType="int"/>
+    </methodAction>
+    <tree IterBinding="storesListIterator" id="storesList1">
+      <nodeDefinition DefName="mobile.Store" Name="storesList10">
+        <AttrNames>
+          <Item Value="fullAddress"/>
+          <Item Value="name"/>
+          <Item Value="id"/>
+          <Item Value="imagePath"/>
+          <Item Value="address"/>
+          <Item Value="state"/>
+          <Item Value="zipCode"/>
+          <Item Value="contactName"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="email"/>
+          <Item Value="yearOfOrigin"/>
+          <Item Value="incomeLevel"/>
+          <Item Value="creditLimit"/>
+          <Item Value="lastYearTotal"/>
+          <Item Value="monthlyAverage"/>
+          <Item Value="lastOrderDate"/>
+          <Item Value="city"/>
+          <Item Value="lastOrderTotal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="OrderSummeryPageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="double" Name="getConfirmedOrdersTotalAmount_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getConfirmedOrdersTotalAmount.result}"/>
+    </variableIterator>
+    <methodIterator Binds="getConfirmedOrdersList.result" DataControl="ServicesWrapper" RangeSize="25"
+                    BeanClass="mobile.OrderItem" id="getConfirmedOrdersListIterator"/>
+    <invokeAction Binds="getConfirmedOrdersList" id="getConfirmedOrderList"/>
+  </executables>
+  <bindings>
+    <methodAction id="getProductsList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getProductsList"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getProductsList_ServicesWrapper_dataProvider_getProductsList_result"/>
+    <methodAction id="getConfirmedOrdersList" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getConfirmedOrdersList" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getConfirmedOrdersList_ServicesWrapper_dataProvider_getConfirmedOrdersList_result"/>
+    <tree IterBinding="getConfirmedOrdersListIterator" id="OrderItem">
+      <nodeDefinition DefName="mobile.OrderItem" Name="OrderItem0">
+        <AttrNames>
+          <Item Value="paidPrice"/>
+          <Item Value="quantity"/>
+          <Item Value="filter"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="product"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="mobile.Product" Name="OrderItem1">
+        <AttrNames>
+          <Item Value="prodID"/>
+          <Item Value="name"/>
+          <Item Value="listPrice"/>
+          <Item Value="category"/>
+          <Item Value="subCategory"/>
+          <Item Value="bestSeller"/>
+          <Item Value="recommended"/>
+          <Item Value="salePrice"/>
+          <Item Value="imagePath"/>
+          <Item Value="description"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="lastOrderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getConfirmedOrdersTotalAmount" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getConfirmedOrdersTotalAmount" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getConfirmedOrdersTotalAmount_ServicesWrapper_dataProvider_getConfirmedOrdersTotalAmount_result"/>
+    <attributeValues IterBinding="variables" id="Return">
+      <AttrNames>
+        <Item Value="getConfirmedOrdersTotalAmount_Return"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

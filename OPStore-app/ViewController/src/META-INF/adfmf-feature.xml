@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="Logon" name="Logon" credentials="none">
+    <adfmf:content id="Logon.1">
+      <adfmf:amx file="Logon/Logon.amx">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.css" id="i7"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.min.js" id="i8"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.css" id="i9"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.min.js" id="i10"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.ui.touch-punch.js" id="i11"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/methods.js" id="i12"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="Springboard" name="Springboard">
+    <adfmf:content id="Springboard.1">
+      <adfmf:amx file="Springboard/Springboard.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="StoreLocator" name="StoreLocator">
+    <adfmf:content id="StoreLocator.1">
+      <adfmf:amx file="SearchStore.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="ManualInventory" name="ManualInventory">
+    <adfmf:content id="ManualInventory.1">
+      <adfmf:amx file="ManualInventory/manualInventory.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="OrderApproval" name="OrderApproval">
+    <adfmf:content id="OrderApproval.1">
+      <adfmf:amx file="OrderApproval/OrderApproval.amx">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.css" id="i1"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.min.js" id="i2"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.css" id="i3"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.min.js" id="i4"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.ui.touch-punch.js" id="i5"/>
+          <adfmf:include type="JavaScript" file="OrderApproval/scripts/methods.js" id="i6"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Logon" id="ot1"/>
+    </amx:facet>
+    <amx:tableLayout id="tl1" width="100%" halign="center">
+      <amx:rowLayout id="rl1">
+        <amx:cellFormat id="cf1" inlineStyle="height:auto;" halign="center">
+          <amx:image id="i4" source="/images/logo3.png" inlineStyle="width:100%; height:80%;"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl2">
+        <amx:cellFormat id="cf2" halign="center" height="50">
+          <amx:spacer id="s2" height="70"/>
+          <amx:panelFormLayout id="pfl1" fieldHalign="center"
+                               inlineStyle="color:Black; border-style:outset; font-style:normal; font-weight:bold; padding:50px; background-color:White; width:35%;">
+            <amx:inputText value="#{bindings.userName.inputValue}" label="Username" id="it2"
+                           inlineStyle="background-color:White;"/>
+            <amx:inputText value="#{bindings.passWord.inputValue}" label="Password" id="it1" secret="true"
+                           inlineStyle="background-color:White;"/>
+          </amx:panelFormLayout>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl4">
+        <amx:cellFormat id="cf6" halign="center" inlineStyle="border-color:White;">
+          <amx:spacer id="s1" height="30"/>
+          <amx:commandButton text="Logon"
+                             disabled="#{!bindings.Logon.enabled}" id="cb1"
+                             inlineStyle="color:White; width:80px; height:20px;" action="#{OPStore.Logon}"/>
+          <amx:spacer id="s4" height="40"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl3">
+        <amx:cellFormat id="cf3">
+          <amx:spacer id="s3" height="100"/>
+          <amx:image id="i1" inlineStyle="width:100%; height:60%; " source="\images\footer1.png"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+  </amx:panelPage>
+</amx:view>

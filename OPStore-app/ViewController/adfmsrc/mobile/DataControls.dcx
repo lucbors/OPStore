@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="11.1.2.64.36" id="DataControls"
+                    Package="mobile">
+  <AdapterDataControl id="ServicesWrapper" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="mobile.ServicesWrapper"
+                      BeanClass="mobile.ServicesWrapper" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="mobile.ServicesWrapper"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="mobile.ServicesWrapper" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SubmitOrder" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="mobile.SubmitOrder"
+                      BeanClass="mobile.SubmitOrder" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="SubmitOrder" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="mobile/createOrderService.wsdl" ensureKeyAttribute="true" UsePersistedStructure="false">
+        <service name="createOrderService" namespace="http://services.octa44.com" connection="SubmitOrder">
+          <port name="createOrder">
+            <operation name="getService"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+   <AdapterDataControl id="getCustomersByState" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="mobile.getCustomersByState"
+                      BeanClass="mobile.getCustomersByState" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="getCustomersByState" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://ec2-54-203-157-52.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/y_SearchCustomerState?wsdl"
+                  ensureKeyAttribute="true" UsePersistedStructure="false">
+        <service name="y_SearchCustomerStateService" namespace="http://services.octa44.com"
+                 connection="getCustomersByState">
+          <port name="y_SearchCustomerStateServicePort">
+            <operation name="y_SearchCustomerState"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CreateNewOrder" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="mobile.CreateNewOrder"
+                      BeanClass="mobile.CreateNewOrder" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CreateNewOrder" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://ec2-54-203-157-52.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/s_createNewOrder2?wsdl"
+                  ensureKeyAttribute="true" UsePersistedStructure="false">
+        <service name="s_createNewOrder2Service" namespace="http://services.octa44.com" connection="CreateNewOrder">
+          <port name="s_createNewOrder2ServicePort">
+            <operation name="s_createNewOrder2"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

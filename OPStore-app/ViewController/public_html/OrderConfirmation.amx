@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+  <amx:panelPage id="pp1" inlineStyle="vertical-align:middle;">
+    <amx:facet name="header">
+      <amx:outputText value="Order Confirmation" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Back" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" text="Search Store" action="search_store"/>
+    </amx:facet>
+    <amx:image id="i1" source="\images\thanks.png" inlineStyle="width:100%; height:auto;"/>
+    <amx:outputText value="#{bindings.getSubmitOrderErrorMessage.result}" id="ot2"/>
+    <amx:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="background-color:White; width:auto;" halign="center">
+      <amx:inputText label="Order Number:" id="it1"
+                     inlineStyle="width:50%; font-weight:bold; font-size:150%; color:Black; padding:3%; background-color:White; font-style:normal; text-align:center; vertical-align:middle; margin:50px; border-color:Gray; border-style:ridge;"
+                     inputType="number" readOnly="true" value="#{bindings.getSubmitOrderConfirmationNumber.result}"/>
+      <amx:selectOneButton id="sob1"
+                           inlineStyle="background-color:White; border-style:ridge; outline-color:White; color:Aqua; font-weight:bolder; text-align:center; vertical-align:middle; border-color:Gray; padding:3%; width:95%;"
+                           layout="horizontal"
+                           label="Receipt" valueChangeListener="#{ApproveOrder.ReciptTypePressed}">
+        <amx:selectItem id="si1" label="Email" value="email"/>
+        <amx:selectItem label="Print" id="si2" value="print"/>
+        <amx:selectItem label="SMS" id="si3" value="sms"/>
+      </amx:selectOneButton>
+      <amx:spacer id="s1" height="20"
+                  inlineStyle="background-color:Silver; border-color:Silver; border-style:ridge; list-style-type:circle;"/>
+    </amx:panelGroupLayout>
+    <amx:image id="i2" source="\images\footer1.png" inlineStyle="width:100%; height:12%;"/>
+  </amx:panelPage>
+</amx:view>

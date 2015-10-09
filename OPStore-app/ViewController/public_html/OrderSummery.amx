@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Order Summary" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Back" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" text="Checkout" action="approve"/>
+    </amx:facet>
+    <amx:panelGroupLayout id="pgl1" layout="wrap">
+      <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv3"
+                    inlineStyle="background-color:White; border-color:White;">
+        <amx:listItem id="li2" showLinkIcon="false" styleClass="opstore-listItem-noselect"
+                      inlineStyle="background-color:inherit;" >
+          <amx:tableLayout id="tl1" cellSpacing="0" cellPadding="0" width="100%"
+                           inlineStyle="padding:4px 0px 0px;">
+            <amx:rowLayout id="rl2">
+              <amx:cellFormat id="cf6" columnSpan="2" rowSpan="1" width="43%" valign="middle"
+                              inlineStyle="padding:7px; font-size:120%;">
+                <amx:outputText value="Product" id="ot5" inlineStyle="color:Navy; font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf8" halign="center" inlineStyle="font-size:120%;">
+                <amx:outputText value="Unit Price" id="ot7" inlineStyle="color:Navy; font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf9" inlineStyle="font-size:120%;">
+                <amx:outputText value="Quantity" id="ot8" inlineStyle="color:Navy; font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf3" halign="end" width="7%" inlineStyle="font-size:120%;">
+                <amx:outputText value="Total: " id="ot9" inlineStyle="color:Maroon; text-align:left; font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf4" width="100px" inlineStyle="font-size:120%;">
+                <amx:outputText value="#{bindings.Return.inputValue}" id="ot11"
+                                inlineStyle="color:Maroon; text-align:left; font-size:100%;">
+                  <amx:convertNumber id="cn3" maxFractionDigits="2" minFractionDigits="2" currencyCode="$"
+                                     currencySymbol="$" type="currency"/>
+                </amx:outputText>
+              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+        </amx:listItem>
+      </amx:listView>
+    </amx:panelGroupLayout>
+    <amx:panelGroupLayout id="pgl5" layout="vertical"
+                          inlineStyle='position:absolute;top:70px;bottom:0;left:0;right:0'>
+      <amx:iterator var="row" value="#{bindings.OrderItem.collectionModel}" id="i2">
+        <!--<amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.paidPrice.label}" id="plam12">
+          <amx:outputText value="#{row.paidPrice}" id="ot21"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.quantity.label}" id="plam14">
+          <amx:outputText value="#{row.quantity}" id="ot23"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.filter.label}" id="plam9">
+          <amx:outputText value="#{row.filter}" id="ot18"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.prodID.label}" id="plam6">
+          <amx:outputText value="#{row.product.bindings.prodID.inputValue}" id="ot15"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.name.label}" id="plam13">
+          <amx:outputText value="#{row.product.bindings.name.inputValue}" id="ot22"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.listPrice.label}" id="plam10">
+          <amx:outputText value="#{row.product.bindings.listPrice.inputValue}" id="ot19"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.category.label}" id="plam7">
+          <amx:outputText value="#{row.product.bindings.category.inputValue}" id="ot16"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.subCategory.label}" id="plam8">
+          <amx:outputText value="#{row.product.bindings.subCategory.inputValue}" id="ot17"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.bestSeller.label}" id="plam3">
+          <amx:outputText value="#{row.product.bindings.bestSeller.inputValue}" id="ot12"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.recommended.label}" id="plam4">
+          <amx:outputText value="#{row.product.bindings.recommended.inputValue}" id="ot13"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.salePrice.label}" id="plam11">
+          <amx:outputText value="#{row.product.bindings.salePrice.inputValue}" id="ot20"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.imagePath.label}" id="plam2">
+          <amx:outputText value="#{row.product.bindings.imagePath.inputValue}" id="ot11"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.description.label}" id="plam5">
+          <amx:outputText value="#{row.product.bindings.description.inputValue}" id="ot14"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.inventoryQuantity.label}" id="plam1">
+          <amx:outputText value="#{row.product.bindings.inventoryQuantity.inputValue}" id="ot10"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="#{bindings.OrderItem.hints.product.lastOrderQuantity.label}" id="plam15">
+          <amx:outputText value="#{row.product.bindings.lastOrderQuantity.inputValue}" id="ot24"/>
+        </amx:panelLabelAndMessage>-->
+        <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv1" inlineStyle="background-color:#f6f6f7;">
+          <amx:listItem showLinkIcon="false" id="li1" styleClass="opstore-listItem-noselect"
+                      inlineStyle="background-color:inherit;">
+            <amx:tableLayout id="t92" styleClass="cust-Ord" width="100%">
+              <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf95" height="100px">
+                  <amx:spacer id="s9" width="10"/>
+                  <amx:image id="i4" source="/images/#{row.product.bindings.imagePath}.jpg"
+                             inlineStyle="height:70px; width:80px;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf1" width="30%">
+                  <amx:outputText value="#{row.product.bindings.name}" id="ot33"
+                                  inlineStyle="font-weight:bold; color:Navy;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf2" halign="start" valign="middle">
+                  <amx:outputText value="#{row.paidPrice}" id="ot2"
+                                  inlineStyle="font-weight:bold; text-align:right; color:Navy;">
+                    <amx:convertNumber id="cn1" maxFractionDigits="2" minFractionDigits="2" currencySymbol="$"
+                                       currencyCode="$" type="currency"/>
+                  </amx:outputText>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf5" halign="end">
+                  <amx:outputText value="#{row.quantity}" id="ot3" inlineStyle="font-weight:bold; color:Navy;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf7"/>
+                <amx:cellFormat id="cf14" halign="end">
+                  <amx:outputText value="#{row.quantity*row.paidPrice}" id="ot6"
+                                  inlineStyle="color:Maroon; font-weight:bold; text-align:right;">
+                    <amx:convertNumber id="cn2" maxFractionDigits="2" minFractionDigits="2" currencySymbol="$"
+                                       currencyCode="$" type="currency"/>
+                  </amx:outputText>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf16" width="10"/>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:setPropertyListener id="spl1" to="#{pageFlowScope.productSalePrice}"
+                                     from="#{row.product.bindings.salePrice}" type="action"/>
+            <amx:setPropertyListener id="spl4" from="#{row.product.bindings.salePrice}"
+                                     to="#{pageFlowScope.productListPrice}"/>
+            <amx:setPropertyListener id="spl2" from="#{row.product.bindings.name}" to="#{pageFlowScope.productName}"/>
+            <amx:setPropertyListener id="spl3" from="#{row.product.bindings.inventoryQuantity}"
+                                     to="#{pageFlowScope.productInventoryQuantity}"/>
+            <amx:setPropertyListener id="spl5" from="#{row.quantity}" to="#{pageFlowScope.productToOrder}"/>
+          </amx:listItem>
+        </amx:listView>
+      </amx:iterator>
+    </amx:panelGroupLayout>
+  </amx:panelPage>
+</amx:view>
