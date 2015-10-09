@@ -4,9 +4,9 @@
     <adfmf:content id="Logon.1">
       <adfmf:amx file="Logon/Logon.amx">
         <adfmf:includes>
-          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.css" id="i7"/>
+          <adfmf:include type="StyleSheet" file="OrderApproval/scripts/jquery-ui.css" id="i7"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.min.js" id="i8"/>
-          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.css" id="i9"/>
+          <adfmf:include type="StyleSheet" file="OrderApproval/scripts/jquery.signature.css" id="i9"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.min.js" id="i10"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.ui.touch-punch.js" id="i11"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/methods.js" id="i12"/>
@@ -33,9 +33,9 @@
     <adfmf:content id="OrderApproval.1">
       <adfmf:amx file="OrderApproval/OrderApproval.amx">
         <adfmf:includes>
-          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.css" id="i1"/>
+          <adfmf:include type="StyleSheet" file="OrderApproval/scripts/jquery-ui.css" id="i1"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery-ui.min.js" id="i2"/>
-          <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.css" id="i3"/>
+          <adfmf:include type="StyleSheet" file="OrderApproval/scripts/jquery.signature.css" id="i3"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.signature.min.js" id="i4"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/jquery.ui.touch-punch.js" id="i5"/>
           <adfmf:include type="JavaScript" file="OrderApproval/scripts/methods.js" id="i6"/>

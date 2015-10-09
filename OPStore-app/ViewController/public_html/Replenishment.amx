@@ -10,7 +10,7 @@
             <amx:outputText value="Replenishment" id="ot10"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton text="Cancel" id="cb7" action="__back"/>
+            <amx:commandButton text="Cancel" id="cb7" action="search"/>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" text="Promotions" action="last_minute"/>
@@ -20,25 +20,25 @@
             <amx:rowLayout id="rl2">
                 <amx:cellFormat id="cf3" width="100%">
                     <amx:panelGroupLayout id="pgl4" layout="horizontal">
-                        <amx:selectOneButton id="sob1" value="#{Replenishment.selectMode}" simple="true"
+                        <amx:selectOneButton id="sob1" value="#{pageFlowScope.Replenishment.selectMode}" simple="true"
                                              inlineStyle="width:240px">
                             <amx:selectItem id="si1" label="Visualize" value="0"/>
                             <amx:selectItem label="Edit" id="si2" value="1"/>
                         </amx:selectOneButton>
                         <amx:spacer id="s3" width="50"/>
-                        <amx:inputText value="#{Replenishment.itemFilter}" simple="true" id="inputText2"
+                        <amx:inputText value="#{pageFlowScope.Replenishment.itemFilter}" simple="true" id="inputText2"
                                        styleClass="hr-inputText-search" hintText="Search Product"/>
                         <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="width:200px">
                             <amx:commandButton id="cb3" shortDesc="Search Link" icon="/images/search_36.png"
-                                               actionListener="#{Replenishment.FilterProductsByNameOrID}">
-                                <amx:setPropertyListener id="spl6" from="#{true}" to="#{Replenishment.searchOn}"/>
+                                               actionListener="#{pageFlowScope.Replenishment.FilterProductsByNameOrID}">
+                                <amx:setPropertyListener id="spl6" from="#{true}" to="#{pageFlowScope.Replenishment.searchOn}"/>
                             </amx:commandButton>
                             <amx:commandButton id="cb4" shortDesc="ClearFilter Button" icon="/images/clear_36.png"
                                                styleClass="adfmf-commandButton-alert"
-                                               rendered="#{Replenishment.searchOn==true}"
-                                               actionListener="#{Replenishment.FilterProductsByNameOrID}">
-                                <amx:setPropertyListener id="spl2" from="#{false}" to="#{Replenishment.searchOn}"/>
-                                <amx:setPropertyListener id="spl7" from="#{}" to="#{Replenishment.itemFilter}"/>
+                                               rendered="#{pageFlowScope.Replenishment.searchOn==true}"
+                                               actionListener="#{pageFlowScope.Replenishment.FilterProductsByNameOrID}">
+                                <amx:setPropertyListener id="spl2" from="#{false}" to="#{pageFlowScope.Replenishment.searchOn}"/>
+                                <amx:setPropertyListener id="spl7" from="#{}" to="#{pageFlowScope.Replenishment.itemFilter}"/>
                             </amx:commandButton>
                         </amx:panelGroupLayout>
                         <amx:outputText value="Scan Barcode" id="ot3" inlineStyle="font-size:large;"/>
@@ -57,7 +57,7 @@
                 <amx:listItem id="li22" showLinkIcon="false" styleClass="opstore-listItem-noselect"
                               inlineStyle="background-color:inherit; border-color:White;">
                     <amx:tableLayout id="tl12" cellSpacing="0" cellPadding="0" width="100%"
-                                     rendered="#{Replenishment.selectMode==1}"
+                                     rendered="#{pageFlowScope.Replenishment.selectMode==1}"
                                      inlineStyle="padding:5px; font-size:large;">
                         <amx:rowLayout id="rl22">
                             <amx:cellFormat id="cf26" columnSpan="1" rowSpan="1" width="45%"
@@ -77,7 +77,7 @@
                         </amx:rowLayout>
                     </amx:tableLayout>
                     <amx:tableLayout id="tl11" cellSpacing="0" cellPadding="0" width="100%"
-                                     rendered="#{Replenishment.selectMode==0}"
+                                     rendered="#{pageFlowScope.Replenishment.selectMode==0}"
                                      inlineStyle="padding:5px;">
                         <amx:rowLayout id="rl21">
                             <amx:cellFormat id="cf61" columnSpan="1" rowSpan="1">
@@ -103,13 +103,13 @@
                               inlineStyle="background-color:inherit; padding:0px 0px 0px;">
                     <amx:tableLayout id="t92" styleClass="cust-Ord" width="100%"
                                      inlineStyle="background-color:#f6f6f7;" cellPadding="0" cellSpacing="0">
-                        <amx:rowLayout id="rl221" rendered="#{Replenishment.selectMode==1}">
+                        <amx:rowLayout id="rl221" rendered="#{pageFlowScope.Replenishment.selectMode==1}">
                             <amx:cellFormat id="cf95" height="100px">
                                 <amx:spacer id="s9" width="10"/>
                                 <amx:commandLink id="cl3">
                                     <amx:image id="i4" source="/images/#{row.product.bindings.imagePath}.jpg"
                                                inlineStyle="height:70px; width:80px;"/>
-                                    <amx:setPropertyListener id="spl1" to="#{pageFlowScope.productSalePrice}"
+                                    <amx:setPropertyListener id="spl1" to="#{pageFlowScope.pageFlowScope.productSalePrice}"
                                                              from="#{row.product.bindings.salePrice}" type="action"/>
                                     <amx:setPropertyListener id="spl24" from="#{row.product.bindings.listPrice}"
                                                              to="#{pageFlowScope.productListPrice}"/>
@@ -139,7 +139,7 @@
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf14">
                                             <amx:commandLink id="cl1"
-                                                             actionListener="#{Replenishment.IncrementInStockByProductID}">
+                                                             actionListener="#{pageFlowScope.Replenishment.IncrementInStockByProductID}">
                                                 <amx:setPropertyListener id="spl26"
                                                                          from="#{row.product.bindings.prodID}"
                                                                          to="#{pageFlowScope.selectedProductID}"
@@ -148,7 +148,7 @@
                                                            inlineStyle="height:45px;"/>
                                             </amx:commandLink>
                                             <amx:commandLink id="cl2"
-                                                             actionListener="#{Replenishment.DecrementInStcokByProductID}">
+                                                             actionListener="#{pageFlowScope.Replenishment.DecrementInStcokByProductID}">
                                                 <amx:setPropertyListener id="spl27"
                                                                          from="#{row.product.bindings.prodID}"
                                                                          to="#{pageFlowScope.selectedProductID}"/>
@@ -167,14 +167,14 @@
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf16">
                                             <amx:commandLink id="cl4"
-                                                             actionListener="#{Replenishment.IncrementQuantityByProductID}">
+                                                             actionListener="#{pageFlowScope.Replenishment.IncrementQuantityByProductID}">
                                                 <amx:setPropertyListener id="spl8" from="#{row.product.bindings.prodID}"
                                                                          to="#{pageFlowScope.selectedProductID}"/>
                                                 <amx:image id="i2" source="/images/arrow_up2.png"
                                                            inlineStyle="height:45px;"/>
                                             </amx:commandLink>
                                             <amx:commandLink id="cl5"
-                                                             actionListener="#{Replenishment.DecrementQuantityByProductID}">
+                                                             actionListener="#{pageFlowScope.Replenishment.DecrementQuantityByProductID}">
                                                 <amx:setPropertyListener id="spl9" from="#{row.product.bindings.prodID}"
                                                                          to="#{pageFlowScope.selectedProductID}"/>
                                                 <amx:image id="i6" source="/images/arrow_down2.png"
@@ -187,13 +187,13 @@
                             <amx:cellFormat id="cf224" halign="center" rendered="#{row.showDelete}"
                                             width="#{row.showDelete}? 100px:40px">
                                 <amx:commandButton text="Delete" id="cb6" styleClass="adfmf-commandButton-alert"
-                                                   action="#{Replenishment.DeleteRowByProductID}">
+                                                   action="#{pageFlowScope.Replenishment.DeleteRowByProductID}">
                                     <amx:setPropertyListener id="spl10" from="#{row.product.bindings.prodID}"
                                                              to="#{pageFlowScope.selectedProductID}"/>
                                 </amx:commandButton>
                             </amx:cellFormat>
                         </amx:rowLayout>
-                        <amx:rowLayout id="rl11" rendered="#{Replenishment.selectMode==0}">
+                        <amx:rowLayout id="rl11" rendered="#{pageFlowScope.Replenishment.selectMode==0}">
                             <amx:cellFormat id="cf951" height="90px" width="10%">
                                 <amx:spacer id="s91" width="10"/>
                                 <amx:commandLink id="cl31">
@@ -253,7 +253,7 @@
             </amx:rowLayout>
             <amx:rowLayout id="rl12">
                 <amx:cellFormat id="cf226" halign="center">
-                    <amx:commandButton text="OK" id="cb1" action="#{Replenishment.DeleteRowByProductID}">
+                    <amx:commandButton text="OK" id="cb1" action="#{pageFlowScope.Replenishment.DeleteRowByProductID}">
                         <amx:closePopupBehavior id="cpb2" popupId="DeleteRow"/>
                     </amx:commandButton>
                     <amx:commandButton text="Cancel" id="cb23">

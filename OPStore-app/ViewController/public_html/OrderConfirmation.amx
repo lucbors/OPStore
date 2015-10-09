@@ -24,7 +24,7 @@
       <amx:selectOneButton id="sob1"
                            inlineStyle="background-color:White; border-style:ridge; outline-color:White; color:Aqua; font-weight:bolder; text-align:center; vertical-align:middle; border-color:Gray; padding:3%; width:95%;"
                            layout="horizontal"
-                           label="Receipt" valueChangeListener="#{ApproveOrder.ReciptTypePressed}">
+                           label="Receipt" valueChangeListener="#{pageFlowScope.ApproveOrder.ReciptTypePressed}">
         <amx:selectItem id="si1" label="Email" value="email"/>
         <amx:selectItem label="Print" id="si2" value="print"/>
         <amx:selectItem label="SMS" id="si3" value="sms"/>

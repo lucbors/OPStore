@@ -131,6 +131,7 @@
          <string v=".xsd"/>
          <string v=".xsl"/>
          <string v=".jpx"/>
+         <string v=".rpx"/>
       </list>
       <value n="internalEncoding" v="MacRoman"/>
       <list n="Javac.commandline.optionlist">

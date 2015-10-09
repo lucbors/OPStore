@@ -3,32 +3,7 @@
    <OverallProperties
       id="OverallProperties1"/>
    <View
-      id="View2">
-      <property
-         name="activityId">Logon</property>
-      <property
-         name="page">/Logon/Logon.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>Logon&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">225.83594</property>
-      <property
-         name="x">262.5</property>
-   </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase5"
-      from="View2"
-      to="View2">
-      <property
-         name="fromOutcome">fail</property>
-      <property
-         name="sdm:polyPoints">T44,259.0,171.76953,266.0,171.76953,T56</property>
-   </ControlFlowCase>
-   <View
-      id="View25">
+      id="View39">
       <property
          name="activityId">OrderApproval</property>
       <property
@@ -38,12 +13,12 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">225.57031</property>
+         name="y">225.23438</property>
       <property
-         name="x">950.67676</property>
+         name="x">698.67676</property>
    </View>
    <View
-      id="View27">
+      id="View40">
       <property
          name="activityId">Replenishment</property>
       <property
@@ -53,67 +28,12 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">226.13672</property>
+         name="y">97.234375</property>
       <property
-         name="x">536.0</property>
+         name="x">-31.857422</property>
    </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase29"
-      from="View27"
-      to="View27">
-      <property
-         name="fromOutcome">refresh</property>
-      <property
-         name="sdm:polyPoints">T44,532.5,172.07031,539.5,172.07031,T56</property>
-   </ControlFlowCase>
    <View
-      id="View30">
-      <property
-         name="activityId">LastMinuteAdditions</property>
-      <property
-         name="page">/LastMinuteAdditions.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>LastMinuteAdditions&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">225.46875</property>
-      <property
-         name="x">679.0</property>
-   </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase31"
-      from="View27"
-      to="View30">
-      <property
-         name="fromOutcome">last_minute</property>
-      <property
-         name="sdm:polyPoints">R46,577.0,222.57031,637.9617,221.90234,L46</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase32"
-      from="View30"
-      to="View30">
-      <property
-         name="fromOutcome">refresh</property>
-      <property
-         name="sdm:polyPoints">T44,675.5,171.40234,682.5,171.40234,T56</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase33"
-      from="View30"
-      to="View27">
-      <property
-         name="fromOutcome">back</property>
-      <property
-         name="sdm:polyPoints">L54,638.0,228.90234,577.0383,229.57031,R54</property>
-   </ControlFlowCase>
-   <View
-      id="View38">
+      id="View41">
       <property
          name="activityId">OrderSummery</property>
       <property
@@ -123,32 +43,12 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">225.83594</property>
+         name="y">101.234375</property>
       <property
-         name="x">806.78125</property>
+         name="x">386.78125</property>
    </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase39"
-      from="View30"
-      to="View38">
-      <property
-         name="fromOutcome">order_summery</property>
-      <property
-         name="sdm:polyPoints">R50,720.0,225.40234,765.78125,225.76953,L50</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase21"
-      from="View38"
-      to="View25">
-      <property
-         name="fromOutcome">approve</property>
-      <property
-         name="sdm:polyPoints">R50,847.78125,225.76953,909.67676,225.5039,L50</property>
-   </ControlFlowCase>
    <View
-      id="View21">
+      id="View42">
       <property
          name="activityId">OrderConfirmation</property>
       <property
@@ -158,32 +58,27 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">225.33594</property>
+         name="y">328.23438</property>
       <property
-         name="x">1097.0</property>
+         name="x">413.94922</property>
    </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase22"
-      from="View25"
-      to="View21">
-      <property
-         name="fromOutcome">confirm</property>
-      <property
-         name="sdm:polyPoints">R50,991.67676,225.5039,1056.0,225.26953,L50</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase23"
-      from="View21"
-      to="View28">
-      <property
-         name="fromOutcome">search_store</property>
-      <property
-         name="sdm:polyPoints">B50,1097.0,279.26953,397.0,277.0703,B50</property>
-   </ControlFlowCase>
    <View
-      id="View28">
+      id="View43">
+      <property
+         name="activityId">LastMinuteAdditions</property>
+      <property
+         name="page">/LastMinuteAdditions.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LastMinuteAdditions&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">96.10156</property>
+      <property
+         name="x">224.625</property>
+   </View>
+   <View
+      id="View44">
       <property
          name="activityId">StoreSearch</property>
       <property
@@ -193,64 +88,229 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">223.13672</property>
+         name="y">320.10156</property>
       <property
-         name="x">397.0</property>
+         name="x">58.098633</property>
+   </View>
+   <View
+      id="View45">
+      <property
+         name="activityId">Logon</property>
+      <property
+         name="page">/Logon/Logon.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Logon&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">684.3672</property>
+      <property
+         name="x">55.5</property>
    </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase30"
-      from="View28"
-      to="View28">
+      id="ControlFlowCase46"
+      from="View41"
+      to="View39">
       <property
-         name="fromOutcome">refresh</property>
+         name="fromOutcome">approve</property>
       <property
-         name="sdm:polyPoints">T44,393.5,169.07031,400.5,169.07031,T56</property>
+         name="tosrcid">__9</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">R50,427.78125,101.16797,657.67676,221.66797,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase34"
-      from="View2"
-      to="View28">
+      id="ControlFlowCase47"
+      from="View40"
+      to="View43">
       <property
-         name="fromOutcome">success</property>
+         name="fromOutcome">last_minute</property>
       <property
-         name="sdm:polyPoints">R50,303.5,225.76953,356.0,223.07031,L50</property>
+         name="tosrcid">__27</property>
+      <property
+         name="fromsrcid">__25</property>
+      <property
+         name="sdm:polyPoints">R46,9.142578,93.66797,183.60228,92.53516,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase35"
-      from="View28"
-      to="View27">
+      id="ControlFlowCase48"
+      from="View43"
+      to="View41">
       <property
-         name="fromOutcome">replenishment</property>
+         name="fromOutcome">order_summery</property>
       <property
-         name="sdm:polyPoints">R54,438.0,226.57031,494.81592,229.57031,L54</property>
+         name="tosrcid">__33</property>
+      <property
+         name="fromsrcid">__28</property>
+      <property
+         name="sdm:polyPoints">R50,265.625,96.03516,345.78125,101.16797,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase36"
-      from="View27"
-      to="View28">
+      id="ControlFlowCase49"
+      from="View39"
+      to="View42">
       <property
-         name="fromOutcome">search</property>
+         name="fromOutcome">confirm</property>
       <property
-         name="sdm:polyPoints">L46,495.0,222.57031,438.1844,219.57031,R46</property>
+         name="tosrcid">__12</property>
+      <property
+         name="fromsrcid">__10</property>
+      <property
+         name="sdm:polyPoints">L54,657.67676,228.66797,454.94922,328.16797,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase27">
-      <property
-         name="fromOutcome">refresh</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase26"
-      from="View28"
-      to="View2">
+      id="ControlFlowCase50"
+      from="View44"
+      to="View45">
       <property
          name="fromOutcome">logout</property>
       <property
-         name="sdm:polyPoints">L54,356.0,226.57031,303.67984,229.26953,R54</property>
+         name="tosrcid">__20</property>
+      <property
+         name="fromsrcid">__18</property>
+      <property
+         name="sdm:polyPoints">B44,54.598633,374.09528,59.0,626.7707,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase51"
+      from="View40"
+      to="View44">
+      <property
+         name="fromOutcome">search</property>
+      <property
+         name="tosrcid">__7</property>
+      <property
+         name="fromsrcid">__25</property>
+      <property
+         name="sdm:polyPoints">B44,-35.35742,153.7273,61.598633,261.23337,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase52"
+      from="View44"
+      to="View44">
+      <property
+         name="fromOutcome">refresh</property>
+      <property
+         name="tosrcid">__19</property>
+      <property
+         name="fromsrcid">__18</property>
+      <property
+         name="sdm:polyPoints">T33,47.598633,266.03516,54.598633,266.03516,T44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase53"
+      from="View44"
+      to="View40">
+      <property
+         name="fromOutcome">replenishment</property>
+      <property
+         name="tosrcid">__6</property>
+      <property
+         name="fromsrcid">__18</property>
+      <property
+         name="sdm:polyPoints">T67,68.59863,258.65192,-28.357422,151.16797,B56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase54"
+      from="View40"
+      to="View40">
+      <property
+         name="fromOutcome">refresh</property>
+      <property
+         name="tosrcid">__26</property>
+      <property
+         name="fromsrcid">__25</property>
+      <property
+         name="sdm:polyPoints">T44,-35.35742,43.16797,-28.357422,43.16797,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase55"
+      from="View43"
+      to="View43">
+      <property
+         name="fromOutcome">refresh</property>
+      <property
+         name="tosrcid">__29</property>
+      <property
+         name="fromsrcid">__28</property>
+      <property
+         name="sdm:polyPoints">T44,221.125,42.035156,228.125,42.035156,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase56"
+      from="View45"
+      to="View44">
+      <property
+         name="fromOutcome">success</property>
+      <property
+         name="tosrcid">__5</property>
+      <property
+         name="fromsrcid">__2</property>
+      <property
+         name="sdm:polyPoints">T67,66.0,626.71063,61.598633,374.03516,B56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase57"
+      from="View42"
+      to="View44">
+      <property
+         name="fromOutcome">search_store</property>
+      <property
+         name="tosrcid">__14</property>
+      <property
+         name="fromsrcid">__13</property>
+      <property
+         name="sdm:polyPoints">L50,372.94922,328.16797,99.09863,320.03516,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase58"
+      from="View43"
+      to="View40">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="tosrcid">__30</property>
+      <property
+         name="fromsrcid">__28</property>
+      <property
+         name="sdm:polyPoints">L54,183.625,99.53516,9.165301,100.66797,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase59"
+      from="View45"
+      to="View45">
+      <property
+         name="fromOutcome">fail</property>
+      <property
+         name="tosrcid">__4</property>
+      <property
+         name="fromsrcid">__2</property>
+      <property
+         name="sdm:polyPoints">T33,45.0,630.3008,52.0,630.3008,T44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase64">
+      <property
+         name="fromOutcome">refresh</property>
+      <property
+         name="tosrcid">__17</property>
+      <property
+         name="fromsrcid">__16</property>
    </ControlFlowCase>
 </SDM>

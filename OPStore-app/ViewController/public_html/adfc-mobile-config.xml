@@ -3,27 +3,29 @@
   <managed-bean id="__1">
     <managed-bean-name>OPStore</managed-bean-name>
     <managed-bean-class>mobile.StoreLocator</managed-bean-class>
-    <managed-bean-scope>application</managed-bean-scope>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
   </managed-bean>
+  <!-- class does not exist. commented by Luc Bors
   <managed-bean id="__8">
     <managed-bean-name>SpringBoardBean</managed-bean-name>
     <managed-bean-class>mobile.SpringBoardFuncs</managed-bean-class>
     <managed-bean-scope>application</managed-bean-scope>
   </managed-bean>
+  -->
   <managed-bean id="__11">
     <managed-bean-name>Inventory</managed-bean-name>
     <managed-bean-class>mobile.EditInventory</managed-bean-class>
-    <managed-bean-scope>application</managed-bean-scope>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
   </managed-bean>
   <managed-bean id="__24">
     <managed-bean-name>Replenishment</managed-bean-name>
     <managed-bean-class>mobile.Replenishment</managed-bean-class>
-    <managed-bean-scope>application</managed-bean-scope>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
   </managed-bean>
   <managed-bean id="__15">
     <managed-bean-name>ApproveOrder</managed-bean-name>
     <managed-bean-class>mobile.ApproveOrder</managed-bean-class>
-    <managed-bean-scope>application</managed-bean-scope>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
   </managed-bean>
   <view id="Logon">
     <page>/Logon/Logon.amx</page>

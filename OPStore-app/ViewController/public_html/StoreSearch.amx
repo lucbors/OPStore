@@ -21,11 +21,11 @@
             <amx:facet name="navigator">
                 <amx:selectOneButton id="sob1"
                                      inlineStyle="width:100%; vertical-align:middle; text-align:center; padding:10px 0px 0px; background-color:White;"
-                                     value="#{OPStore.searchBySelection}" simple="true">
+                                     value="#{pageFlowScope.OPStore.searchBySelection}" simple="true">
                     <amx:selectItem id="si1" label="Alphabetical " value="0"/>
                     <amx:selectItem label="By Location" id="si2" value="1"/>
                 </amx:selectOneButton>
-                <amx:panelGroupLayout id="pgl1" rendered="#{OPStore.searchBySelection==0}"
+                <amx:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.OPStore.searchBySelection==0}"
                                       inlineStyle="background-color:White;">
                     <amx:tableLayout id="tl1" width="100%" shortDesc="Table" inlineStyle="background-color:White;">
                         <amx:rowLayout id="rl1">
@@ -33,22 +33,22 @@
                                             inlineStyle="background-color:White;">
                                 <amx:inputText value="#{bindings.Return.inputValue}" simple="true" id="it1"
                                                hintText="Search for Store"
-                                               valueChangeListener="#{OPStore.StoreSearchFilterChanged}"/>
+                                               valueChangeListener="#{pageFlowScope.OPStore.StoreSearchFilterChanged}"/>
                             </amx:cellFormat>
                             <amx:cellFormat id="cf4" width="48px" halign="center" shortDesc="Cell"
                                             inlineStyle="background-color:White;">
                                 <amx:commandButton id="cb1" shortDesc="Search Link" icon="/images/search_36.png"
-                                                   actionListener="#{OPStore.FilterStoreBynameListener}">
-                                    <amx:setPropertyListener id="spl6" from="#{true}" to="#{OPStore.searchOn}"/>
+                                                   actionListener="#{pageFlowScope.OPStore.FilterStoreBynameListener}">
+                                    <amx:setPropertyListener id="spl6" from="#{true}" to="#{pageFlowScope.OPStore.searchOn}"/>
                                 </amx:commandButton>
                             </amx:cellFormat>
                             <amx:cellFormat id="cf1" shortDesc="ClearFilter Cell" width="48px" halign="center"
-                                            rendered="#{OPStore.searchOn==true}" inlineStyle="background-color:White;">
+                                            rendered="#{pageFlowScope.OPStore.searchOn==true}" inlineStyle="background-color:White;">
                                 <amx:commandButton id="cb2" shortDesc="ClearFilter Button" icon="/images/clear_36.png"
                                                    styleClass="adfmf-commandButton-alert"
-                                                   actionListener="#{OPStore.FilterStoreBynameListener}">
-                                    <amx:setPropertyListener id="spl2" from="#{}" to="#{OPStore.currentFilter}"/>
-                                    <amx:setPropertyListener id="spl7" from="#{false}" to="#{OPStore.searchOn}"/>
+                                                   actionListener="#{pageFlowScope.OPStore.FilterStoreBynameListener}">
+                                    <amx:setPropertyListener id="spl2" from="#{}" to="#{pageFlowScope.OPStore.currentFilter}"/>
+                                    <amx:setPropertyListener id="spl7" from="#{false}" to="#{pageFlowScope.OPStore.searchOn}"/>
                                     <amx:actionListener id="al2" binding="#{bindings.getStoreSearchFilter.execute}"/>
                                 </amx:commandButton>
                             </amx:cellFormat>
@@ -56,30 +56,32 @@
                     </amx:tableLayout>
                     <amx:listView var="row" value="#{bindings.storesList1.collectionModel}"
                                   fetchSize="#{bindings.storesList1.rangeSize}" id="lv1"
-                                  rendered="#{OPStore.searchBySelection==0}" inlineStyle="background-color:White;">
+                                  rendered="#{pageFlowScope.OPStore.searchBySelection==0}" inlineStyle="background-color:White;">
                         <amx:listItem id="li1"
                                       actionListener="#{bindings.getStoreByIndex.execute}"
                                       rendered="#{row.filter==false}" inlineStyle="background-color:White;">
                             <amx:outputText value="#{row.name}" id="ot10" inlineStyle="background-color:White;"/>
-                            <amx:setPropertyListener to="#{OPStore.selectedStoreIndex}" id="spl4" type="action"
+                            <amx:setPropertyListener to="#{pageFlowScope.OPStore.selectedStoreIndex}" id="spl4" type="action"
                                                      from="#{row.id}"/>
                             <amx:actionListener id="al1" binding="#{bindings.getOrderHistoryOfStoreByIndex.execute}"/>
                         </amx:listItem>
                     </amx:listView>
                 </amx:panelGroupLayout>
-                <dvtm:geographicMap id="map1" rendered="#{OPStore.searchBySelection==1}"
-                                    inlineStyle="background-color:White;">
+                <dvtm:geographicMap id="map1" rendered="#{pageFlowScope.OPStore.searchBySelection==1}"
+                                    inlineStyle="background-color:White;"  
+                                     zoomLevel="10"
+                                    centerX="-122.4167" centerY="37.7833"  >
                     <dvtm:pointDataLayer value="#{bindings.storesList2.collectionModel}" id="pdl2" var="row"
                                          selectionListener="#{bindings.getStoreByIndex.execute}">
                         <dvtm:pointLocation address="#{row.fullAddress}" id="ptl8" type="address"
                                             rendered="#{row.filter==false}">
                             <dvtm:marker id="mrk2">
                                 <amx:setPropertyListener id="spl1" from="#{row.id}"
-                                                         to="#{OPStore.selectedStoreIndex}"/>
+                                                         to="#{pageFlowScope.OPStore.selectedStoreIndex}"/>
                                 <amx:showPopupBehavior id="spb1" popupId="mapmarker" alignId="map1"/>
                                 <amx:setPropertyListener id="spl3" from="#{row.name}" to="#{pageFlowScope.StoreName}"/>
                                 <amx:setPropertyListener id="spl5"
-                                                         from="#{OPStore.selectedStore.city}, #{OPStore.selectedStore.state}"
+                                                         from="#{pageFlowScope.OPStore.selectedStore.city}, #{pageFlowScope.OPStore.selectedStore.state}"
                                                          to="#{pageFlowScope.StoreLocation}"/>
                             </dvtm:marker>
                         </dvtm:pointLocation>

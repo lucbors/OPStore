@@ -32,7 +32,7 @@
           <amx:spacer id="s1" height="30"/>
           <amx:commandButton text="Logon"
                              disabled="#{!bindings.Logon.enabled}" id="cb1"
-                             inlineStyle="color:White; width:80px; height:20px;" action="#{OPStore.Logon}"/>
+                             inlineStyle="color:White; width:80px; height:20px;" action="#{pageFlowScope.OPStore.Logon}"/>
           <amx:spacer id="s4" height="40"/>
         </amx:cellFormat>
       </amx:rowLayout>

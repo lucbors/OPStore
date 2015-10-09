@@ -205,7 +205,7 @@
                                                                         <amx:cellFormat id="cf143">
                                                                             <amx:spacer id="s13" width="30"/>
                                                                             <amx:commandLink id="cl1"
-                                                                                             action="#{Replenishment.IncrementQuantityByProductID}"
+                                                                                             action="#{pageFlowScope.Replenishment.IncrementQuantityByProductID}"
                                                                                              inlineStyle="color:Black;">
                                                                                 <amx:setPropertyListener id="spl26"
                                                                                                          from="#{row.product.bindings.prodID}"
@@ -216,7 +216,7 @@
                                                                                            inlineStyle="height:20%;"/>
                                                                             </amx:commandLink>
                                                                             <amx:commandLink id="cl2"
-                                                                                             action="#{Replenishment.DecrementQuantityByProductID}"
+                                                                                             action="#{pageFlowScope.Replenishment.DecrementQuantityByProductID}"
                                                                                              inlineStyle="color:Black;">
                                                                                 <amx:setPropertyListener id="spl27"
                                                                                                          from="#{row.product.bindings.prodID}"
@@ -235,7 +235,7 @@
                                                 <amx:cellFormat id="cf14" halign="end" valign="top">
                                                     <amx:spacer id="s5"/>
                                                     <amx:commandLink id="cl3"
-                                                                     action="#{Replenishment.RemoveProductFromRecommendedListByProductID}">
+                                                                     action="#{pageFlowScope.Replenishment.RemoveProductFromRecommendedListByProductID}">
                                                         <amx:image id="i7" source="/images/del.png"
                                                                    inlineStyle="height:30px; width:30px;"/>
                                                         <amx:setPropertyListener id="spl2"
@@ -341,8 +341,10 @@
                                             <amx:rowLayout id="rl5">
                                                 <amx:cellFormat id="cf8" width="60%">
                                                     <amx:tableLayout id="t492" styleClass="cust-Ord" width="250px">
+                                                        <!-- commented by Luc Bors
                                                         <amx:rowLayout id="rl413">
                                                         </amx:rowLayout>
+                                                        -->
                                                         <amx:rowLayout id="r944">
                                                             <amx:cellFormat id="cf944" columnSpan="2" height="40px">
                                                                 <amx:tableLayout id="tl46">
