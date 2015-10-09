@@ -11,10 +11,13 @@
    <value n="appTemplateId" v="adfMobileAppTemplate"/>
    <hash n="component-versions">
       <value n="oracle.adf.share.dt.migration.jps.JaznCredStoreMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.adf.share.dt.migration.wsm.PolicyAttachmentMigratorHelper" v="12.1.2.0.0"/>
+      <value n="oracle.adfdt.controller.adfc.source.migration.SavePointDataSourceForWLSMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.model.ide.security.extension.AdfSecurityMigrator" v="11.1.1.1.0.13"/>
-      <value n="oracle.ide.model.Project" v="11.1.1.1.0;11.1.2.0.0"/>
+      <value n="oracle.ide.model.Project" v="11.1.1.1.0;11.1.2.0.0;12.1.3.0.0"/>
       <value n="oracle.jbo.dt.jdevx.deployment.JbdProjectMigrator" v="11.1.2.0.0"/>
       <value n="oracle.jdevimpl.appresources.ApplicationSrcDirMigrator" v="11.1.2.0.0"/>
+      <value n="oracle.jdevimpl.deploy.migrators.JeeDeploymentMigrator" v="12.1.2.0.0"/>
       <value n="oracle.jdevimpl.xml.oc4j.jps.JpsConfigMigratorHelper" v="11.1.1.1.0.1"/>
       <value n="oracle.jdevimpl.xml.wl.WeblogicMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.mds.internal.dt.deploy.base.MarMigratorHelper" v="11.1.1.1.0"/>
@@ -26,6 +29,8 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationSrcContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationLevelMavenPOMContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/MobileResourcesContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationBuildToolContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="ApplicationController/ApplicationController.jpr"/></hash>
@@ -58,7 +63,8 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -68,9 +74,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/Android1/Android1.jar/"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <hash n="mnfImageOptions">
                <list n="deviceTypes">
                   <hash>
@@ -124,7 +128,8 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -134,9 +139,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/Android2/Android2.jar/"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <hash n="mnfImageOptions">
                <list n="deviceTypes">
                   <hash>
@@ -201,7 +204,8 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -211,9 +215,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <hash n="mnfImageOptions">
                <list n="deviceTypes">
                   <hash>
@@ -280,7 +282,8 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -293,9 +296,7 @@
                <value n="debugFlag" v="false"/>
             </hash>
             <url n="jarURL" path="deploy/iOS2/iOS2.jar/"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <hash n="mnfImageOptions">
                <list n="deviceTypes">
                   <hash>
@@ -370,19 +371,17 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/OPStore_archive/OPStore_archive.maa/"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.applicationarchive.ApplicationArchiveProfile"/>
             <value n="profileName" v="OPStore_archive"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="Android1"/>
-         <string v="Android2"/>
          <string v="iOS1"/>
          <string v="iOS2"/>
          <string v="OPStore_archive"/>
+         <string v="Android2"/>
+         <string v="Android1"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.ApplicationLibraries">

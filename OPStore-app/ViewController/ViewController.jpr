@@ -3,37 +3,48 @@
    <hash n="component-versions">
       <value n="oracle.adfdt.controller.adfc.source.migration.AdfControllerSchemaMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdt.controller.common.migrator.ProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.adfdt.controller.jsf2.diagram.migrate.JsfNodeMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.adfdt.controller.migrate.TrinidadDatabindingsProjectMigrator" v="11.1.2.0.0"/>
       <value n="oracle.adfdtinternal.dvt.datapresdt.migration.DVTDataMapMigrator" v="11.1.1.1.0.3"/>
+      <value n="oracle.adfdtinternal.dvt.datapresdt.migration.DVTWebAppConfigurationMigrator" v="12.1.3.0.0"/>
       <value n="oracle.adfdtinternal.model.ide.migration.ProjectMigrator" v="11.1.1.1.0.11.1.1"/>
       <value n="oracle.adfdtinternal.model.ide.security.wizard.FormPageMigrator" v="11.1.1.0.0"/>
       <value n="oracle.adfdtinternal.model.ide.security.wizard.JpsFilterMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.model.ide.xmled.migration.ADFNodeMigrator" v="11.1.1.1.0.5"/>
       <value n="oracle.adfdtinternal.model.ide.xmled.migration.PageDefinitionParameterValueMigrator" v="11.1.1.1.0.5"/>
+      <value n="oracle.adfdtinternal.model.ide.xmled.migration.RestDataControlMigrator" v="12.1.3.1.0"/>
       <value n="oracle.adfdtinternal.model.ide.xmled.migration.WebXmlMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.view.common.migration.wizards.MigrationHelper" v="11.1.1.1.0.3"/>
       <value n="oracle.adfdtinternal.view.rich.binding.migration.JarResourceMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.view.rich.migration.ComponentIdNodeMigratorHelper" v="11.1.1.1.0.01"/>
+      <value n="oracle.adfdtinternal.view.rich.migration.FacesLibraryVersionMigrator" v="11.1.1.1.0.1"/>
       <value n="oracle.adfdtinternal.view.rich.migration.LibraryVersionMigrator" v="11.1.1.1.0.1"/>
-      <value n="oracle.ide.model.Project" v="11.1.2.0.0"/>
+      <value n="oracle.adfmf.framework.dt.migration.ApplicationMigrator" v="12.1.3.1.0.2.1.3.0.0"/>
+      <value n="oracle.ide.model.Project" v="11.1.2.0.0;12.1.3.0.0"/>
       <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
-      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.4"/>
+      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.4;11.1.2.0.0.5"/>
+      <value n="oracle.jbo.dt.jclient.migrator.JCProjectMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jbo.dt.jdevx.deployment.JbdProjectMigrator" v="11.1.2.0.0"/>
+      <value n="oracle.jbo.dt.jdevx.ui.appnav.APAdfConfigMigrator" v="11.1.2.0.0"/>
       <value n="oracle.jbo.dt.jdevx.ui.appnav.APProjectMigrator" v="11.1.1.0.1.5"/>
       <value n="oracle.jbo.dt.migrate.ResourceBundlePathMigrator" v="11.1.1.0.1.5"/>
       <value n="oracle.jbo.dt.migration.ServiceInterfaceMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdeveloper.dbmodeler.Migration" v="12.1.1.0.0"/>
       <value n="oracle.jdeveloper.ejb.EjbMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jdeveloper.library.ProjectLibraryMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jdeveloper.model.OutputDirectoryMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jdevimpl.deploy.DeploymentProfilesMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jdevimpl.deploy.jps.JpsDataMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.migrators.DeploymentMigrator" v="12.1.2.0.1"/>
       <value n="oracle.jdevimpl.jsp.JspMigrator" v="11.1.1"/>
-      <value n="oracle.jdevimpl.offlinedb.migration.OfflineDBProjectMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.offlinedb.migration.OfflineDBProjectMigrator" v="11.1.1.1.0;12.1.1.0.0"/>
       <value n="oracle.jdevimpl.offlinedb.migration.OfflinePlSqlMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jdevimpl.resourcebundle.XliffAddin$XliffMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.jdevimpl.webapp.jsp.libraries.JspLibraryMigrator" v="11.1.1.1.4"/>
+      <value n="oracle.jdevimpl.webapp.jsp.taglibraries.trinidad.migration.TrinidadLibraryVersionMigrator" v="11.1.1.1.0.1"/>
       <value n="oracle.jdevimpl.webapp.WebAppContentSetNodeMigratorHelper" v="11.1.1"/>
-      <value n="oracle.jdevimpl.webapp.WebAppProjectNodeMigratorHelper" v="11.1.2.0.0"/>
+      <value n="oracle.jdevimpl.webapp.WebAppProjectNodeMigratorHelper" v="11.1.2.0.0;12.1.2.0.0"/>
+      <value n="oracle.jdevimpl.webservices.rest.migration.RestLibraryMigrator" v="12.1.1.0.0"/>
       <value n="oracle.jdevimpl.webservices.rest.migration.RestPathMigrator" v="11.1.2.0.0"/>
       <value n="oracle.jdevimpl.webservices.WebServicesMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.jdevimpl.xml.wl.WeblogicMigratorHelper" v="11.1.1.1.0"/>
@@ -78,12 +89,12 @@
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
-         <string v="ADFMobile"/>
          <string v="ADFbc"/>
          <string v="ADFm"/>
          <string v="HTML"/>
          <string v="JAVASCRIPT"/>
          <string v="Java"/>
+         <string v="MAF"/>
          <string v="RESTWebServices"/>
          <string v="WSDL"/>
          <string v="WSPolicy"/>
@@ -124,17 +135,23 @@
       <value n="internalEncoding" v="MacRoman"/>
       <list n="Javac.commandline.optionlist">
          <string v="-g"/>
+         <string v="-profile"/>
+         <string v="compact2"/>
          <string v="-Xlint:all"/>
          <string v="-Xlint:-cast"/>
+         <string v="-Xlint:-classfile"/>
+         <string v="-Xlint:-dep-ann"/>
          <string v="-Xlint:-empty"/>
          <string v="-Xlint:-fallthrough"/>
          <string v="-Xlint:-path"/>
          <string v="-Xlint:-processing"/>
+         <string v="-Xlint:-rawtypes"/>
          <string v="-Xlint:-serial"/>
          <string v="-Xlint:-unchecked"/>
       </list>
-      <value n="source" v="1.4"/>
-      <value n="target" v="1.4"/>
+      <value n="Javac.-profile" v="truecompact2"/>
+      <value n="source" v="1.8"/>
+      <value n="target" v="1.8"/>
       <value n="webIANAEncoding" v="ISO-8859-1"/>
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
@@ -162,7 +179,8 @@
                               <value n="type" v="1"/>
                            </hash>
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -203,9 +221,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/Project1_MobileFeatureArchive1.jar"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.features.FeatureArchiveProfile"/>
             <value n="profileName" v="Project1_MobileFeatureArchive1"/>
          </hash>
@@ -232,7 +248,8 @@
                               <value n="type" v="1"/>
                            </hash>
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -273,9 +290,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/ViewController_MobileFeatureArchive1.jar"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.features.FeatureArchiveProfile"/>
             <value n="profileName" v="ViewController_MobileFeatureArchive1"/>
          </hash>
@@ -302,7 +317,8 @@
                               <value n="type" v="1"/>
                            </hash>
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -343,9 +359,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/ViewController_MobileFeatureArchive2.jar"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.features.FeatureArchiveProfile"/>
             <value n="profileName" v="ViewController_MobileFeatureArchive2"/>
          </hash>
@@ -372,7 +386,8 @@
                               <value n="type" v="1"/>
                            </hash>
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -413,9 +428,7 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/ViewController_MobileFeatureArchive3.jar"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.features.FeatureArchiveProfile"/>
             <value n="profileName" v="ViewController_MobileFeatureArchive3"/>
          </hash>
@@ -442,7 +455,8 @@
                               <value n="type" v="1"/>
                            </hash>
                            <hash>
-                              <value n="DefaultFilters" v=""/>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
                            </hash>
                         </list>
                      </hash>
@@ -483,18 +497,16 @@
                </list>
             </hash>
             <url n="jarURL" path="deploy/ViewController_MobileFeatureArchive4.jar"/>
-            <hash n="libraryDependencies">
-               <value n="IncludeLibrariesFromOtherContainers" v="true"/>
-            </hash>
+            <hash n="libraryDependencies"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.features.FeatureArchiveProfile"/>
             <value n="profileName" v="ViewController_MobileFeatureArchive4"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="Project1_MobileFeatureArchive1"/>
-         <string v="ViewController_MobileFeatureArchive1"/>
          <string v="ViewController_MobileFeatureArchive2"/>
          <string v="ViewController_MobileFeatureArchive3"/>
+         <string v="ViewController_MobileFeatureArchive1"/>
+         <string v="Project1_MobileFeatureArchive1"/>
          <string v="ViewController_MobileFeatureArchive4"/>
       </list>
    </hash>
@@ -555,9 +567,9 @@
          </hash>
       </list>
       <hash n="jdkReference">
-         <value n="id" v="CVM_JDK"/>
+         <value n="id" v="MAF JDK 1.8 Compact 2 Profile"/>
          <value n="isJDK" v="true"/>
-         <value n="jdkVersion" v="1.4"/>
+         <value n="jdkVersion" v="1.8.0_45"/>
       </hash>
       <list n="libraryReferences">
          <hash>
@@ -606,5 +618,8 @@
          <string v=".xlf"/>
       </list>
       <value n="DefaultBundleTypeId" v="xliffResourceBundleId"/>
+   </hash>
+   <hash n="use-workspace-shared-properties">
+      <value n="oracle.jdeveloper.runner.RunConfigurations" v="true"/>
    </hash>
 </jpr:project>
