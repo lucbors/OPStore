@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.1.3.23.11" id="SubmitOrder" Package="mobile"
-          BeanClass="mobile.SubmitOrder" isJavaBased="false">
-  <MethodAccessor IsCollection="false" Type="mobile.SubmitOrder.getService" BeanClass="mobile.SubmitOrder.getService"
-                  id="getService" ReturnNodeName="Return">
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.1.3.23.11" id="CreateNewOrder" Package="mobile"
+          BeanClass="mobile.CreateNewOrder" isJavaBased="false">
+  <MethodAccessor IsCollection="false" Type="mobile.CreateNewOrder.s_createNewOrder2.s_createNewOrder2Return"
+                  BeanClass="mobile.CreateNewOrder.s_createNewOrder2.s_createNewOrder2Return" id="s_createNewOrder2"
+                  ReturnNodeName="s_createNewOrder2Return">
     <ParameterInfo id="MAIN_USERNAME_0" Type="java.lang.String" isStructured="false"/>
     <ParameterInfo id="MAIN_PASSWORD_0" Type="java.lang.String" isStructured="false"/>
     <ParameterInfo id="S_CUSTOMER_ID_0" Type="java.lang.String" isStructured="false"/>
     <ParameterInfo id="S_ORD_DATE_ORDERED_1" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="S_ORD_DATE_SHIPPED_1" Type="java.lang.String" isStructured="false"/>
     <ParameterInfo id="S_ORD_SALES_REP_ID_1" Type="java.lang.String" isStructured="false"/>
     <ParameterInfo id="S_ORD_TOTAL_1" Type="java.lang.String" isStructured="false"/>
     <ParameterInfo id="S_ORD_PAYMENT_TYPE_1" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="S_ORD_ORDER_FILLED_1" Type="java.lang.String" isStructured="false"/>
   </MethodAccessor>
 </JavaBean>

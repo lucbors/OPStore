@@ -22,7 +22,7 @@ import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.GenericType;
 
 /*
- * Copyright © AuraPlayer 2013 All Rights Reserved. 
+ * Copyright ï¿½ AuraPlayer 2013 All Rights Reserved. 
  * No part of this source code may be reproduced without AuraPlayer's express consent.
  */
 
@@ -30,10 +30,10 @@ public class ServicesWrapper
 {    
     private static String username = "";
     private static String password = "";
-    private static boolean submitOrderSucces=false;
+    private  boolean submitOrderSucces=false;
     private static boolean offlineMode=false;
-    private static String submitOrderErrorMessage = "";
-    private static String submitOrderConfirmationNumber="";
+    private  String submitOrderErrorMessage = "";
+    private  String submitOrderConfirmationNumber="";
     private static boolean getStoresListByStateSucces = false;
     private static String getStoresListByStateErrorMessage = "";
 
@@ -121,16 +121,16 @@ public class ServicesWrapper
         }
     }
     
-    public static boolean submitOrderToFormsSystem(int StoreID, Date orderDate, String totalOrder, String paymentType) {
+    public  boolean submitOrderToFormsSystem(int StoreID, Date orderDate, String totalOrder, String paymentType) {
         
-        ServicesWrapper.submitOrderSucces = false;
-        ServicesWrapper.submitOrderConfirmationNumber = "-1";
-        ServicesWrapper.submitOrderErrorMessage = "";
+       setSubmitOrderSucces ( false);
+        setSubmitOrderConfirmationNumber( "-1");
+        setSubmitOrderErrorMessage ("");
         
         if (offlineMode)
         {
-            ServicesWrapper.submitOrderSucces = true;                
-            ServicesWrapper.submitOrderConfirmationNumber = "00000";
+            setSubmitOrderSucces ( true );                
+            setSubmitOrderConfirmationNumber("00000");
             return true;
         }
 
@@ -187,21 +187,26 @@ public class ServicesWrapper
                                                                 parameterNames, parameters, parameterTypes);            
             
             SoapGenericType soapResponse = (SoapGenericType)result.getAttribute(0);
-            SoapGenericType statusObject = (SoapGenericType)soapResponse.getAttribute(0);
-            String status = (String)statusObject.getAttribute(2);//"StatusBarMessage"
-            String popupMessage = (String)statusObject.getAttribute(1);//"PopupMessages"
-            SoapGenericType elementArray = (SoapGenericType)soapResponse.getAttribute(1);
-            String orderID = (String)elementArray.getAttribute(0);
+            SoapGenericType soapResultObject = (SoapGenericType)result.getAttribute(1);
+            
+            String popupMessage = (String)soapResponse.getAttribute(1);//"PopupMessages"            
+            String status = (String)soapResponse.getAttribute(2);//"StatusBarMessage"
+            
+            if (popupMessage.length()>0){
+               SoapGenericType elementArray = (SoapGenericType)soapResponse.getAttribute(1);
+            }
+            String orderID = (String)soapResultObject.getAttribute(0);
+
             
             if (status.indexOf("FRM-40400: Transaction complete: 1 records applied and saved")>=0){
-                ServicesWrapper.submitOrderSucces = true;                
-                ServicesWrapper.submitOrderConfirmationNumber = orderID;
+                setSubmitOrderSucces(true);                
+                setSubmitOrderConfirmationNumber(orderID);
             }
             else {
                 if (popupMessage.length()>0){
-                    ServicesWrapper.submitOrderErrorMessage = popupMessage.substring(0, (popupMessage.length()-1));                    
+                    setSubmitOrderErrorMessage (popupMessage.substring(0, (popupMessage.length()-1)));                    
                 }else{                    
-                    ServicesWrapper.submitOrderErrorMessage = status;
+                    setSubmitOrderErrorMessage(status);
                 }
             }
 
@@ -210,12 +215,12 @@ public class ServicesWrapper
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ServicesWrapper.submitOrderSucces;        
+        return isSubmitOrderSucces();        
 
     }
         
     
-    public static boolean getStoresListByStateWS(String state) {
+    public  boolean getStoresListByStateWS(String state) {
 
         if (offlineMode)
             return true;
@@ -244,14 +249,18 @@ public class ServicesWrapper
             GenericType result = (GenericType)AdfmfJavaUtilities.invokeDataControlMethod("getCustomersByState", null, "y_SearchCustomerState",
                                                                 parameterNames, parameters, parameterTypes);            
             
+
             SoapGenericType soapResponse = (SoapGenericType)result.getAttribute(0);
-            SoapGenericType statusObject = (SoapGenericType)soapResponse.getAttribute(0);
-            String status = (String)statusObject.getAttribute(2);//"StatusBarMessage"
-            SoapGenericType tableArray = (SoapGenericType)soapResponse.getAttribute(2);
-            int listSize = tableArray.getAttributeCount();
+           
+
+            String status = (String)soapResponse.getAttribute(2);//"StatusBarMessage"
+   
+            SoapGenericType soapResultStoreList = (SoapGenericType)result.getAttribute(2);
+            
+            int listSize = soapResultStoreList.getAttributeCount();
             for (int index=0;index<listSize;index++) 
             {
-                SoapGenericType item = (SoapGenericType)tableArray.getAttribute(index); 
+                SoapGenericType item = (SoapGenericType)soapResultStoreList.getAttribute(index); 
                 String storeID = (String)item.getAttribute(0);
                 int id = Integer.parseInt(storeID);
                 String storeName = (String)item.getAttribute(1);
@@ -277,7 +286,7 @@ public class ServicesWrapper
                 store.setCredit(storeCredit);
                 
             }
-            ServicesWrapper.submitOrderErrorMessage = status;
+            setSubmitOrderErrorMessage( status);
             
             
             //if (status.indexOf("FRM-40400: Transaction complete: 1 records applied and saved")>=0){
@@ -293,7 +302,7 @@ public class ServicesWrapper
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ServicesWrapper.submitOrderSucces;        
+        return isSubmitOrderSucces();        
 
         //return true;
     }
@@ -345,37 +354,41 @@ public class ServicesWrapper
         propertyChangeSupport.removePropertyChangeListener(l);
     }
 
+
+   
+
+
     public void setSubmitOrderSucces(boolean submitOrderSucces) {
-        boolean oldSubmitOrderSucces = ServicesWrapper.submitOrderSucces;
-        ServicesWrapper.submitOrderSucces = submitOrderSucces;
+        boolean oldSubmitOrderSucces = this.submitOrderSucces;
+        this.submitOrderSucces = submitOrderSucces;
         propertyChangeSupport.firePropertyChange("submitOrderSucces", oldSubmitOrderSucces, submitOrderSucces);
     }
 
-    public static boolean isSubmitOrderSucces() {
+    public  boolean isSubmitOrderSucces() {
         return submitOrderSucces;
     }
 
     public void setSubmitOrderConfirmationNumber(String submitOrderConfirmationNumber) {
-        String oldSubmitOrderConfirmationNumber = ServicesWrapper.submitOrderConfirmationNumber;
-        ServicesWrapper.submitOrderConfirmationNumber = submitOrderConfirmationNumber;
+        String oldSubmitOrderConfirmationNumber = this.submitOrderConfirmationNumber;
+        this.submitOrderConfirmationNumber = submitOrderConfirmationNumber;
         propertyChangeSupport.firePropertyChange("submitOrderConfirmationNumber", oldSubmitOrderConfirmationNumber, submitOrderConfirmationNumber);
     }
 
-    public static String getSubmitOrderConfirmationNumber() {
+    public String getSubmitOrderConfirmationNumber() {
         return submitOrderConfirmationNumber;
     }
 
     public void setSubmitOrderErrorMessage(String submitOrderErrorMessage) {
-        String oldSubmitOrderErrorMessage = ServicesWrapper.submitOrderErrorMessage;
-        ServicesWrapper.submitOrderErrorMessage = submitOrderErrorMessage;
+        String oldSubmitOrderErrorMessage = this.submitOrderErrorMessage;
+        this.submitOrderErrorMessage = submitOrderErrorMessage;
         propertyChangeSupport.firePropertyChange("submitOrderErrorMessage", oldSubmitOrderErrorMessage, submitOrderErrorMessage);
     }
 
-    public static String getSubmitOrderErrorMessage() {
+    public  String getSubmitOrderErrorMessage() {
         return submitOrderErrorMessage;
     }
     
-    public static String getStoreSearchFilter() {
+    public  String getStoreSearchFilter() {
         return StoreLocator.getCurrentFilter();
     }
 }

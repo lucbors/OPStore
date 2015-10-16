@@ -305,7 +305,7 @@
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase64">
+      id="ControlFlowCase24">
       <property
          name="fromOutcome">refresh</property>
       <property

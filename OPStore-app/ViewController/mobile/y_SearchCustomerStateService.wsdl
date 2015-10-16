@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions targetNamespace="http://services.auraplayer.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.auraplayer.com" xmlns:intf="http://services.auraplayer.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://services.auraplayer.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="y_SearchCustomerState">
+        <complexType>
+          <sequence>
+            <element name="MAIN_USERNAME_0" type="xsd:string"/>
+            <element name="MAIN_PASSWORD_0" type="xsd:string"/>
+            <element name="S_CUSTOMER_ID_0" type="xsd:string"/>
+            <element name="S_CUSTOMER_NAME_0" type="xsd:string"/>
+            <element name="S_CUSTOMER_STATE_0" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="y_SearchCustomerStateResponse">
+        <complexType>
+          <sequence>
+            <element name="y_SearchCustomerStateReturn" type="impl:y_SearchCustomerStateResponse"/>
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="Tabley_SearchCustomerState">
+        <sequence>
+          <element name="S_CUSTOMER_ID_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_NAME_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_PHONE_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_ADDRESS_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_CITY_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_COUNTRY_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_ZIP_CODE_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_CREDIT_RATING_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_COMMENTS_0" nillable="true" type="xsd:string"/>
+          <element name="S_CUSTOMER_STATE_0" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="ArrayOfTabley_SearchCustomerState">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="y_SearchCustomerStateArrayItem"
+                   type="impl:Tabley_SearchCustomerState"/>
+        </sequence>
+      </complexType>
+      <complexType name="y_SearchCustomerStateResponse">
+        <sequence>
+          <element name="y_SearchCustomerStateMessage" type="impl:y_SearchCustomerStateMessage"/>
+          <element name="y_SearchCustomerStateElements" type="impl:y_SearchCustomerStateElements"/>
+          <element name="y_SearchCustomerStateTableArray" nillable="true"
+                   type="impl:ArrayOfTabley_SearchCustomerState"/>
+        </sequence>
+      </complexType>
+      <complexType name="y_SearchCustomerStateMessage">
+        <sequence>
+          <element name="Error" type="string"/>
+          <element name="PopupMessages" type="string"/>
+          <element name="StatusBarMessages" type="string"/>
+        </sequence>
+      </complexType>
+      <complexType name="y_SearchCustomerStateElements">
+        <sequence/>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <!--************************************************************
+ WSDL of y_SearchCustomerState, automatically created by AuraPlayer
+************************************************************-->
+  <wsdl:message name="y_SearchCustomerStateResponse">
+    <wsdl:part element="impl:y_SearchCustomerStateResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="y_SearchCustomerStateRequest">
+    <wsdl:part element="impl:y_SearchCustomerState" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="y_SearchCustomerStateServicePort">
+    <wsdl:operation name="y_SearchCustomerState">
+      <wsdl:input name="y_SearchCustomerStateRequest" message="impl:y_SearchCustomerStateRequest"/>
+      <wsdl:output name="y_SearchCustomerStateResponse" message="impl:y_SearchCustomerStateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="y_SearchCustomerStateServiceSoapBinding" type="impl:y_SearchCustomerStateServicePort">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="y_SearchCustomerState">
+      <wsdlsoap:operation soapAction="y_SearchCustomerState"/>
+      <wsdl:input name="y_SearchCustomerStateRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="y_SearchCustomerStateResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="y_SearchCustomerStateService">
+    <wsdl:port name="y_SearchCustomerStateServicePort" binding="impl:y_SearchCustomerStateServiceSoapBinding">
+      <wsdlsoap:address location="http://localhost:7101/OPStore-ViewController-context-root/getCustomersByStateService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -9,10 +9,11 @@ import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 /*
- * Copyright © AuraPlayer 2013 All Rights Reserved. 
+ * Copyright ï¿½ AuraPlayer 2013 All Rights Reserved. 
  * No part of this source code may be reproduced without AuraPlayer's express consent.
  */
 
@@ -29,6 +30,9 @@ public class ApproveOrder {
     private Date expiryDate = null;
     private boolean showCheque=false;
 
+
+    private String signature="";
+    
     public ApproveOrder() {
         setOrderDate(new Date());
         chequeDate = new Date();
@@ -39,7 +43,8 @@ public class ApproveOrder {
         //validate that the fields are not empty
         boolean validatePayment=false;
         String validationErrorMessage = "";
-        switch(paymentTypeEnum){
+  
+       switch(paymentTypeEnum){
         //credit
         case 0: validatePayment = ((cardNumber.length()>0)&&(CVV.length()>0)&&(expiryDate!=null));
                 validationErrorMessage = "Please Enter valid credit card details";
@@ -57,26 +62,31 @@ public class ApproveOrder {
         if (validatePayment==false)
         {
             String title = "Payment Details Validation";
+                    
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-                     "navigator.notification.alert", new Object[] {validationErrorMessage,null,title, "Ok"});
+                  "navigator.notification.alert", new Object[] {validationErrorMessage,null,title, "Ok"});
 
             return null;
         }
         
+        
+        ServicesWrapper srvwrp = new ServicesWrapper();
+        
         //send to Oracle Forms Server
-        Store selectedStore = ServicesWrapper.getSelectedStore();
+        Store selectedStore = srvwrp.getSelectedStore();
         int StoreID = selectedStore.getId();
-        double totalOrder = ServicesWrapper.getConfirmedOrdersTotalAmount();
+        double totalOrder = srvwrp.getConfirmedOrdersTotalAmount();
         DecimalFormat df = new DecimalFormat("#.00");
         String totalOrderStr = df.format(totalOrder);
 
-        boolean response = ServicesWrapper.submitOrderToFormsSystem(StoreID, orderDate, totalOrderStr, getPaymentTypeString());
+
+        boolean response = srvwrp.submitOrderToFormsSystem(StoreID, orderDate, totalOrderStr, getPaymentTypeString());
         if (response){
             return "confirm";
         }
         else {
             String title = "Order Confirmatoin Failed";
-            String errorMessage = ServicesWrapper.getSubmitOrderErrorMessage();
+            String errorMessage = srvwrp.getSubmitOrderErrorMessage();
             
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
                      "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
@@ -179,8 +189,9 @@ public class ApproveOrder {
     }
 
     public void doClear(ActionEvent actionEvent) {
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", "doClear",
-                                                                  new Object[] { });
+     
+        
+        //obsolete
 
     }
 
@@ -201,6 +212,13 @@ public class ApproveOrder {
             //send receipt to sms.
             message = "Receipt would be sent to your phone";
         }
+        
+       
+ //       AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon",
+ //       "function(){navigator.notification.alert(message,  function(){}, 'Information', 'OK');}", new Object[] { });
+       
+      
+        
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
                  "navigator.notification.alert", new Object[] {message,null,title, "Ok"});
 
@@ -217,6 +235,19 @@ public class ApproveOrder {
     public int getPaymentTypeEnum() {
         return paymentTypeEnum;
     }
+
+
+    public void setSignature(String signature) {
+        System.out.println("new signature = " + signature);
+        String oldSignature = this.signature;
+        this.signature = signature;
+        propertyChangeSupport.firePropertyChange("signature", oldSignature, signature);
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
 
     public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
         PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;

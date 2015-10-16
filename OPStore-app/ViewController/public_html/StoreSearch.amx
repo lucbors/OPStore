@@ -78,7 +78,7 @@
                             <dvtm:marker id="mrk2">
                                 <amx:setPropertyListener id="spl1" from="#{row.id}"
                                                          to="#{pageFlowScope.OPStore.selectedStoreIndex}"/>
-                                <amx:showPopupBehavior id="spb1" popupId="mapmarker" alignId="map1"/>
+                                <amx:showPopupBehavior id="spb1" popupId="mapmarker" alignId="map1" align="overlapMiddleEnd"/>
                                 <amx:setPropertyListener id="spl3" from="#{row.name}" to="#{pageFlowScope.StoreName}"/>
                                 <amx:setPropertyListener id="spl5"
                                                          from="#{pageFlowScope.OPStore.selectedStore.city}, #{pageFlowScope.OPStore.selectedStore.state}"
@@ -92,10 +92,12 @@
                 <amx:tableLayout id="tl3" width="100%" shortDesc="Detail Table"
                                  inlineStyle="padding:20px 20px 0px; background-color:White;">
                     <amx:rowLayout id="rl5">
-                        <amx:cellFormat id="cf9" height="50%" shortDesc="Cell" valign="top" rowSpan="3"
+                        <amx:cellFormat id="cf9" height="50%" shortDesc="Cell" valign="middle" halign="center"
                                         inlineStyle="padding:0px 10px 0px 0px;">
-                            <amx:image id="i3" source="/images/#{bindings.imagePath.inputValue}.jpg"
-                                       inlineStyle="width:100%; height:96.5%;"/>
+                            <amx:image id="i3" source="/images/#{bindings.imagePath.inputValue}.jpg"/>
+                            <!--
+                              inlineStyle="width:100%; height:100%;"
+                            -->
                         </amx:cellFormat>
                         <amx:cellFormat id="cf8" height="50%" shortDesc="Cell" valign="top"
                                         inlineStyle="padding:10px 10px 10px 10px;">
@@ -305,7 +307,11 @@
                             </amx:listView>
                         </amx:cellFormat>
                     </amx:rowLayout>
-                </amx:tableLayout>
+              
+                    <amx:rowLayout id="rl5a">
+                        <amx:cellFormat id="cf9a" height="200px"  halign="center"  shortDesc="Cell" valign="top" columnSpan="2"
+                                        inlineStyle="padding:0px 10px 0px 0px;">
+              
                 <dvtm:barChart var="row" value="#{bindings.OrderHistoryItem.collectionModel}" id="bc2"
                                animationDownColor="rgb(244,102,50)" animationOnDisplay="auto" animationDuration="1000"
                                rolloverBehavior="dim" animationOnDataChange="auto"
@@ -316,10 +322,13 @@
                     </amx:facet>
                     <dvtm:legend rendered="false" id="l2"/>
                 </dvtm:barChart>
+                    </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
             </amx:panelItem>
         </amx:panelSplitter>
     </amx:panelPage>
-    <amx:popup id="mapmarker" shortDesc="Map Marker Popup" autoDismiss="true">
+    <amx:popup id="mapmarker" shortDesc="Map Marker Popup" autoDismiss="true" >
         <amx:panelGroupLayout id="pglmarker">
             <amx:tableLayout id="tl4">
                 <amx:rowLayout id="rl4">

@@ -14,7 +14,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 /*
- * Copyright © AuraPlayer 2013 All Rights Reserved. 
+ * Copyright ï¿½ AuraPlayer 2013 All Rights Reserved. 
  * No part of this source code may be reproduced without AuraPlayer's express consent.
  */
 
@@ -35,9 +35,10 @@ public class StoreLocator {
     public static void init(){
         if (s_fullStoresList==null)
         {
+            ServicesWrapper srvwr = new ServicesWrapper();
             s_fullStoresList = new StoreList();
             s_fullStoresList.setStoresDummy();
-            ServicesWrapper.getStoresListByStateWS("CA");
+            srvwr.getStoresListByStateWS("CA");
         }
     }
 

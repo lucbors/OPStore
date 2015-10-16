@@ -214,6 +214,15 @@
                   </hash>
                </list>
             </hash>
+            <hash n="iosDeploymentOptions">
+               <value n="iPadOrientationLandscapeLeft" v="false"/>
+               <value n="iPadOrientationPortrait" v="false"/>
+               <value n="iPadOrientationPortraitUpsideDown" v="false"/>
+               <value n="iPhoneOrientationLandscapeLeft" v="false"/>
+               <value n="iPhoneOrientationLandscapeRight" v="false"/>
+               <value n="iPhoneOrientationPortrait" v="false"/>
+               <value n="iPhoneOrientationPortraitUpsideDown" v="false"/>
+            </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <hash n="libraryDependencies"/>
             <hash n="mnfImageOptions">
@@ -294,6 +303,13 @@
             </hash>
             <hash n="iosDeploymentOptions">
                <value n="debugFlag" v="false"/>
+               <value n="iPadOrientationLandscapeLeft" v="false"/>
+               <value n="iPadOrientationPortrait" v="false"/>
+               <value n="iPadOrientationPortraitUpsideDown" v="false"/>
+               <value n="iPhoneOrientationLandscapeLeft" v="false"/>
+               <value n="iPhoneOrientationLandscapeRight" v="false"/>
+               <value n="iPhoneOrientationPortrait" v="false"/>
+               <value n="iPhoneOrientationPortraitUpsideDown" v="false"/>
             </hash>
             <url n="jarURL" path="deploy/iOS2/iOS2.jar/"/>
             <hash n="libraryDependencies"/>
@@ -377,11 +393,11 @@
          </hash>
       </hash>
       <list n="profileList">
+         <string v="Android1"/>
+         <string v="Android2"/>
          <string v="iOS1"/>
          <string v="iOS2"/>
          <string v="OPStore_archive"/>
-         <string v="Android2"/>
-         <string v="Android1"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.ApplicationLibraries">
@@ -412,5 +428,22 @@
    </hash>
    <hash n="ResourceBundleOptions">
       <value n="DefaultBundleTypeId" v="xliffResourceBundleId"/>
+   </hash>
+   <hash n="shared-project-properties">
+      <hash n="oracle.jdeveloper.runner.RunConfigurations">
+         <value n="activeName" v="Shared"/>
+         <hash n="runConfigurationDefinitions">
+            <hash n="Shared">
+               <value n="custom" v="false"/>
+               <hash n="iOS_options">
+                  <value n="applicationArguments" v="-consolelRedirect=/Users/maflog.txt"/>
+                  <value n="iosSimulatorName" v="&lt;Default Simulator>"/>
+               </hash>
+               <value n="mobilePlatform" v="iOS"/>
+               <value n="name" v="Shared"/>
+               <value n="profileName" v="iOS1"/>
+            </hash>
+         </hash>
+      </hash>
    </hash>
 </jws:workspace>

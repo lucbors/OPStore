@@ -135,7 +135,7 @@
                                     <amx:rowLayout id="rl25">
                                         <amx:cellFormat id="cf12">
                                             <amx:inputText id="it1" value="#{row.inventoryQuantity}"
-                                                           inlineStyle="width:90px;"/>
+                                                           inlineStyle="width:120px;"/>
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf14">
                                             <amx:commandLink id="cl1"
@@ -163,7 +163,7 @@
                                 <amx:tableLayout id="tl4">
                                     <amx:rowLayout id="rl6">
                                         <amx:cellFormat id="cf15">
-                                            <amx:inputText id="it2" value="#{row.quantity}" inlineStyle="width:90px;"/>
+                                            <amx:inputText id="it2" value="#{row.quantity}" inlineStyle="width:120px;"/>
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf16">
                                             <amx:commandLink id="cl4"

@@ -5,5 +5,8 @@
     <core-cordova-plugin id="c2" pluginId="org.apache.cordova.network-information"/>
     <core-cordova-plugin id="c3" pluginId="com.oracle.maf.sms"/>
     <core-cordova-plugin id="c4" pluginId="com.oracle.maf.email"/>
+    
+        <core-cordova-plugin id="c1" pluginId="org.apache.cordova.dialogs"/>
+
   </cordova-plugins>
 </maf-plugins>

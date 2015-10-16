@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
-          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1" inlineStyle="vertical-align:middle;">
-    <amx:facet name="header">
-      <amx:outputText value="Approve Order" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1" text="Back" action="__back"/>
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:auraplayer="http://xmlns.oracle.com/auraplayer">
+    <amx:panelPage id="pp1" inlineStyle="vertical-align:middle;">
+        <amx:facet name="header">
+            <amx:outputText value="Approve Order" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" text="Back" action="__back"/>
         </amx:facet>
         <amx:tableLayout id="tl1">
             <amx:rowLayout id="rl2">
                 <amx:cellFormat id="cf2" columnSpan="1" halign="center"
                                 inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" rowSpan="1" valign="top"
-                                height="400" width="700">
+                                height="300" width="700">
                     <amx:outputText value="Order Details" id="ot3" inlineStyle="font-size:large; color:Navy;"/>
                     <amx:panelFormLayout id="pfl2" inlineStyle="background-color:#f6f6f7;">
                         <amx:inputText label="Order Total" id="it1"
@@ -20,12 +20,13 @@
                                        readOnly="true"/>
                         <amx:inputText label="Total Items" id="it2"
                                        value="#{bindings.getConfirmedOrdersItemsSize.result}" readOnly="true"/>
-                        <amx:inputDate label="Order Date" id="id1" value="#{ApproveOrder.orderDate}"/>
-                        <amx:inputDate label="Ship Date" id="id2" value="#{ApproveOrder.expecteDeliveryDate}"/>
+                        <amx:inputDate label="Order Date" id="id1" value="#{pageFlowScope.ApproveOrder.orderDate}"/>
+                        <amx:inputDate label="Ship Date" id="id2"
+                                       value="#{pageFlowScope.ApproveOrder.expecteDeliveryDate}"/>
                     </amx:panelFormLayout>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf1" inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" halign="center"
-                                valign="top" height="400" width="700">
+                                valign="top" height="300" width="700">
                     <amx:outputText value="Billing Details" id="ot4"
                                     inlineStyle="vertical-align:middle; font-size:large; color:Navy;"/>
                     <amx:panelFormLayout id="pfl3" fieldHalign="center" inlineStyle="background-color:#f6f6f7;">
@@ -36,28 +37,30 @@
                     </amx:panelFormLayout>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf3" width="700" halign="center" valign="top"
-                                inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" height="420">
+                                inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" height="300">
                     <amx:outputText value="Payment Details" id="ot5"
                                     inlineStyle="font-size:large; padding:20px; color:Navy;"/>
                     <amx:panelFormLayout id="pfl1" inlineStyle="background-color:#f6f6f7;">
-                        <amx:selectOneChoice label="Payment Type" id="soc1" value="#{ApproveOrder.paymentTypeEnum}">
+                        <amx:selectOneChoice label="Payment Type" id="soc1"
+                                             value="#{pageFlowScope.ApproveOrder.paymentTypeEnum}">
                             <amx:selectItem id="si1" label="Credit" value="0"/>
                             <amx:selectItem label="Cash" id="si2" value="1"/>
                             <amx:selectItem label="Cheque" id="si3" value="2"/>
                         </amx:selectOneChoice>
-                        <amx:inputText label="Card Number" id="it4" rendered="#{ApproveOrder.paymentTypeEnum==0}"
-                                       value="#{ApproveOrder.cardNumber}"/>
+                        <amx:inputText label="Card Number" id="it4"
+                                       rendered="#{pageFlowScope.ApproveOrder.paymentTypeEnum==0}"
+                                       value="#{pageFlowScope.ApproveOrder.cardNumber}"/>
                         <amx:inputDate label="Expiry Date" id="id3" inputType="date"
-                                       rendered="#{ApproveOrder.paymentTypeEnum==0}"
-                                       value="#{ApproveOrder.expiryDate}"/>
-                        <amx:inputText id="it9" label="CVV " rendered="#{ApproveOrder.paymentTypeEnum==0}"
-                                       value="#{ApproveOrder.CVV}"/>
-                        <amx:inputText label="Bank" id="it10" rendered="#{ApproveOrder.showCheque}"
-                                       value="#{ApproveOrder.bank}"/>
-                        <amx:inputText label="Cheque Num." id="it3" rendered="#{ApproveOrder.showCheque}"
-                                       value="#{ApproveOrder.chequeNum}"/>
-                        <amx:inputDate label="Cheque Date" id="id4" rendered="#{ApproveOrder.showCheque}"
-                                       value="#{ApproveOrder.chequeDate}"/>
+                                       rendered="#{pageFlowScope.ApproveOrder.paymentTypeEnum==0}"
+                                       value="#{pageFlowScope.ApproveOrder.expiryDate}"/>
+                        <amx:inputText id="it9" label="CVV " rendered="#{pageFlowScope.ApproveOrder.paymentTypeEnum==0}"
+                                       value="#{pageFlowScope.ApproveOrder.CVV}"/>
+                        <amx:inputText label="Bank" id="it10" rendered="#{pageFlowScope.ApproveOrder.showCheque}"
+                                       value="#{pageFlowScope.ApproveOrder.bank}"/>
+                        <amx:inputText label="Cheque Num." id="it3" rendered="#{pageFlowScope.ApproveOrder.showCheque}"
+                                       value="#{pageFlowScope.ApproveOrder.chequeNum}"/>
+                        <amx:inputDate label="Cheque Date" id="id4" rendered="#{pageFlowScope.ApproveOrder.showCheque}"
+                                       value="#{pageFlowScope.ApproveOrder.chequeDate}"/>
                     </amx:panelFormLayout>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -70,43 +73,26 @@
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl1">
-                <amx:cellFormat id="cf5" shortDesc="Signature">
+                <amx:cellFormat id="cf5" shortDesc="Signature" halign="center" valign="top">
                     <amx:spacer id="s1"/>
-                    <amx:verbatim id="v1">
-                        <![CDATA[
-                        <script type="text/javascript">
-                        (function()
-                        {
-                            makeSig = function() {
-                              try
-                              {
-                                var sigElement = document.getElementById("sig");
-                                if (sigElement == null)
-                                  alert("sigElement not found");
-                                var sigJq = $(sigElement);
-                                sigJq.signature();
-                                sigJq.signature({guideline: true});
-                              }
-                              catch (problem)
-                              {
-                                alert("Problem with verbatim code: " + problem);
-                              }
-                            }
-                            window.setTimeout(makeSig, 250);
-                        })();
-                        </script>
-                        <div id="sig" style="height:200px;width:99%"></div>
-                        ]]>
-                   </amx:verbatim>
+                    <auraplayer:signature id="container" value="#{pageFlowScope.ApproveOrder.signature}"
+                     width="#{deviceScope.hardware.screen.width/2}" height="200"
+                    >
+                    
+     
+                    </auraplayer:signature>
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl4">
                 <amx:cellFormat id="cf4" halign="center">
-                    <amx:commandButton text="Clear" id="cb2" shortDesc="Clear" actionListener="#{ApproveOrder.doClear}"
-                                       inlineStyle="width:90px; height:20px; vertical-align:middle;"/>
-                    <amx:commandButton text="Confirm" id="cb5" shortDesc="Fetch"
-                                       inlineStyle="width:90px; vertical-align:middle; height:20px;"
-                                       action="#{ApproveOrder.SendOrderToFormAndValidate}"/>
+                <!--amx:outputText value="#{pageFlowScope.ApproveOrder.signature}"/-->
+                        <!--amx:commandButton text="Clear" id="cb2" shortDesc="Clear"
+                                           actionListener="#{pageFlowScope.ApproveOrder.doClear}"
+                                           inlineStyle="width:90px; height:20px; vertical-align:middle;"/-->
+                        <amx:commandButton text="Confirm" id="cb5" shortDesc="Fetch"
+                                           inlineStyle="width:90px; vertical-align:middle; height:20px;"
+                                           action="#{pageFlowScope.ApproveOrder.SendOrderToFormAndValidate}"/>
+
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
