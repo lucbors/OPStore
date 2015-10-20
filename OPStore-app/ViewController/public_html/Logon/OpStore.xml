@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="OpStore">
+    <default-activity>Logon</default-activity>
+    <managed-bean id="__1">
+    <managed-bean-name>OPStore</managed-bean-name>
+    <managed-bean-class>mobile.StoreLocator</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+  <!-- class does not exist. commented by Luc Bors
+  <managed-bean id="__8">
+    <managed-bean-name>SpringBoardBean</managed-bean-name>
+    <managed-bean-class>mobile.SpringBoardFuncs</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+  -->
+  <managed-bean id="__11">
+    <managed-bean-name>Inventory</managed-bean-name>
+    <managed-bean-class>mobile.EditInventory</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__24">
+    <managed-bean-name>Replenishment</managed-bean-name>
+    <managed-bean-class>mobile.Replenishment</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name>ApproveOrder</managed-bean-name>
+    <managed-bean-class>mobile.ApproveOrder</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+  <view id="Logon">
+    <page>/Logon/Logon.amx</page>
+  </view>
+  <view id="OrderApproval">
+    <page>/OrderApproval/OrderApproval.amx</page>
+  </view>
+  <view id="Replenishment">
+    <page>/Replenishment.amx</page>
+  </view>
+  <view id="LastMinuteAdditions">
+    <page>/LastMinuteAdditions.amx</page>
+  </view>
+  <view id="OrderSummery">
+    <page>/OrderSummery.amx</page>
+  </view>
+  <view id="OrderConfirmation">
+    <page>/OrderConfirmation.amx</page>
+  </view>
+  <view id="StoreSearch">
+    <page>/StoreSearch.amx</page>
+  </view>
+  <control-flow-rule id="__2">
+    <from-activity-id>Logon</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>fail</from-outcome>
+      <to-activity-id>Logon</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>success</from-outcome>
+      <to-activity-id>StoreSearch</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__25">
+    <from-activity-id>Replenishment</from-activity-id>
+    <control-flow-case id="__26">
+      <from-outcome>refresh</from-outcome>
+      <to-activity-id>Replenishment</to-activity-id>
+      <transition>none</transition>
+    </control-flow-case>
+    <control-flow-case id="__27">
+      <from-outcome>last_minute</from-outcome>
+      <to-activity-id>LastMinuteAdditions</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>search</from-outcome>
+      <to-activity-id>StoreSearch</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__28">
+    <from-activity-id>LastMinuteAdditions</from-activity-id>
+    <control-flow-case id="__29">
+      <from-outcome>refresh</from-outcome>
+      <to-activity-id>LastMinuteAdditions</to-activity-id>
+      <transition>none</transition>
+    </control-flow-case>
+    <control-flow-case id="__30">
+      <from-outcome>back</from-outcome>
+      <to-activity-id>Replenishment</to-activity-id>
+      <transition>slideRight</transition>
+    </control-flow-case>
+    <control-flow-case id="__33">
+      <from-outcome>order_summery</from-outcome>
+      <to-activity-id>OrderSummery</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>OrderSummery</from-activity-id>
+    <control-flow-case id="__9">
+      <from-outcome>approve</from-outcome>
+      <to-activity-id>OrderApproval</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__10">
+    <from-activity-id>OrderApproval</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome>confirm</from-outcome>
+      <to-activity-id>OrderConfirmation</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__13">
+    <from-activity-id>OrderConfirmation</from-activity-id>
+    <control-flow-case id="__14">
+      <from-outcome>search_store</from-outcome>
+      <to-activity-id>StoreSearch</to-activity-id>
+      <transition>flipLeft</transition>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__16">
+    <from-activity-id>StoreLocator</from-activity-id>
+    <control-flow-case id="__17">
+      <from-outcome>refresh</from-outcome>
+      <to-activity-id>StoreLocator</to-activity-id>
+      <transition>none</transition>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__18">
+    <from-activity-id>StoreSearch</from-activity-id>
+    <control-flow-case id="__19">
+      <from-outcome>refresh</from-outcome>
+      <to-activity-id>StoreSearch</to-activity-id>
+      <transition>none</transition>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>replenishment</from-outcome>
+      <to-activity-id>Replenishment</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__20">
+      <from-outcome>logout</from-outcome>
+      <to-activity-id>Logon</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>
+
+
+ 

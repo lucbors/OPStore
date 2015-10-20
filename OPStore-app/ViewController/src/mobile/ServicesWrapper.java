@@ -372,6 +372,12 @@ public class ServicesWrapper
         String oldSubmitOrderConfirmationNumber = this.submitOrderConfirmationNumber;
         this.submitOrderConfirmationNumber = submitOrderConfirmationNumber;
         propertyChangeSupport.firePropertyChange("submitOrderConfirmationNumber", oldSubmitOrderConfirmationNumber, submitOrderConfirmationNumber);
+   
+   //Luc Bors Quick and Dirty
+   ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.orderConfirmationNumber}", String.class);
+   ve.setValue(AdfmfJavaUtilities.getAdfELContext(), submitOrderConfirmationNumber);
+
+   
     }
 
     public String getSubmitOrderConfirmationNumber() {
@@ -382,6 +388,12 @@ public class ServicesWrapper
         String oldSubmitOrderErrorMessage = this.submitOrderErrorMessage;
         this.submitOrderErrorMessage = submitOrderErrorMessage;
         propertyChangeSupport.firePropertyChange("submitOrderErrorMessage", oldSubmitOrderErrorMessage, submitOrderErrorMessage);
+
+        //Luc Bors Quick and Dirty
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.orderErrorMessage}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), submitOrderErrorMessage);
+
+
     }
 
     public  String getSubmitOrderErrorMessage() {

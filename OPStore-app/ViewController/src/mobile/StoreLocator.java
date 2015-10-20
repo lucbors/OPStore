@@ -37,7 +37,9 @@ public class StoreLocator {
         {
             ServicesWrapper srvwr = new ServicesWrapper();
             s_fullStoresList = new StoreList();
+           // add the dummies to the list
             s_fullStoresList.setStoresDummy();
+            // get also data from webservice
             srvwr.getStoresListByStateWS("CA");
         }
     }
