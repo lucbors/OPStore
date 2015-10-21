@@ -6,7 +6,7 @@
             <amx:outputText value="Approve Order" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" text="Back" action="__back"/>
+            <amx:commandButton id="cb1" text="Back" action="__back" />
         </amx:facet>
         <amx:tableLayout id="tl1">
             <amx:rowLayout id="rl2">
@@ -76,23 +76,18 @@
                 <amx:cellFormat id="cf5" shortDesc="Signature" halign="center" valign="top">
                     <amx:spacer id="s1"/>
                     <auraplayer:signature id="container" value="#{pageFlowScope.ApproveOrder.signature}"
-                     width="#{deviceScope.hardware.screen.width/2}" height="200"
-                    >
-                    
-     
-                    </auraplayer:signature>
+                                          width="#{deviceScope.hardware.screen.width/2}" height="200"></auraplayer:signature>
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl4">
                 <amx:cellFormat id="cf4" halign="center">
-                <!--amx:outputText value="#{pageFlowScope.ApproveOrder.signature}"/-->
-                        <!--amx:commandButton text="Clear" id="cb2" shortDesc="Clear"
+                    <!--amx:outputText value="#{pageFlowScope.ApproveOrder.signature}"/-->
+                    <!--amx:commandButton text="Clear" id="cb2" shortDesc="Clear"
                                            actionListener="#{pageFlowScope.ApproveOrder.doClear}"
                                            inlineStyle="width:90px; height:20px; vertical-align:middle;"/-->
-                        <amx:commandButton text="Confirm" id="cb5" shortDesc="Fetch"
-                                           inlineStyle="width:90px; vertical-align:middle; height:20px;"
-                                           action="#{pageFlowScope.ApproveOrder.SendOrderToFormAndValidate}"/>
-
+                    <amx:commandButton text="Confirm" id="cb5" shortDesc="Fetch" styleClass="adfmf-commandButton-small"
+                                       
+                                       action="#{pageFlowScope.ApproveOrder.SendOrderToFormAndValidate}"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="ScanInventoryPageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="getPicture" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getPicture"
+                  IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider"
+                  ReturnName="data.DeviceFeatures.methodResults.getPicture_DeviceFeatures_dataProvider_getPicture_result">
+      <NamedData NDName="quality" NDValue="1" NDType="int"/>
+      <NamedData NDName="destinationType" NDValue="1" NDType="int"/>
+      <NamedData NDName="sourceType" NDValue="1" NDType="int"/>
+      <NamedData NDName="allowEdit" NDValue="false" NDType="boolean"/>
+      <NamedData NDName="encodingType" NDValue="0" NDType="int"/>
+      <NamedData NDName="targetWidth" NDValue="" NDType="int"/>
+      <NamedData NDName="targetHeight" NDValue="" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

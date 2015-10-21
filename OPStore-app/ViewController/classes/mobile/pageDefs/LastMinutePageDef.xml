@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="LastMinutePageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getRecommendedProductsList.result" DataControl="ServicesWrapper" RangeSize="25"
+                    BeanClass="mobile.Product" id="getRecommendedProductsListIterator"/>
+    <methodIterator Binds="getBestSellerProductsList.result" DataControl="ServicesWrapper" RangeSize="25"
+                    BeanClass="mobile.Product" id="getBestSellerProductsListIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getRecommendedProductsList" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getRecommendedProductsList" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getRecommendedProductsList_ServicesWrapper_dataProvider_getRecommendedProductsList_result"/>
+    <tree IterBinding="getRecommendedProductsListIterator" id="Product1">
+      <nodeDefinition DefName="mobile.Product" Name="Product10">
+        <AttrNames>
+          <Item Value="prodID"/>
+          <Item Value="name"/>
+          <Item Value="listPrice"/>
+          <Item Value="category"/>
+          <Item Value="subCategory"/>
+          <Item Value="bestSeller"/>
+          <Item Value="recommended"/>
+          <Item Value="salePrice"/>
+          <Item Value="imagePath"/>
+          <Item Value="description"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="lastOrderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getBestSellerProductsList" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getBestSellerProductsList" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getBestSellerProductsList_ServicesWrapper_dataProvider_getBestSellerProductsList_result"/>
+    <tree IterBinding="getBestSellerProductsListIterator" id="Product2">
+      <nodeDefinition DefName="mobile.Product" Name="Product20">
+        <AttrNames>
+          <Item Value="prodID"/>
+          <Item Value="name"/>
+          <Item Value="listPrice"/>
+          <Item Value="category"/>
+          <Item Value="subCategory"/>
+          <Item Value="bestSeller"/>
+          <Item Value="recommended"/>
+          <Item Value="salePrice"/>
+          <Item Value="imagePath"/>
+          <Item Value="description"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="lastOrderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

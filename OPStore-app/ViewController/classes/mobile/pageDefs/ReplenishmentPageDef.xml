@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="ReplenishmentPageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <invokeAction Binds="getOrdersList" id="getorders"/>
+    <methodIterator Binds="getProductsList.result" DataControl="ServicesWrapper" RangeSize="1"
+                    BeanClass="mobile.Product" id="getProductsListIterator"/>
+    <methodIterator Binds="getSelectedStore.result" DataControl="ServicesWrapper" RangeSize="25"
+                    BeanClass="mobile.Store" id="getSelectedStoreIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ServicesWrapper" id="ServicesWrapperIterator"/>
+    <accessorIterator MasterBinding="ServicesWrapperIterator" Binds="ordersList" RangeSize="25"
+                      DataControl="ServicesWrapper" BeanClass="mobile.OrderItem" id="ordersListIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getFullProductsList" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getFullProductsList" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getFullProductsList_ServicesWrapper_dataProvider_getFullProductsList_result"/>
+    <methodAction id="getOrdersList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getOrdersList"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getOrdersList_ServicesWrapper_dataProvider_getOrdersList_result"/>
+    <methodAction id="getPicture" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getPicture"
+                  IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider"
+                  ReturnName="data.DeviceFeatures.methodResults.getPicture_DeviceFeatures_dataProvider_getPicture_result">
+      <NamedData NDName="quality" NDValue="100" NDType="int"/>
+      <NamedData NDName="destinationType" NDValue="1" NDType="int"/>
+      <NamedData NDName="sourceType" NDValue="0" NDType="int"/>
+      <NamedData NDName="allowEdit" NDValue="false" NDType="boolean"/>
+      <NamedData NDName="encodingType" NDValue="1" NDType="int"/>
+      <NamedData NDName="targetWidth" NDValue="0" NDType="int"/>
+      <NamedData NDName="targetHeight" NDValue="0" NDType="int"/>
+    </methodAction>
+    <methodAction id="getProductsList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getProductsList"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getProductsList_ServicesWrapper_dataProvider_getProductsList_result"/>
+    <attributeValues IterBinding="getProductsListIterator" id="listPrice">
+      <AttrNames>
+        <Item Value="listPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="lastOrderQuantity" IterBinding="getProductsListIterator">
+      <AttrNames>
+        <Item Value="lastOrderQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="inventoryQuantity" IterBinding="getProductsListIterator">
+      <AttrNames>
+        <Item Value="inventoryQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues id="prodID" IterBinding="getProductsListIterator">
+      <AttrNames>
+        <Item Value="prodID"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getSelectedStore" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getSelectedStore"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getSelectedStore_ServicesWrapper_dataProvider_getSelectedStore_result"/>
+    <attributeValues IterBinding="getSelectedStoreIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ordersListIterator" id="ordersList1">
+      <nodeDefinition DefName="mobile.OrderItem" Name="ordersList10">
+        <AttrNames>
+          <Item Value="filter"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="paidPrice"/>
+          <Item Value="quantity"/>
+          <Item Value="showDelete"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="product"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="mobile.Product" Name="ordersList11">
+        <AttrNames>
+          <Item Value="prodID"/>
+          <Item Value="name"/>
+          <Item Value="listPrice"/>
+          <Item Value="category"/>
+          <Item Value="subCategory"/>
+          <Item Value="bestSeller"/>
+          <Item Value="recommended"/>
+          <Item Value="salePrice"/>
+          <Item Value="imagePath"/>
+          <Item Value="description"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="lastOrderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

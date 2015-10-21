@@ -5,6 +5,10 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.el.ValueExpression;
+
+import oracle.adf.model.datacontrols.device.DeviceManagerFactory;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
@@ -195,6 +199,22 @@ public class ApproveOrder {
 
     }
 
+    public void sendEmail(){
+        String content = "";
+        
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.orderConfirmationNumber}", String.class);
+        String orderNumber = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        content = "Your order (" + orderNumber + ") is been. You will recieve your goods shortly.";
+        DeviceManagerFactory.getDeviceManager().sendEmail("orders@auraplayer.com"
+        , null
+        , "Your Order is placed"
+        , content
+        , "lucbors@gmail.com"
+        , null
+        , null);
+    }
+
     public void ReciptTypePressed(ValueChangeEvent valueChangeEvent) {
         
         String value = (String)valueChangeEvent.getNewValue();
@@ -202,15 +222,16 @@ public class ApproveOrder {
         String title = "Sending Receipt Process";
         if (value.equalsIgnoreCase("email")) {
             //send receipt to email.
-            message = "Receipt would be sent to your email";
+            sendEmail();
+            message = "An email has been sent";
         }
         else if (value.equalsIgnoreCase("print")) {
             //send receipt to printer.
-            message = "No printer was found";
+            message = "Sorry there is currently no printer in range";
         }
         else if (value.equalsIgnoreCase("sms")) {
             //send receipt to sms.
-            message = "Receipt would be sent to your phone";
+            message = "Feature is available with premium license only. Please contact your sale representative";
         }
         
        

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="StoreSearchPageDef"
+                Package="mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="getStoreSearchFilter_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getStoreSearchFilter.result}"/>
+      <variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_USERNAME_0" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_PASSWORD_0" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_ID_0" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_NAME_0" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_STATE_0" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="ServicesWrapper" id="ServicesWrapperIterator"/>
+    <accessorIterator MasterBinding="ServicesWrapperIterator" Binds="storesList" RangeSize="-1"
+                      DataControl="ServicesWrapper" BeanClass="mobile.Store" id="storesListIterator"/>
+    <methodIterator Binds="getStoreByIndex.result" DataControl="ServicesWrapper" RangeSize="-1" BeanClass="mobile.Store"
+                    id="getStoreByIndexIterator"/>
+    <methodIterator Binds="getOrderHistoryOfStoreByIndex.result" DataControl="ServicesWrapper" RangeSize="-1"
+                    BeanClass="mobile.OrderHistoryItem" id="getOrderHistoryOfStoreByIndexIterator"/>
+    <methodIterator Binds="y_SearchCustomerState.result" DataControl="getCustomersByState" RangeSize="25"
+                    BeanClass="mobile.getCustomersByState.y_SearchCustomerState" id="y_SearchCustomerStateIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="storesListIterator" id="storesList">
+      <nodeDefinition DefName="mobile.Store" Name="storesList0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="contactName">
+      <AttrNames>
+        <Item Value="contactName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="phoneNumber">
+      <AttrNames>
+        <Item Value="phoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="address">
+      <AttrNames>
+        <Item Value="address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="lastOrderDate">
+      <AttrNames>
+        <Item Value="lastOrderDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="monthlyAverage">
+      <AttrNames>
+        <Item Value="monthlyAverage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="imagePath">
+      <AttrNames>
+        <Item Value="imagePath"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="getOrderHistoryOfStoreByIndexIterator" id="OrderHistoryItem">
+      <nodeDefinition DefName="mobile.OrderHistoryItem" Name="OrderHistoryItem0">
+        <AttrNames>
+          <Item Value="orderAmount"/>
+          <Item Value="quarter"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getOrderHistoryOfStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getOrderHistoryOfStoreByIndex" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getOrderHistoryOfStoreByIndex_ServicesWrapper_dataProvider_getOrderHistoryOfStoreByIndex_result">
+      <NamedData NDName="index" NDValue="#{OPStore.selectedStoreIndex}" NDType="int"/>
+    </methodAction>
+    <methodAction id="getStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getStoreByIndex"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getStoreByIndex_ServicesWrapper_dataProvider_getStoreByIndex_result">
+      <NamedData NDName="index" NDValue="#{OPStore.selectedStoreIndex}" NDType="int"/>
+    </methodAction>
+    <tree IterBinding="storesListIterator" id="storesList1">
+      <nodeDefinition DefName="mobile.Store" Name="storesList10">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="filter"/>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="storesListIterator" id="storesList2">
+      <nodeDefinition DefName="mobile.Store" Name="storesList20">
+        <AttrNames>
+          <Item Value="fullAddress"/>
+          <Item Value="name"/>
+          <Item Value="id"/>
+          <Item Value="imagePath"/>
+          <Item Value="address"/>
+          <Item Value="state"/>
+          <Item Value="zipCode"/>
+          <Item Value="contactName"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="email"/>
+          <Item Value="yearOfOrigin"/>
+          <Item Value="incomeLevel"/>
+          <Item Value="creditLimit"/>
+          <Item Value="lastYearTotal"/>
+          <Item Value="monthlyAverage"/>
+          <Item Value="lastOrderDate"/>
+          <Item Value="city"/>
+          <Item Value="lastOrderTotal"/>
+          <Item Value="filter"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getStoreSearchFilter" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getStoreSearchFilter" IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getStoreSearchFilter_ServicesWrapper_dataProvider_getStoreSearchFilter_result"/>
+    <attributeValues IterBinding="variables" id="Return">
+      <AttrNames>
+        <Item Value="getStoreSearchFilter_Return"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="sendEmail" InstanceName="data.DeviceFeatures.dataProvider" DataControl="DeviceFeatures"
+                  RequiresUpdateModel="true" Action="invokeMethod" MethodName="sendEmail" IsViewObjectMethod="false">
+      <NamedData NDName="to" NDValue="#{bindings.email.inputValue}" NDType="java.lang.String"/>
+      <NamedData NDName="cc" NDValue="" NDType="java.lang.String"/>
+      <NamedData NDName="subject" NDValue="" NDType="java.lang.String"/>
+      <NamedData NDName="body" NDType="java.lang.String"/>
+      <NamedData NDName="bcc" NDType="java.lang.String"/>
+      <NamedData NDName="attachments" NDType="java.lang.String"/>
+      <NamedData NDName="mimeTypes" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="sendSMS" InstanceName="data.DeviceFeatures.dataProvider" DataControl="DeviceFeatures"
+                  RequiresUpdateModel="true" Action="invokeMethod" MethodName="sendSMS" IsViewObjectMethod="false">
+      <NamedData NDName="to" NDValue="#{bindings.phoneNumber.inputValue}" NDType="java.lang.String"/>
+      <NamedData NDName="body" NDValue="Hi" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getStoreByIndexIterator" id="credit">
+      <AttrNames>
+        <Item Value="credit"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

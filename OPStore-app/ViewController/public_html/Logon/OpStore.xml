@@ -75,7 +75,8 @@
     <control-flow-case id="__7">
       <from-outcome>search</from-outcome>
       <to-activity-id>StoreSearch</to-activity-id>
-    </control-flow-case>
+        <transition>slideLeft</transition>
+      </control-flow-case>
   </control-flow-rule>
   <control-flow-rule id="__28">
     <from-activity-id>LastMinuteAdditions</from-activity-id>
@@ -87,7 +88,7 @@
     <control-flow-case id="__30">
       <from-outcome>back</from-outcome>
       <to-activity-id>Replenishment</to-activity-id>
-      <transition>slideRight</transition>
+      <transition>slideLeft</transition>
     </control-flow-case>
     <control-flow-case id="__33">
       <from-outcome>order_summery</from-outcome>
@@ -100,7 +101,12 @@
       <from-outcome>approve</from-outcome>
       <to-activity-id>OrderApproval</to-activity-id>
     </control-flow-case>
-  </control-flow-rule>
+      <control-flow-case id="__8">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>LastMinuteAdditions</to-activity-id>
+        <transition>slideLeft</transition>
+      </control-flow-case>
+    </control-flow-rule>
   <control-flow-rule id="__10">
     <from-activity-id>OrderApproval</from-activity-id>
     <control-flow-case id="__12">
@@ -138,7 +144,8 @@
     <control-flow-case id="__20">
       <from-outcome>logout</from-outcome>
       <to-activity-id>Logon</to-activity-id>
-    </control-flow-case>
+        <transition>slideLeft</transition>
+      </control-flow-case>
   </control-flow-rule>
 
     <page-flow-scope-behavior>

@@ -13,9 +13,10 @@
             <amx:commandButton id="cb1" text="Back" action="__back"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Search Store" action="search_store"/>
+            <amx:commandButton id="cb2" text="Search Store" action="search_store"
+                               styleClass="adfmf-commandButton-small"/>
         </amx:facet>
-        <amx:image id="i1" source="\images\thanks.png" inlineStyle="width:100%; height:auto;"/>
+        <amx:image id="i1" source="\images\thanks.png" inlineStyle="width:100%; height:20%;"/>
         <!--amx:outputText value="#{bindings.getSubmitOrderErrorMessage.result}" id="ot2"/-->
         <amx:outputText value="#{pageFlowScope.orderErrorMessage}" id="ot2"/>
         <amx:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="background-color:White; width:auto;"
@@ -26,7 +27,7 @@
             <amx:inputText label="Order Number:" id="it1"
                            inlineStyle="width:50%; font-weight:bold; font-size:150%; color:Black; padding:3%; background-color:White; font-style:normal; text-align:center; vertical-align:middle; margin:50px; border-color:Gray; border-style:ridge;"
                            inputType="number" readOnly="true" value="#{pageFlowScope.orderConfirmationNumber}"/>
-            <amx:selectOneButton id="sob1"
+            <amx:selectOneButton id="sob1" styleClass="adfmf-commandButton-small"
                                  inlineStyle="background-color:White; border-style:ridge; outline-color:White; color:Aqua; font-weight:bolder; text-align:center; vertical-align:middle; border-color:Gray; padding:3%; width:95%;"
                                  layout="horizontal" label="Receipt"
                                  valueChangeListener="#{pageFlowScope.ApproveOrder.ReciptTypePressed}">
@@ -34,9 +35,28 @@
                 <amx:selectItem label="Print" id="si2" value="print"/>
                 <amx:selectItem label="SMS" id="si3" value="sms"/>
             </amx:selectOneButton>
-            <amx:spacer id="s1" height="20"
+            <amx:spacer id="s1" height="20"/>
+            <!--
                         inlineStyle="background-color:Silver; border-color:Silver; border-style:ridge; list-style-type:circle;"/>
+                        -->
         </amx:panelGroupLayout>
-        <amx:image id="i2" source="\images\footer1.png" inlineStyle="width:100%; height:12%;"/>
+        <amx:tableLayout id="tl1" width="100%" halign="center">
+            <amx:rowLayout id="rl3">
+                <amx:cellFormat halign="start">
+                    <amx:spacer id="s1a" width="30"/>
+                    <amx:image id="im1" source="\images\footer-oracle-logo.gif"
+                               inlineStyle="width:250px; height:100px;"/>
+                </amx:cellFormat>
+                <amx:cellFormat halign="center">
+                    <amx:image id="im2" source="\images\footer-Samsung_Logo.png"
+                               inlineStyle="width:200px; height:100px;"/>
+                </amx:cellFormat>
+                <amx:cellFormat halign="end">
+                    <amx:image id="m31" source="\images\footer-Auraplayer_Logo_streched.png"
+                               inlineStyle="width:200px; height:100px;"/>
+                    <amx:spacer id="s1b" width="30"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
     </amx:panelPage>
 </amx:view>

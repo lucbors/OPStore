@@ -17,7 +17,7 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 /*
- * Copyright © AuraPlayer 2013 All Rights Reserved. 
+ * Copyright ï¿½ AuraPlayer 2013 All Rights Reserved. 
  * No part of this source code may be reproduced without AuraPlayer's express consent.
  */
 
@@ -52,9 +52,9 @@ public class StoreList {
             String strLine = "";
             while ((strLine = bReader.readLine()) != null)
             {
-                //break comma separated line using ","
+                //break comma separated line using ";"
                 int tokenNumber = 0;
-                StringTokenizer st = new StringTokenizer(strLine, ",");
+                StringTokenizer st = new StringTokenizer(strLine, ";");
                 OrderHistoryItem otderHistory = new OrderHistoryItem();
                 String storeName = null;
                 while (st.hasMoreTokens())
@@ -98,9 +98,9 @@ public class StoreList {
             String strLine = "";
             while ((strLine = bReader.readLine()) != null)
             {
-                //break comma separated line using ","
+                //break comma separated line using ";"
                 int tokenNumber = 0;
-                StringTokenizer st = new StringTokenizer(strLine, ",");
+                StringTokenizer st = new StringTokenizer(strLine, ";");
                 Store newStore = new Store();
                 while (st.hasMoreTokens())
                 {             

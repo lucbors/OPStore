@@ -10,10 +10,11 @@
       <amx:outputText value="Order Summary" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" text="Back" action="__back"/>
+      
     </amx:facet>
     <amx:facet name="secondary">
-      <amx:commandButton id="cb2" text="Checkout" action="approve"/>
+      <amx:commandButton id="cb1" text="Edit" action="edit" styleClass="adfmf-commandButton-small"/>
+      <amx:commandButton id="cb2" text="Checkout" action="approve" styleClass="adfmf-commandButton-small"/>
     </amx:facet>
     <amx:panelGroupLayout id="pgl1" layout="wrap">
       <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv3"

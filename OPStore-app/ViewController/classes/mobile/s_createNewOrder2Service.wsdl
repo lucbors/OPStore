@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions targetNamespace="http://services.auraplayer.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.auraplayer.com" xmlns:intf="http://services.auraplayer.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://services.auraplayer.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="s_createNewOrder2">
+        <complexType>
+          <sequence>
+            <element name="MAIN_USERNAME_0" type="xsd:string"/>
+            <element name="MAIN_PASSWORD_0" type="xsd:string"/>
+            <element name="S_CUSTOMER_ID_0" type="xsd:string"/>
+            <element name="S_ORD_DATE_ORDERED_1" type="xsd:string"/>
+            <element name="S_ORD_DATE_SHIPPED_1" type="xsd:string"/>
+            <element name="S_ORD_SALES_REP_ID_1" type="xsd:string"/>
+            <element name="S_ORD_TOTAL_1" type="xsd:string"/>
+            <element name="S_ORD_PAYMENT_TYPE_1" type="xsd:string"/>
+            <element name="S_ORD_ORDER_FILLED_1" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="s_createNewOrder2Response">
+        <complexType>
+          <sequence>
+            <element name="s_createNewOrder2Return" type="impl:s_createNewOrder2Response"/>
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="s_createNewOrder2Response">
+        <sequence>
+          <element name="s_createNewOrder2Message" type="impl:s_createNewOrder2Message"/>
+          <element name="s_createNewOrder2Elements" type="impl:s_createNewOrder2Elements"/>
+        </sequence>
+      </complexType>
+      <complexType name="s_createNewOrder2Message">
+        <sequence>
+          <element name="Error" type="string"/>
+          <element name="PopupMessages" type="string"/>
+          <element name="StatusBarMessages" type="string"/>
+        </sequence>
+      </complexType>
+      <complexType name="s_createNewOrder2Elements">
+        <sequence>
+          <element name="S_ORD_ID_1" nillable="true" type="xsd:string"/>
+          <element name="S_ORD_DATE_ORDERED_1" nillable="true" type="xsd:string"/>
+          <element name="S_ORD_DATE_SHIPPED_1" nillable="true" type="xsd:string"/>
+          <element name="S_ORD_SALES_REP_ID_1" nillable="true" type="xsd:string"/>
+          <element name="S_ORD_TOTAL_1" nillable="true" type="xsd:string"/>
+          <element name="S_ORD_PAYMENT_TYPE_1" nillable="true" type="xsd:string"/>
+          <element name="S_ORD_ORDER_FILLED_1" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <!--************************************************************
+ WSDL of s_createNewOrder2, automatically created by AuraPlayer
+************************************************************-->
+  <wsdl:message name="s_createNewOrder2Response">
+    <wsdl:part element="impl:s_createNewOrder2Response" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="s_createNewOrder2Request">
+    <wsdl:part element="impl:s_createNewOrder2" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="s_createNewOrder2ServicePort">
+    <wsdl:operation name="s_createNewOrder2">
+      <wsdl:input name="s_createNewOrder2Request" message="impl:s_createNewOrder2Request"/>
+      <wsdl:output name="s_createNewOrder2Response" message="impl:s_createNewOrder2Response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="s_createNewOrder2ServiceSoapBinding" type="impl:s_createNewOrder2ServicePort">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="s_createNewOrder2">
+      <wsdlsoap:operation soapAction="s_createNewOrder2"/>
+      <wsdl:input name="s_createNewOrder2Request">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="s_createNewOrder2Response">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="s_createNewOrder2Service">
+    <wsdl:port name="s_createNewOrder2ServicePort" binding="impl:s_createNewOrder2ServiceSoapBinding">
+      <wsdlsoap:address location="http://localhost:7101/OPStore-ViewController-context-root/CreateNewOrderService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

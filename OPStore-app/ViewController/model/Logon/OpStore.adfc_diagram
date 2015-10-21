@@ -135,7 +135,7 @@
       <property
          name="fromsrcid">__28</property>
       <property
-         name="sdm:polyPoints">R50,553.625,145.03516,658.78125,144.03516,L50</property>
+         name="sdm:polyPoints">R46,553.625,141.53516,658.748,140.53516,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -307,7 +307,17 @@
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase72">
+      id="ControlFlowCase24"
+      from="View53"
+      to="View51">
+      <property
+         name="fromOutcome">edit</property>
+      <property
+         name="sdm:polyPoints">L54,658.78125,147.53516,553.65826,148.53516,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase25">
       <property
          name="fromOutcome">refresh</property>
       <property

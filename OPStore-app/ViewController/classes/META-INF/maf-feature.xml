@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+    <adfmf:feature id="Logon" name="Logon">
+        <adfmf:content id="Logon.1">
+            <adfmf:amx file="Logon/OpStore.xml#OpStore">
+                <adfmf:includes>
+                    <adfmf:include type="StyleSheet" file="OrderApproval/resources/css/signpad.css" id="i1"/>
+                    <adfmf:include type="JavaScript" file="OrderApproval/resources/js/signpad.js" id="i2"/>
+                </adfmf:includes>
+            </adfmf:amx>
+        </adfmf:content>
+    </adfmf:feature>
+  
+</adfmf:features>

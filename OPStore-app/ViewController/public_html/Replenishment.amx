@@ -10,10 +10,10 @@
             <amx:outputText value="Replenishment" id="ot10"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton text="Cancel" id="cb7" action="search"/>
+            <amx:commandButton text="Cancel" id="cb7" action="search" styleClass="adfmf-commandButton-small"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Promotions" action="last_minute"/>
+            <amx:commandButton id="cb2" text="Promotions" action="last_minute" styleClass="adfmf-commandButton-small"/>
         </amx:facet>
         <amx:spacer id="s1" height="5"/>
         <amx:tableLayout id="tl22" inlineStyle="background-color:#f6f6f7;" width="100%">
@@ -21,7 +21,8 @@
                 <amx:cellFormat id="cf3" width="100%">
                     <amx:panelGroupLayout id="pgl4" layout="horizontal">
                         <amx:selectOneButton id="sob1" value="#{pageFlowScope.Replenishment.selectMode}" simple="true"
-                                             inlineStyle="width:240px">
+                                             styleClass="adfmf-commandButton-small"
+                                             inlineStyle="width:240px" >
                             <amx:selectItem id="si1" label="Visualize" value="0"/>
                             <amx:selectItem label="Edit" id="si2" value="1"/>
                         </amx:selectOneButton>
@@ -29,12 +30,12 @@
                         <amx:inputText value="#{pageFlowScope.Replenishment.itemFilter}" simple="true" id="inputText2"
                                        styleClass="hr-inputText-search" hintText="Search Product"/>
                         <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="width:200px">
-                            <amx:commandButton id="cb3" shortDesc="Search Link" icon="/images/search_36.png"
+                            <amx:commandButton id="cb3" shortDesc="Search Link" icon="/images/search_36.png" 
                                                actionListener="#{pageFlowScope.Replenishment.FilterProductsByNameOrID}">
                                 <amx:setPropertyListener id="spl6" from="#{true}" to="#{pageFlowScope.Replenishment.searchOn}"/>
                             </amx:commandButton>
                             <amx:commandButton id="cb4" shortDesc="ClearFilter Button" icon="/images/clear_36.png"
-                                               styleClass="adfmf-commandButton-alert"
+                                               styleClass="adfmf-commandButton-alert adfmf-commandButton-small"
                                                rendered="#{pageFlowScope.Replenishment.searchOn==true}"
                                                actionListener="#{pageFlowScope.Replenishment.FilterProductsByNameOrID}">
                                 <amx:setPropertyListener id="spl2" from="#{false}" to="#{pageFlowScope.Replenishment.searchOn}"/>
@@ -65,7 +66,7 @@
                                 <amx:outputText value="Product" id="ot5"
                                                 inlineStyle="color:Navy; padding:7px; font-size:large;"/>
                             </amx:cellFormat>
-                            <amx:cellFormat id="cf28" width="22%">
+                            <amx:cellFormat id="cf28" width="22%" halign="center">
                                 <amx:outputText value="Last Order" id="ot7" inlineStyle="color:Navy; font-size:large;"/>
                             </amx:cellFormat>
                             <amx:cellFormat id="cf9">
@@ -109,7 +110,7 @@
                                 <amx:commandLink id="cl3">
                                     <amx:image id="i4" source="/images/#{row.product.bindings.imagePath}.jpg"
                                                inlineStyle="height:70px; width:80px;"/>
-                                    <amx:setPropertyListener id="spl1" to="#{pageFlowScope.pageFlowScope.productSalePrice}"
+                                    <amx:setPropertyListener id="spl1" to="#{pageFlowScope.productSalePrice}"
                                                              from="#{row.product.bindings.salePrice}" type="action"/>
                                     <amx:setPropertyListener id="spl24" from="#{row.product.bindings.listPrice}"
                                                              to="#{pageFlowScope.productListPrice}"/>
@@ -126,7 +127,7 @@
                                 <amx:outputText value="#{row.product.bindings.name}" id="ot33"
                                                 inlineStyle="font-weight:bold; color:Navy;"/>
                             </amx:cellFormat>
-                            <amx:cellFormat id="cf22">
+                            <amx:cellFormat id="cf22" halign="center">
                                 <amx:outputText value="#{row.product.bindings.lastOrderQuantity}" id="ot22"
                                                 inlineStyle="font-weight:bold; color:Black;"/>
                             </amx:cellFormat>
@@ -186,7 +187,7 @@
                             </amx:cellFormat>
                             <amx:cellFormat id="cf224" halign="center" rendered="#{row.showDelete}"
                                             width="#{row.showDelete}? 100px:40px">
-                                <amx:commandButton text="Delete" id="cb6" styleClass="adfmf-commandButton-alert"
+                                <amx:commandButton text="Delete" id="cb6" styleClass="adfmf-commandButton-alert adfmf-commandButton-small"
                                                    action="#{pageFlowScope.Replenishment.DeleteRowByProductID}">
                                     <amx:setPropertyListener id="spl10" from="#{row.product.bindings.prodID}"
                                                              to="#{pageFlowScope.selectedProductID}"/>
@@ -212,11 +213,11 @@
                                     <amx:showPopupBehavior id="spb11" popupId="productDetails" alignId="li1"/>
                                 </amx:commandLink>
                             </amx:cellFormat>
-                            <amx:cellFormat id="cf228" width="20%">
+                            <amx:cellFormat id="cf228" width="45%">
                                 <amx:outputText value="#{row.product.bindings.name}" id="ot6"
                                                 inlineStyle="color:Navy;"/>
                             </amx:cellFormat>
-                            <amx:cellFormat id="cf227" width="50%">
+                            <amx:cellFormat id="cf227" width="35%">
                                 <dvtm:statusMeterGauge value="#{row.product.bindings.inventoryQuantity.inputValue}"
                                                        id="smg1" thresholdDisplay="all" color="#444444"
                                                        indicatorSize=".2" borderColor="#000000"
@@ -239,7 +240,7 @@
         </amx:panelGroupLayout>
     </amx:panelPage>
     <amx:popup id="scanBarcode">
-        <amx:commandButton actionListener="#{bindings.getPicture.execute}" text="getPicture"
+        <amx:commandButton actionListener="#{bindings.getPicture.execute}" text="getPicture" styleClass="adfmf-commandButton-small"
                            disabled="#{!bindings.getPicture.enabled}" id="cb5">
             <amx:closePopupBehavior id="cpb4"/>
         </amx:commandButton>
@@ -253,10 +254,10 @@
             </amx:rowLayout>
             <amx:rowLayout id="rl12">
                 <amx:cellFormat id="cf226" halign="center">
-                    <amx:commandButton text="OK" id="cb1" action="#{pageFlowScope.Replenishment.DeleteRowByProductID}">
+                    <amx:commandButton text="OK" id="cb1" action="#{pageFlowScope.Replenishment.DeleteRowByProductID}"  styleClass="adfmf-commandButton-small">
                         <amx:closePopupBehavior id="cpb2" popupId="DeleteRow"/>
                     </amx:commandButton>
-                    <amx:commandButton text="Cancel" id="cb23">
+                    <amx:commandButton text="Cancel" id="cb23" styleClass="adfmf-commandButton-small">
                         <amx:closePopupBehavior id="cpb3" popupId="DeleteRow"/>
                     </amx:commandButton>
                 </amx:cellFormat>

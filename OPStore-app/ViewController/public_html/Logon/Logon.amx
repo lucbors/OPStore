@@ -11,12 +11,12 @@
     </amx:facet>
     <amx:tableLayout id="tl1" width="100%" halign="center">
       <amx:rowLayout id="rl1">
-        <amx:cellFormat id="cf1" inlineStyle="height:auto;" halign="center">
+        <amx:cellFormat id="cf1" inlineStyle="height:auto;" halign="center" columnSpan="3">
           <amx:image id="i4" source="/images/logo3.png" inlineStyle="width:100%; height:80%;"/>
         </amx:cellFormat>
       </amx:rowLayout>
       <amx:rowLayout id="rl2">
-        <amx:cellFormat id="cf2" halign="center" height="50">
+        <amx:cellFormat id="cf2" halign="center" height="50" columnSpan="3" >
           <amx:spacer id="s2" height="70"/>
           <amx:panelFormLayout id="pfl1" fieldHalign="center"
                                inlineStyle="color:Black; border-style:outset; font-style:normal; font-weight:bold; padding:50px; background-color:White; width:35%;">
@@ -28,20 +28,32 @@
         </amx:cellFormat>
       </amx:rowLayout>
       <amx:rowLayout id="rl4">
-        <amx:cellFormat id="cf6" halign="center" inlineStyle="border-color:White;">
+        <amx:cellFormat id="cf6" halign="center" inlineStyle="border-color:White;" columnSpan="3">
           <amx:spacer id="s1" height="30"/>
           <amx:commandButton text="Logon"
                              disabled="#{!bindings.Logon.enabled}" id="cb1"
-                             inlineStyle="color:White; width:80px; height:20px;" action="#{pageFlowScope.OPStore.Logon}"/>
+                             styleClass="adfmf-commandButton-small" action="#{pageFlowScope.OPStore.Logon}"/>
           <amx:spacer id="s4" height="40"/>
         </amx:cellFormat>
       </amx:rowLayout>
       <amx:rowLayout id="rl3">
-        <amx:cellFormat id="cf3">
-          <amx:spacer id="s3" height="100"/>
-          <amx:image id="i1" inlineStyle="width:100%; height:60%; " source="\images\footer1.png"/>
+ 
+        <amx:cellFormat halign="start">
+          <amx:spacer id="s1a" width="30"/>
+         <amx:image id="im1"  source="\images\footer-oracle-logo.gif" inlineStyle="width:250px; height:100px;"  />
+        </amx:cellFormat>
+        <amx:cellFormat halign="center">
+         <amx:image id="im2" source="\images\footer-Samsung_Logo.png"   inlineStyle="width:200px; height:100px;" />
+
+        </amx:cellFormat>
+        <amx:cellFormat halign="end">
+         <amx:image id="m31"  source="\images\footer-Auraplayer_Logo_streched.png"  inlineStyle="width:200px; height:100px;" />
+          <amx:spacer id="s1b" width="30"/>
+
         </amx:cellFormat>
       </amx:rowLayout>
     </amx:tableLayout>
+    
+    
   </amx:panelPage>
 </amx:view>

@@ -10,10 +10,10 @@
       <amx:outputText value="Inventory Summary" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" text="Visualize" action="visualize"/>
+      <amx:commandButton id="cb1" text="Visualize" action="visualize" styleClass="adfmf-commandButton-small"/>
     </amx:facet>
     <amx:facet name="secondary">
-      <amx:commandButton id="cb2" text="Cart" icon="/images/cart-512.png" action="cart"/>
+      <amx:commandButton id="cb2" text="Cart" icon="/images/cart-512.png" action="cart" styleClass="adfmf-commandButton-small"/>
     </amx:facet>
     <amx:panelGroupLayout id="pgl1">
       <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv3" inlineStyle="background-color:White;">

@@ -16,7 +16,7 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 /*
- * Copyright © AuraPlayer 2013 All Rights Reserved. 
+ * Copyright ï¿½ AuraPlayer 2013 All Rights Reserved.
  * No part of this source code may be reproduced without AuraPlayer's express consent.
  */
 
@@ -30,7 +30,7 @@ public class ProductList {
     }
 
     public boolean setProducts() {
-        
+
         return true;
     }
 
@@ -43,36 +43,100 @@ public class ProductList {
         }
 
         BufferedReader bReader = null;
-        
+
 
         try {
             bReader = new BufferedReader(new InputStreamReader(is));
             String strLine = "";
-            while ((strLine = bReader.readLine()) != null)
-            {
-                //break comma separated line using ","
+            while ((strLine = bReader.readLine()) != null) {
+                //break comma separated line using ";"
                 int tokenNumber = 0;
-                StringTokenizer st = new StringTokenizer(strLine, ",");
+                StringTokenizer st = new StringTokenizer(strLine, ";");
                 Product newProduct = new Product();
-                while (st.hasMoreTokens())
-                {             
+                while (st.hasMoreTokens()) {
                     tokenNumber++;
                     String theToken = st.nextToken();
-                    switch (tokenNumber){
-                    case 1: int id = 0;try{id=Integer.parseInt(theToken);}catch(Exception e){};newProduct.setProdID(id);break;
-                    case 2: newProduct.setImagePath(theToken);break;
-                    case 3: newProduct.setName(theToken);break;
-                    case 4: newProduct.setDescription(theToken);break;
-                    case 5: newProduct.setSubCategory(theToken);break;
-                    case 6: newProduct.setCategory(theToken);break;
-                    case 7: int bestSeller = 0; try{bestSeller = Integer.parseInt(theToken);}catch(Exception e){};newProduct.setBestSeller(bestSeller);break;
-                    case 8: int recommended = 0;  try{recommended = Integer.parseInt(theToken);}catch(Exception e){};newProduct.setRecommended(recommended);break;
-                    case 9: double salePrice =0;try{salePrice = Double.parseDouble(theToken);}catch(Exception e){};newProduct.setSalePrice(salePrice);break;
-                    case 10: double listPrice =0;try{listPrice = Double.parseDouble(theToken);}catch(Exception e){};newProduct.setListPrice(listPrice);break;
-                    case 11: int inventoryQuantity = 0; try{inventoryQuantity = Integer.parseInt(theToken);}catch(Exception e){};newProduct.setInventoryQuantity(inventoryQuantity);break;
-                    case 12: int lastOrderQuantity = 0;  try{lastOrderQuantity = Integer.parseInt(theToken);}catch(Exception e){};newProduct.setLastOrderQuantity(lastOrderQuantity);break;
+                    switch (tokenNumber) {
+                    case 1:
+                        int id = 0;
+                        try {
+                            id = Integer.parseInt(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setProdID(id);
+                        break;
+                    case 2:
+                        newProduct.setImagePath(theToken);
+                        break;
+                    case 3:
+                        newProduct.setName(theToken);
+                        break;
+                    case 4:
+                        newProduct.setDescription(theToken);
+                        break;
+                    case 5:
+                        newProduct.setSubCategory(theToken);
+                        break;
+                    case 6:
+                        newProduct.setCategory(theToken);
+                        break;
+                    case 7:
+                        int bestSeller = 0;
+                        try {
+                            bestSeller = Integer.parseInt(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setBestSeller(bestSeller);
+                        break;
+                    case 8:
+                        int recommended = 0;
+                        try {
+                            recommended = Integer.parseInt(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setRecommended(recommended);
+                        break;
+                    case 9:
+                        double salePrice = 0;
+                        try {
+                            salePrice = Double.parseDouble(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setSalePrice(salePrice);
+                        break;
+                    case 10:
+                        double listPrice = 0;
+                        try {
+                            listPrice = Double.parseDouble(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setListPrice(listPrice);
+                        break;
+                    case 11:
+                        int inventoryQuantity = 0;
+                        try {
+                            inventoryQuantity = Integer.parseInt(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setInventoryQuantity(inventoryQuantity);
+                        break;
+                    case 12:
+                        int lastOrderQuantity = 0;
+                        try {
+                            lastOrderQuantity = Integer.parseInt(theToken);
+                        } catch (Exception e) {
+                        }
+                        ;
+                        newProduct.setLastOrderQuantity(lastOrderQuantity);
+                        break;
                     }
-                    
+
                 }
                 s_products.add(newProduct);
             }
@@ -85,24 +149,24 @@ public class ProductList {
         }
         return true;
     }
-    
+
 
     public Product[] getProducts() {
         Product p[] = null;
 
-        p = (Product[])s_products.toArray(new Product[s_products.size()]);
+        p = (Product[]) s_products.toArray(new Product[s_products.size()]);
 
         return p;
     }
-    
+
     public Product getProductByIndex(int index) {
-        if (s_products.size()>index) {
-            return (Product)s_products.get(index);
+        if (s_products.size() > index) {
+            return (Product) s_products.get(index);
         }
 
-        return null;        
+        return null;
     }
-    
+
     public List getProductsList() {
         return s_products;
     }

@@ -10,10 +10,10 @@
             <amx:outputText value="Promotions" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" text="Back" action="back"/>
+            <amx:commandButton id="cb1" text="Back" action="back" styleClass="adfmf-commandButton-small"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Cart" action="order_summery" icon="/images/cart-512.png"/>
+            <amx:commandButton id="cb2" text="Cart" action="order_summery" icon="/images/cart-512.png" styleClass="adfmf-commandButton-small"/>
         </amx:facet>
 
         <amx:spacer id="s3" height="5"/>

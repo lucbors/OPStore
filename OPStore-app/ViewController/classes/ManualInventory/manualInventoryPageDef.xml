@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="manualInventoryPageDef"
+                Package="ManualInventory">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getProductsList.result" DataControl="ServicesWrapper" RangeSize="25"
+                    BeanClass="mobile.Product" id="getProductsListIterator"/>
+    <invokeAction Binds="getProductsList" id="getProductsL"/>
+  </executables>
+  <bindings>
+    <methodAction id="getProductsList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getProductsList"
+                  IsViewObjectMethod="false" DataControl="ServicesWrapper"
+                  InstanceName="data.ServicesWrapper.dataProvider"
+                  ReturnName="data.ServicesWrapper.methodResults.getProductsList_ServicesWrapper_dataProvider_getProductsList_result"/>
+    <tree IterBinding="getProductsListIterator" id="Product">
+      <nodeDefinition DefName="mobile.Product" Name="Product0">
+        <AttrNames>
+          <Item Value="prodID"/>
+          <Item Value="name"/>
+          <Item Value="listPrice"/>
+          <Item Value="category"/>
+          <Item Value="subCategory"/>
+          <Item Value="bestSeller"/>
+          <Item Value="recommended"/>
+          <Item Value="salePrice"/>
+          <Item Value="imagePath"/>
+          <Item Value="description"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="lastOrderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="getProductsListIterator" id="Product1">
+      <nodeDefinition DefName="mobile.Product" Name="Product10">
+        <AttrNames>
+          <Item Value="prodID"/>
+          <Item Value="name"/>
+          <Item Value="listPrice"/>
+          <Item Value="category"/>
+          <Item Value="subCategory"/>
+          <Item Value="bestSeller"/>
+          <Item Value="recommended"/>
+          <Item Value="salePrice"/>
+          <Item Value="imagePath"/>
+          <Item Value="description"/>
+          <Item Value="inventoryQuantity"/>
+          <Item Value="lastOrderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
