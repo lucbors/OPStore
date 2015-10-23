@@ -15,7 +15,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 /*
- * Copyright © AuraPlayer 2013 All Rights Reserved. 
+ * Copyright ï¿½ AuraPlayer 2013 All Rights Reserved. 
  * No part of this source code may be reproduced without AuraPlayer's express consent.
  */
 
@@ -37,8 +37,8 @@ public class Replenishment {
 
     private OrderItem getCurrentOrderItemByID() {
         int productID = getCurrentProductID();
-        
-        Store selectedStore = ServicesWrapper.getSelectedStore();
+        ServicesWrapper srv = new ServicesWrapper();
+        Store selectedStore = srv.getSelectedStore();
         OrderList orderList = selectedStore.getOrdersList();
         OrderItem item = orderList.getOrderItemByProductID(productID);
         return item;        
@@ -67,7 +67,8 @@ public class Replenishment {
     public String DeleteRowByProductID() {
         try{
             int productIndex = getCurrentProductID();
-            Store selectedStore = ServicesWrapper.getSelectedStore();
+            ServicesWrapper srv = new ServicesWrapper();
+            Store selectedStore = srv.getSelectedStore();
             OrderList orderList = selectedStore.getOrdersList();
             orderList.removeOrderItemByProductID(productIndex);
             
@@ -105,7 +106,9 @@ public class Replenishment {
     }
     
     public String FilterProductsByNameOrID() {
-        Store selectedStore = ServicesWrapper.getSelectedStore();
+        ServicesWrapper srv = new ServicesWrapper();
+
+        Store selectedStore = srv.getSelectedStore();
         OrderList orderList = selectedStore.getOrdersList();
         if (itemFilter != null  && itemFilter.length()>0) {
             String filter = itemFilter.toLowerCase();

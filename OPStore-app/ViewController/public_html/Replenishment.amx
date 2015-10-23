@@ -27,6 +27,7 @@
                             <amx:selectItem label="Edit" id="si2" value="1"/>
                         </amx:selectOneButton>
                         <amx:spacer id="s3" width="50"/>
+                   <!--
                         <amx:inputText value="#{pageFlowScope.Replenishment.itemFilter}" simple="true" id="inputText2"
                                        styleClass="hr-inputText-search" hintText="Search Product"/>
                         <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="width:200px">
@@ -42,6 +43,7 @@
                                 <amx:setPropertyListener id="spl7" from="#{}" to="#{pageFlowScope.Replenishment.itemFilter}"/>
                             </amx:commandButton>
                         </amx:panelGroupLayout>
+                        -->
                         <amx:outputText value="Scan Barcode" id="ot3" inlineStyle="font-size:large;"/>
                         <amx:spacer id="s2" width="10"/>
                         <amx:commandLink id="cl7">

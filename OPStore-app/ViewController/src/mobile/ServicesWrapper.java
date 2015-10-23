@@ -36,14 +36,14 @@ public class ServicesWrapper
     private  String submitOrderConfirmationNumber="";
     private static boolean getStoresListByStateSucces = false;
     private static String getStoresListByStateErrorMessage = "";
-
+    
     private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
     public ServicesWrapper() {
         super();
-
-    }
+    
+        }
 
     public OrderItem[] getOrdersList() {
         //return getSelectedStore().getOrdersList().getOrders();        
@@ -95,11 +95,11 @@ public class ServicesWrapper
     public Store[] getStoresList() {
         return StoreLocator.getFilteredStoresList();        
     }
-    
+
     public static Store getSelectedStore(){
         return StoreLocator.s_getSelectedStore();
     }
-    
+
     public Store getStoreByIndex(int index){
         try{
         StoreLocator.s_setSelectedStoreIndex(index);
@@ -107,9 +107,9 @@ public class ServicesWrapper
         }catch(Exception e) {
             e.printStackTrace();
             return StoreLocator.getFilteredStoresList()[0];
-        }
     }
-    
+    }
+
     public OrderHistoryItem[] getOrderHistoryOfStoreByIndex(int index){
         try{
         StoreLocator.s_setSelectedStoreIndex(index);
@@ -306,8 +306,8 @@ public class ServicesWrapper
 
         //return true;
     }
-        
-    
+       
+       
     public static String Logon(String userName, String passWord) {        
 
         String response = "";
@@ -403,4 +403,4 @@ public class ServicesWrapper
     public  String getStoreSearchFilter() {
         return StoreLocator.getCurrentFilter();
     }
-}
+        }

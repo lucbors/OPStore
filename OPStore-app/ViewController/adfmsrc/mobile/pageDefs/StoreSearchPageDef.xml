@@ -6,7 +6,7 @@
     <variableIterator id="variables">
       <variable Type="java.lang.String" Name="getStoreSearchFilter_Return" IsQueriable="false" IsUpdateable="0"
                 DefaultValue="${bindings.getStoreSearchFilter.result}"/>
-      <variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_USERNAME_0" IsQueriable="false"/>
+<variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_USERNAME_0" IsQueriable="false"/>
       <variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_PASSWORD_0" IsQueriable="false"/>
       <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_ID_0" IsQueriable="false"/>
       <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_NAME_0" IsQueriable="false"/>
@@ -15,14 +15,19 @@
     <iterator Binds="root" RangeSize="25" DataControl="ServicesWrapper" id="ServicesWrapperIterator"/>
     <accessorIterator MasterBinding="ServicesWrapperIterator" Binds="storesList" RangeSize="-1"
                       DataControl="ServicesWrapper" BeanClass="mobile.Store" id="storesListIterator"/>
+
     <methodIterator Binds="getStoreByIndex.result" DataControl="ServicesWrapper" RangeSize="-1" BeanClass="mobile.Store"
                     id="getStoreByIndexIterator"/>
     <methodIterator Binds="getOrderHistoryOfStoreByIndex.result" DataControl="ServicesWrapper" RangeSize="-1"
                     BeanClass="mobile.OrderHistoryItem" id="getOrderHistoryOfStoreByIndexIterator"/>
     <methodIterator Binds="y_SearchCustomerState.result" DataControl="getCustomersByState" RangeSize="25"
                     BeanClass="mobile.getCustomersByState.y_SearchCustomerState" id="y_SearchCustomerStateIterator"/>
+   
+    
+    
   </executables>
   <bindings>
+ 
     <tree IterBinding="storesListIterator" id="storesList">
       <nodeDefinition DefName="mobile.Store" Name="storesList0">
         <AttrNames>
@@ -30,7 +35,7 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <attributeValues IterBinding="getStoreByIndexIterator" id="name">
+<attributeValues IterBinding="getStoreByIndexIterator" id="name">
       <AttrNames>
         <Item Value="name"/>
       </AttrNames>
@@ -70,6 +75,7 @@
         <Item Value="imagePath"/>
       </AttrNames>
     </attributeValues>
+
     <tree IterBinding="getOrderHistoryOfStoreByIndexIterator" id="OrderHistoryItem">
       <nodeDefinition DefName="mobile.OrderHistoryItem" Name="OrderHistoryItem0">
         <AttrNames>
@@ -78,12 +84,16 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+
     <methodAction id="getOrderHistoryOfStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="getOrderHistoryOfStoreByIndex" IsViewObjectMethod="false" DataControl="ServicesWrapper"
                   InstanceName="data.ServicesWrapper.dataProvider"
                   ReturnName="data.ServicesWrapper.methodResults.getOrderHistoryOfStoreByIndex_ServicesWrapper_dataProvider_getOrderHistoryOfStoreByIndex_result">
       <NamedData NDName="index" NDValue="#{OPStore.selectedStoreIndex}" NDType="int"/>
     </methodAction>
+
+
+   
     <methodAction id="getStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getStoreByIndex"
                   IsViewObjectMethod="false" DataControl="ServicesWrapper"
                   InstanceName="data.ServicesWrapper.dataProvider"
@@ -124,16 +134,18 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+  
+   
     <methodAction id="getStoreSearchFilter" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="getStoreSearchFilter" IsViewObjectMethod="false" DataControl="ServicesWrapper"
                   InstanceName="data.ServicesWrapper.dataProvider"
                   ReturnName="data.ServicesWrapper.methodResults.getStoreSearchFilter_ServicesWrapper_dataProvider_getStoreSearchFilter_result"/>
+
     <attributeValues IterBinding="variables" id="Return">
       <AttrNames>
         <Item Value="getStoreSearchFilter_Return"/>
       </AttrNames>
-    </attributeValues>
-    <methodAction id="sendEmail" InstanceName="data.DeviceFeatures.dataProvider" DataControl="DeviceFeatures"
+    </attributeValues><methodAction id="sendEmail" InstanceName="data.DeviceFeatures.dataProvider" DataControl="DeviceFeatures"
                   RequiresUpdateModel="true" Action="invokeMethod" MethodName="sendEmail" IsViewObjectMethod="false">
       <NamedData NDName="to" NDValue="#{bindings.email.inputValue}" NDType="java.lang.String"/>
       <NamedData NDName="cc" NDValue="" NDType="java.lang.String"/>
@@ -148,10 +160,16 @@
       <NamedData NDName="to" NDValue="#{bindings.phoneNumber.inputValue}" NDType="java.lang.String"/>
       <NamedData NDName="body" NDValue="Hi" NDType="java.lang.String"/>
     </methodAction>
-    <attributeValues IterBinding="getStoreByIndexIterator" id="credit">
+    
+ 
+    <attributeValues  id="credit" IterBinding="getStoreByIndexIterator">
       <AttrNames>
         <Item Value="credit"/>
       </AttrNames>
     </attributeValues>
+    
+    
+    
+  
   </bindings>
 </pageDefinition>

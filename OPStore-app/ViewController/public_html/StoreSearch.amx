@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
-          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-          <!--
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" >
+    <!--
                 Copyright © AuraPlayer 2013 All Rights Reserved. 
                 No part of this source code may be reproduced without AuraPlayer's express consent.
           -->
@@ -11,7 +11,8 @@
                             inlineStyle="background-color:transparent;"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="commandButton2" text="Store visit" action="replenishment" iconPosition="trailing" styleClass="adfmf-commandButton-small"/>
+            <amx:commandButton id="commandButton2" text="Store visit" action="replenishment" iconPosition="trailing"
+                               styleClass="adfmf-commandButton-small"/>
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandButton text="Logout" id="cb5" action="logout" styleClass="adfmf-commandButton-small"/>
@@ -19,8 +20,7 @@
         <amx:panelSplitter id="panelSplitter1" inlineStyle="position:absolute; right:0; left:0; background-color:White;"
                            selectedItem="#{pageFlowScope.empPanel}" animation="flipRight" position="300px">
             <amx:facet name="navigator">
-                <amx:selectOneButton id="sob1"
-                                    styleClass="adfmf-commandButton-small"
+                <amx:selectOneButton id="sob1" styleClass="adfmf-commandButton-small"
                                      inlineStyle="width:100%; vertical-align:middle; text-align:center; padding:10px 0px 0px; background-color:White;"
                                      value="#{pageFlowScope.OPStore.searchBySelection}" simple="true">
                     <amx:selectItem id="si1" label="Alphabetical " value="0"/>
@@ -28,13 +28,19 @@
                 </amx:selectOneButton>
                 <amx:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.OPStore.searchBySelection==0}"
                                       inlineStyle="background-color:White;">
+                    <!--
                     <amx:tableLayout id="tl1" width="100%" shortDesc="Table" inlineStyle="background-color:White;">
                         <amx:rowLayout id="rl1">
                             <amx:cellFormat id="cf2" width="100%" shortDesc="Cell"
                                             inlineStyle="background-color:White;">
+                                
                                 <amx:inputText value="#{bindings.Return.inputValue}" simple="true" id="it1"
                                                hintText="Search for Store"
                                                valueChangeListener="#{pageFlowScope.OPStore.StoreSearchFilterChanged}"/>
+
+                     
+                     
+                     
                             </amx:cellFormat>
                             <amx:cellFormat id="cf4" width="48px" halign="center" shortDesc="Cell"
                                             inlineStyle="background-color:White;">
@@ -43,6 +49,7 @@
                                     <amx:setPropertyListener id="spl6" from="#{true}" to="#{pageFlowScope.OPStore.searchOn}"/>
                                 </amx:commandButton>
                             </amx:cellFormat>
+
                             <amx:cellFormat id="cf1" shortDesc="ClearFilter Cell" width="48px" halign="center"
                                             rendered="#{pageFlowScope.OPStore.searchOn==true}" inlineStyle="background-color:White;">
                                 <amx:commandButton id="cb2" shortDesc="ClearFilter Button" icon="/images/clear_36.png"
@@ -55,23 +62,28 @@
                             </amx:cellFormat>
                         </amx:rowLayout>
                     </amx:tableLayout>
-                    <amx:listView var="row" value="#{bindings.storesList1.collectionModel}"
-                                  fetchSize="#{bindings.storesList1.rangeSize}" id="lv1"
-                                  rendered="#{pageFlowScope.OPStore.searchBySelection==0}" inlineStyle="background-color:White;">
-                        <amx:listItem id="li1"
+                    -->
+                    <amx:listView var="row" 
+                                  fetchSize="#{bindings.storesList1.rangeSize}"
+                                  
+                                  
+                                    id="lv1"
+                                  rendered="#{pageFlowScope.OPStore.searchBySelection==0}"
+                                  inlineStyle="background-color:White;" value="#{bindings.storesList1.collectionModel}">
+                        <amx:listItem id="li1" rendered="#{row.filter==false}"
                                       actionListener="#{bindings.getStoreByIndex.execute}"
-                                      rendered="#{row.filter==false}" inlineStyle="background-color:White;">
+                                      inlineStyle="background-color:White;">
                             <amx:outputText value="#{row.name}" id="ot10" inlineStyle="background-color:White;"/>
                             <amx:setPropertyListener to="#{pageFlowScope.OPStore.selectedStoreIndex}" id="spl4" type="action"
                                                      from="#{row.id}"/>
-                            <amx:actionListener id="al1" binding="#{bindings.getOrderHistoryOfStoreByIndex.execute}"/>
+<amx:actionListener id="al1" binding="#{bindings.getOrderHistoryOfStoreByIndex.execute}"/>
                         </amx:listItem>
                     </amx:listView>
                 </amx:panelGroupLayout>
+ 
                 <dvtm:geographicMap id="map1" rendered="#{pageFlowScope.OPStore.searchBySelection==1}"
-                                    inlineStyle="background-color:White;"  
-                                     zoomLevel="10"
-                                    centerX="-122.4167" centerY="37.7833"  >
+                                    inlineStyle="background-color:White;" zoomLevel="10" centerX="-122.4167"
+                                    centerY="37.7833">
                     <dvtm:pointDataLayer value="#{bindings.storesList2.collectionModel}" id="pdl2" var="row"
                                          selectionListener="#{bindings.getStoreByIndex.execute}">
                         <dvtm:pointLocation address="#{row.fullAddress}" id="ptl8" type="address"
@@ -79,7 +91,8 @@
                             <dvtm:marker id="mrk2">
                                 <amx:setPropertyListener id="spl1" from="#{row.id}"
                                                          to="#{pageFlowScope.OPStore.selectedStoreIndex}"/>
-                                <amx:showPopupBehavior id="spb1" popupId="mapmarker" alignId="map1" align="overlapMiddleEnd"/>
+<amx:showPopupBehavior id="spb1" popupId="mapmarker" alignId="map1"
+                                                       align="overlapMiddleEnd"/>
                                 <amx:setPropertyListener id="spl3" from="#{row.name}" to="#{pageFlowScope.StoreName}"/>
                                 <amx:setPropertyListener id="spl5"
                                                          from="#{pageFlowScope.OPStore.selectedStore.city}, #{pageFlowScope.OPStore.selectedStore.state}"
@@ -95,12 +108,13 @@
                     <amx:rowLayout id="rl5">
                         <amx:cellFormat id="cf9" height="45%" shortDesc="Cell" valign="middle" halign="center"
                                         inlineStyle="padding:0px 10px 0px 0px;">
-                            <amx:image id="i3" source="/images/#{bindings.imagePath.inputValue}.jpg" 
-                                                          inlineStyle="width:200px; height:300px%;"/>
+                            <amx:image id="i3" source="/images/#{bindings.imagePath.inputValue}.jpg"
+                                       inlineStyle="width:200px; height:300px%;"/>
                             <!--
                               inlineStyle="width:100%; height:100%;"
                             -->
                         </amx:cellFormat>
+                        
                         <amx:cellFormat id="cf8" height="45%" shortDesc="Cell" valign="top"
                                         inlineStyle="padding:10px 10px 10px 10px;">
                             <amx:listView id="lvprofile" styleClass="adfmf-listView-insetList"
@@ -309,28 +323,29 @@
                             </amx:listView>
                         </amx:cellFormat>
                     </amx:rowLayout>
-              
                     <amx:rowLayout id="rl5a">
-                        <amx:cellFormat id="cf9a" height="180px"  halign="center"  shortDesc="Cell" valign="top" columnSpan="2"
-                                        inlineStyle="padding:0px 10px 0px 0px;">
-              
-                <dvtm:barChart var="row" value="#{bindings.OrderHistoryItem.collectionModel}" id="bc2"
-                               animationDownColor="rgb(244,102,50)" animationOnDisplay="auto" animationDuration="1000"
-                               rolloverBehavior="dim" animationOnDataChange="auto"
-                               inlineStyle="padding:10px 10px 10px 10px;">
-                    <amx:facet name="dataStamp">
-                        <dvtm:chartDataItem value="#{row.orderAmount}" group="#{row.quarter}" color="rgb(224,0,0)"
-                                            series="serie1" id="cdi4"/>
-                    </amx:facet>
-                    <dvtm:legend rendered="false" id="l2"/>
-                </dvtm:barChart>
-                    </amx:cellFormat>
+               
+                        <amx:cellFormat id="cf9a" height="180px" halign="center" shortDesc="Cell" valign="top"
+                                        columnSpan="2" inlineStyle="padding:0px 10px 0px 0px;">
+                          
+                            <dvtm:barChart var="row" value="#{bindings.OrderHistoryItem.collectionModel}" id="bc2"
+                                           animationDownColor="rgb(244,102,50)" animationOnDisplay="auto"
+                                           animationDuration="1000" rolloverBehavior="dim" animationOnDataChange="auto"
+                                           inlineStyle="padding:10px 10px 10px 10px;">
+                                <amx:facet name="dataStamp">
+                                    <dvtm:chartDataItem value="#{row.orderAmount}" group="#{row.quarter}"
+                                                        color="rgb(224,0,0)" series="serie1" id="cdi4"/>
+                            
+                                </amx:facet>
+                                <dvtm:legend rendered="false" id="l2"/>
+                            </dvtm:barChart>
+                        </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:panelItem>
         </amx:panelSplitter>
     </amx:panelPage>
-    <amx:popup id="mapmarker" shortDesc="Map Marker Popup" autoDismiss="true" >
+    <amx:popup id="mapmarker" shortDesc="Map Marker Popup" autoDismiss="true">
         <amx:panelGroupLayout id="pglmarker">
             <amx:tableLayout id="tl4">
                 <amx:rowLayout id="rl4">
@@ -345,16 +360,17 @@
                 </amx:rowLayout>
                 <amx:rowLayout id="rl6">
                     <amx:cellFormat id="cf7">
-                        <amx:outputText value="#{pageFlowScope.StoreLocation}"
-                                        id="citystate"/>
+                        <amx:outputText value="#{pageFlowScope.StoreLocation}" id="citystate"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
-        <amx:commandButton id="cb3" icon="/images/clear_36.png" styleClass="adfmf-commandButton-alert adfmf-commandButton-small">
+        <amx:commandButton id="cb3" icon="/images/clear_36.png"
+                           styleClass="adfmf-commandButton-alert adfmf-commandButton-small">
             <amx:closePopupBehavior id="cpb1" popupId="mapmarker"/>
         </amx:commandButton>
-        <amx:commandButton text="Select" id="cb4" actionListener="#{bindings.getStoreByIndex.execute}" styleClass="adfmf-commandButton-small">
+        <amx:commandButton text="Select" id="cb4" actionListener="#{bindings.getStoreByIndex.execute}"
+                           styleClass="adfmf-commandButton-small">
             <amx:closePopupBehavior id="cpb5"/>
         </amx:commandButton>
     </amx:popup>

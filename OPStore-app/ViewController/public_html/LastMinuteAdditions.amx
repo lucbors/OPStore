@@ -13,12 +13,11 @@
             <amx:commandButton id="cb1" text="Back" action="back" styleClass="adfmf-commandButton-small"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Cart" action="order_summery" icon="/images/cart-512.png" styleClass="adfmf-commandButton-small"/>
+            <amx:commandButton id="cb2" text="Cart" action="order_summery" icon="/images/cart-512.png"
+                               styleClass="adfmf-commandButton-small"/>
         </amx:facet>
-
         <amx:spacer id="s3" height="5"/>
-
-        <amx:tableLayout id="tl2" inlineStyle="background-color:White; padding:10px;" width="100%" >
+        <amx:tableLayout id="tl2" inlineStyle="background-color:White; padding:10px;" width="100%">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1">
                     <amx:spacer id="s1" width="20"/>
@@ -26,17 +25,15 @@
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl9">
-                <amx:cellFormat id="cf10" width="100%" >
+                <amx:cellFormat id="cf10" width="100%">
                     <amx:panelGroupLayout id="pgl5" layout="horizontal" inlineStyle="width:100%" scrollPolicy="scroll">
                         <amx:iterator var="row" value="#{bindings.OrderItem.collectionModel}" id="i5">
-           
                             <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv1"
                                           inlineStyle="background-color:#f6f6f7;">
                                 <amx:listItem showLinkIcon="false" id="li1" styleClass="opstore-listItem-noselect"
                                               inlineStyle="background-color:inherit;">
                                     <amx:setPropertyListener id="spl1" from="#{row.product.bindings.prodID}"
                                                              type="action" to="#{pageFlowScope.selectedProductID}"/>
-               
                                     <amx:tableLayout id="tl5" width="400px">
                                         <amx:rowLayout id="rl3">
                                             <amx:cellFormat id="cf2" width="60%">
@@ -137,9 +134,10 @@
                                                                         <amx:outputText value="Qty" id="ot3"
                                                                                         inlineStyle="color:Black;"/>
                                                                         <amx:inputText id="it1"
-                                                                                       value="#{row.quantity}"/>
+                                                                                       value="#{row.quantity}"
+                                                                                       inlineStyle="width:85px;"/>
                                                                     </amx:cellFormat>
-                                                                    <amx:cellFormat id="cf143">
+                                                                    <amx:cellFormat id="cf143" halign="end">
                                                                         <amx:spacer id="s13" width="30"/>
                                                                         <amx:commandLink id="cl1"
                                                                                          action="#{pageFlowScope.Replenishment.IncrementQuantityByProductID}"
@@ -182,26 +180,23 @@
                                             </amx:cellFormat>
                                         </amx:rowLayout>
                                     </amx:tableLayout>
-                            
                                 </amx:listItem>
                             </amx:listView>
-                            
                         </amx:iterator>
                     </amx:panelGroupLayout>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:spacer id="s2" height="40"/>
-        <amx:tableLayout id="tl3" inlineStyle="background-color:White; padding:10px;" width="100%" >
+        <amx:tableLayout id="tl3" inlineStyle="background-color:White; padding:10px;" width="100%">
             <amx:rowLayout id="rl111">
                 <amx:cellFormat id="cf111">
                     <amx:spacer id="s11" width="20"/>
                     <amx:outputText value="Best Sellers" id="ot21" inlineStyle="font-size:large; color:Navy;"/>
                 </amx:cellFormat>
             </amx:rowLayout>
-    
             <amx:rowLayout id="rl111a">
-                <amx:cellFormat id="cf111a" width="100%" >
+                <amx:cellFormat id="cf111a" width="100%">
                     <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="width:100%" scrollPolicy="scroll">
                         <amx:iterator var="row" value="#{bindings.OrderItem1.collectionModel}" id="i2">
                             <amx:panelGroupLayout>
@@ -310,7 +305,7 @@
                                                                                            value="#{row.quantity}"
                                                                                            inlineStyle="width:85px;"/>
                                                                         </amx:cellFormat>
-                                                                        <amx:cellFormat id="cf1434">
+                                                                        <amx:cellFormat id="cf1434" halign="end">
                                                                             <amx:spacer id="s6" width="30"/>
                                                                             <amx:commandLink id="cl41"
                                                                                              action="#{Replenishment.IncrementQuantityByProductID}">

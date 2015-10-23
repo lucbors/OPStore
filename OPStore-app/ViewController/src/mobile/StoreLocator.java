@@ -41,18 +41,18 @@ public class StoreLocator {
             s_fullStoresList.setStoresDummy();
             // get also data from webservice
             srvwr.getStoresListByStateWS("CA");
-        }
+    }
     }
 
     public static void clearStoreList()
     {
         s_fullStoresList.clear();
     }
-    
+
     public static void addStore(Store store){
         s_fullStoresList.add(store);
     }
-    
+
     public void setSearchBySelection(int searchBySelection) {
         int oldSearchBySelection = this.searchBySelection;
         this.searchBySelection = searchBySelection;

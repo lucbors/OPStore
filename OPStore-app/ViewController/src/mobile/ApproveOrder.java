@@ -205,7 +205,7 @@ public class ApproveOrder {
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.orderConfirmationNumber}", String.class);
         String orderNumber = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         
-        content = "Your order (" + orderNumber + ") is been. You will recieve your goods shortly.";
+        content = "Your order (" + orderNumber + ") is placed. You will recieve your goods shortly.";
         DeviceManagerFactory.getDeviceManager().sendEmail("orders@auraplayer.com"
         , null
         , "Your Order is placed"

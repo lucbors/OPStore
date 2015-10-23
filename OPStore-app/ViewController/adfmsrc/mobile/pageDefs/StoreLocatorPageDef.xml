@@ -15,12 +15,12 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <methodAction id="getStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getStoreByIndex"
+    <!--<methodAction id="getStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getStoreByIndex"
                   IsViewObjectMethod="false" DataControl="ServicesWrapper"
                   InstanceName="data.ServicesWrapper.dataProvider"
                   ReturnName="data.ServicesWrapper.methodResults.getStoreByIndex_ServicesWrapper_dataProvider_getStoreByIndex_result">
       <NamedData NDName="index" NDValue="#{pageFlowScope.storeRowIndex}" NDType="int"/>
-    </methodAction>
+    </methodAction>-->
     <tree IterBinding="storesListIterator" id="storesList1">
       <nodeDefinition DefName="mobile.Store" Name="storesList10">
         <AttrNames>

@@ -46,7 +46,7 @@ public class StoreList {
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         InputStream is = cl.getResourceAsStream(".adf/META-INF/data_files/order_history.csv");
         BufferedReader bReader = null;
-
+ 
         try {
             bReader = new BufferedReader(new InputStreamReader(is));
             String strLine = "";
@@ -81,7 +81,7 @@ public class StoreList {
         }
         return true;
     }
-
+    
     public boolean setStoresDummy() {
         s_storess.clear();
         ClassLoader cl = Thread.currentThread().getContextClassLoader();

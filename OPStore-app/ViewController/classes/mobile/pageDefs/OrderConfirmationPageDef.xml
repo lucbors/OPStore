@@ -3,6 +3,7 @@
                 Package="mobile.pageDefs">
   <parameters/>
   <executables>
+      <variableIterator id="variables"/>
     <invokeAction Binds="getSubmitOrderConfirmationNumber" id="get_confirmation_number"/>
     <invokeAction Binds="getSubmitOrderErrorMessage" id="get_error_message"/>
   </executables>

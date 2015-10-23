@@ -6,9 +6,10 @@
                 <adfmf:includes>
                     <adfmf:include type="StyleSheet" file="OrderApproval/resources/css/signpad.css" id="i1"/>
                     <adfmf:include type="JavaScript" file="OrderApproval/resources/js/signpad.js" id="i2"/>
+                    <adfmf:include type="StyleSheet" file="OrderApproval/resources/css/opstore.css" id="i3"/>
+                    <adfmf:include type="JavaScript" file="OrderApproval/resources/js/customsearch.js" id="i4"/>
                 </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-  
 </adfmf:features>
