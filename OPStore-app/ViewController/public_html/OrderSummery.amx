@@ -104,11 +104,11 @@
               <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf95" height="100px">
                   <amx:spacer id="s9" width="10"/>
-                  <amx:image id="i4" source="/images/#{row.product.bindings.imagePath}.jpg"
+                  <amx:image id="i4" source="/images/#{row.product.bindings.imagePath.inputValue}.jpg"
                              inlineStyle="height:70px; width:80px;"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf1" width="30%">
-                  <amx:outputText value="#{row.product.bindings.name}" id="ot33"
+                  <amx:outputText value="#{row.product.bindings.name.inputValue}" id="ot33"
                                   inlineStyle="font-weight:bold; color:Navy;"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf2" halign="start" valign="middle">
@@ -133,11 +133,11 @@
               </amx:rowLayout>
             </amx:tableLayout>
             <amx:setPropertyListener id="spl1" to="#{pageFlowScope.productSalePrice}"
-                                     from="#{row.product.bindings.salePrice}" type="action"/>
-            <amx:setPropertyListener id="spl4" from="#{row.product.bindings.salePrice}"
+                                     from="#{row.product.bindings.salePrice.inputValue}" type="action"/>
+            <amx:setPropertyListener id="spl4" from="#{row.product.bindings.salePrice.inputValue}"
                                      to="#{pageFlowScope.productListPrice}"/>
-            <amx:setPropertyListener id="spl2" from="#{row.product.bindings.name}" to="#{pageFlowScope.productName}"/>
-            <amx:setPropertyListener id="spl3" from="#{row.product.bindings.inventoryQuantity}"
+            <amx:setPropertyListener id="spl2" from="#{row.product.bindings.name.inputValue}" to="#{pageFlowScope.productName}"/>
+            <amx:setPropertyListener id="spl3" from="#{row.product.bindings.inventoryQuantity.inputValue}"
                                      to="#{pageFlowScope.productInventoryQuantity}"/>
             <amx:setPropertyListener id="spl5" from="#{row.quantity}" to="#{pageFlowScope.productToOrder}"/>
           </amx:listItem>

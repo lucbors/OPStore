@@ -14,6 +14,7 @@ import javax.el.ValueExpression;
 import oracle.adfmf.dc.ws.soap.SoapGenericType;
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.framework.exception.AdfInvocationException;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -322,8 +323,16 @@ public class ServicesWrapper
                     offlineMode = true;
                     String title = "Logon offline";
                     String errorMessage = "You are in offline mode";
-                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-                             "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
+     
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
+                                             AdfmfJavaUtilities.getFeatureName(),
+                                             "adf.mf.api.amx.addMessage",
+                                             new Object[] {AdfException.ERROR,
+                                             errorMessage,
+                                             null,
+                                             null });
+     //               AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
+     //                        "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
 
                 }
                 return "success";

@@ -101,6 +101,16 @@
                      <value n="landscapeSplashScreenPath" v="resources/android/display-land-ldpi-splashscreen.png"/>
                      <value n="portraitSplashScreenPath" v="resources/android/display-port-ldpi-splashscreen.png"/>
                   </hash>
+                  <hash>
+                     <value n="appIconPath" v="resources/android/display-xxhdpi-icon.png"/>
+                     <value n="deviceTypeName" v="Extra-Extra-High Density"/>
+                     <value n="landscapeSplashScreenPath" v="resources/android/display-land-xxhdpi-splashscreen.9.png"/>
+                     <value n="portraitSplashScreenPath" v="resources/android/display-port-xxhdpi-splashscreen.9.png"/>
+                  </hash>
+                  <hash>
+                     <value n="appIconPath" v="resources/android/display-xxxhdpi-icon.png"/>
+                     <value n="deviceTypeName" v="Extra-Extra-Extra-High Density"/>
+                  </hash>
                </list>
             </hash>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.android.AndroidProfile"/>
@@ -433,6 +443,40 @@
       <hash n="oracle.jdeveloper.runner.RunConfigurations">
          <value n="activeName" v="Shared"/>
          <hash n="runConfigurationDefinitions">
+            <hash n="Android Device">
+               <hash n="Android_options">
+                  <value n="debugConnectInterval" v="5"/>
+                  <value n="debugConnectMaxAttempts" v="5"/>
+                  <value n="deployTarget" v="Device"/>
+               </hash>
+               <value n="custom" v="false"/>
+               <value n="mobilePlatform" v="Android"/>
+               <value n="name" v="Android Device"/>
+               <value n="profileName" v="Android2"/>
+               <url n="targetURL" path=".adf/META-INF/maf-application.xml"/>
+            </hash>
+            <hash n="Android Emulator">
+               <hash n="Android_options">
+                  <value n="debugConnectInterval" v="5"/>
+                  <value n="debugConnectMaxAttempts" v="5"/>
+                  <value n="deployTarget" v="Emulator"/>
+               </hash>
+               <value n="custom" v="false"/>
+               <value n="mobilePlatform" v="Android"/>
+               <value n="name" v="Android Emulator"/>
+               <value n="profileName" v="Android2"/>
+               <url n="targetURL" path=".adf/META-INF/maf-application.xml"/>
+            </hash>
+            <hash n="iOS Simulator">
+               <value n="custom" v="false"/>
+               <hash n="iOS_options">
+                  <value n="iosSimulatorName" v="iPad 2 (iOS 8.4 - iPad 2)"/>
+               </hash>
+               <value n="mobilePlatform" v="iOS"/>
+               <value n="name" v="iOS Simulator"/>
+               <value n="profileName" v="iOS1"/>
+               <url n="targetURL" path=".adf/META-INF/maf-application.xml"/>
+            </hash>
             <hash n="Shared">
                <value n="custom" v="false"/>
                <hash n="iOS_options">
@@ -444,6 +488,12 @@
                <value n="profileName" v="iOS1"/>
             </hash>
          </hash>
+         <list n="runConfigurationList">
+            <string v="Shared"/>
+            <string v="iOS Simulator"/>
+            <string v="Android Emulator"/>
+            <string v="Android Device"/>
+         </list>
       </hash>
    </hash>
 </jws:workspace>

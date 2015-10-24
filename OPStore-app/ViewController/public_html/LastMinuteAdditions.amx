@@ -32,7 +32,7 @@
                                           inlineStyle="background-color:#f6f6f7;">
                                 <amx:listItem showLinkIcon="false" id="li1" styleClass="opstore-listItem-noselect"
                                               inlineStyle="background-color:inherit;">
-                                    <amx:setPropertyListener id="spl1" from="#{row.product.bindings.prodID}"
+                                    <amx:setPropertyListener id="spl1" from="#{row.product.bindings.prodID.inputValue}"
                                                              type="action" to="#{pageFlowScope.selectedProductID}"/>
                                     <amx:tableLayout id="tl5" width="400px">
                                         <amx:rowLayout id="rl3">
@@ -51,10 +51,10 @@
                                                                         <amx:spacer id="s10" width="10"/>
                                                                     </amx:cellFormat>
                                                                     <amx:cellFormat id="cf19">
-                                                                        <amx:outputText value="#{row.product.bindings.name}"
+                                                                        <amx:outputText value="#{row.product.bindings.name.inputValue}"
                                                                                         id="ot33"
                                                                                         inlineStyle="font-weight:bold; color:Navy;"/>
-                                                                        <amx:outputText value="ID: #{row.product.bindings.prodID}"
+                                                                        <amx:outputText value="ID: #{row.product.bindings.prodID.inputValue}"
                                                                                         id="ot6"
                                                                                         inlineStyle="color:Navy;"/>
                                                                     </amx:cellFormat>
@@ -66,7 +66,7 @@
                                                         <amx:cellFormat id="cf95" width="30%" height="100px">
                                                             <amx:spacer id="s9" width="10"/>
                                                             <amx:image id="i4"
-                                                                       source="/images/#{row.product.bindings.imagePath}.jpg"
+                                                                       source="/images/#{row.product.bindings.imagePath.inputValue}.jpg"
                                                                        inlineStyle="width:80px; height:70px;"/>
                                                         </amx:cellFormat>
                                                         <amx:cellFormat id="cf96" width="70%" height="100px">
@@ -78,7 +78,7 @@
                                                                     </amx:cellFormat>
                                                                     <amx:cellFormat id="cf913" width="50%"
                                                                                     halign="center">
-                                                                        <amx:outputText value="#{row.product.bindings.listPrice}"
+                                                                        <amx:outputText value="#{row.product.bindings.listPrice.inputValue}"
                                                                                         id="ot41"
                                                                                         inlineStyle="color:Black;">
                                                                             <amx:convertNumber id="cn1"
@@ -96,13 +96,13 @@
                                                                     </amx:cellFormat>
                                                                 </amx:rowLayout>
                                                                 <amx:rowLayout id="rl10"
-                                                                               rendered="#{row.product.bindings.listPrice!=row.product.bindings.salePrice}">
+                                                                               rendered="#{row.product.bindings.listPrice.inputValue!=row.product.bindings.salePrice.inputValue}">
                                                                     <amx:cellFormat id="cf12" width="45">
                                                                         <amx:outputText value="Sale:" id="ot7"
                                                                                         inlineStyle="color:Red;"/>
                                                                     </amx:cellFormat>
                                                                     <amx:cellFormat id="cf11" halign="center">
-                                                                        <amx:outputText value="#{row.product.bindings.salePrice}"
+                                                                        <amx:outputText value="#{row.product.bindings.salePrice.inputValue}"
                                                                                         id="ot8"
                                                                                         inlineStyle="color:Red;">
                                                                             <amx:convertNumber id="cn2"
@@ -143,7 +143,7 @@
                                                                                          action="#{pageFlowScope.Replenishment.IncrementQuantityByProductID}"
                                                                                          inlineStyle="color:Black;">
                                                                             <amx:setPropertyListener id="spl26"
-                                                                                                     from="#{row.product.bindings.prodID}"
+                                                                                                     from="#{row.product.bindings.prodID.inputValue}"
                                                                                                      to="#{pageFlowScope.selectedProductID}"
                                                                                                      type="action"/>
                                                                             <amx:image id="i3"
@@ -154,7 +154,7 @@
                                                                                          action="#{pageFlowScope.Replenishment.DecrementQuantityByProductID}"
                                                                                          inlineStyle="color:Black;">
                                                                             <amx:setPropertyListener id="spl27"
-                                                                                                     from="#{row.product.bindings.prodID}"
+                                                                                                     from="#{row.product.bindings.prodID.inputValue}"
                                                                                                      to="#{pageFlowScope.selectedProductID}"/>
                                                                             <amx:image id="i21"
                                                                                        source="/images/arrow_down2.png"
@@ -174,7 +174,7 @@
                                                     <amx:image id="i7" source="/images/del.png"
                                                                inlineStyle="height:30px; width:30px;"/>
                                                     <amx:setPropertyListener id="spl2"
-                                                                             from="#{row.product.bindings.prodID}"
+                                                                             from="#{row.product.bindings.prodID.inputValue}"
                                                                              to="#{pageFlowScope.selectedProductID}"/>
                                                 </amx:commandLink>
                                             </amx:cellFormat>
@@ -204,7 +204,7 @@
                                               inlineStyle="background-color:#f6f6f7;">
                                     <amx:listItem showLinkIcon="false" id="li2" styleClass="opstore-listItem-noselect"
                                                   inlineStyle="background-color:inherit;">
-                                        <amx:setPropertyListener id="spl3" from="#{row.product.bindings.prodID}"
+                                        <amx:setPropertyListener id="spl3" from="#{row.product.bindings.prodID.inputValue}"
                                                                  type="action" to="#{pageFlowScope.selectedProductID}"/>
                                         <amx:tableLayout id="tl8" width="400px">
                                             <amx:rowLayout id="rl5">
@@ -219,10 +219,10 @@
                                                                 <amx:tableLayout id="tl46">
                                                                     <amx:rowLayout id="rl145">
                                                                         <amx:cellFormat id="cf149">
-                                                                            <amx:outputText value="#{row.product.bindings.name}"
+                                                                            <amx:outputText value="#{row.product.bindings.name.inputValue}"
                                                                                             id="ot343"
                                                                                             inlineStyle="font-weight:bold; color:Navy; padding:5px; margin:0px 6px;"/>
-                                                                            <amx:outputText value="ID: #{row.product.bindings.prodID}"
+                                                                            <amx:outputText value="ID: #{row.product.bindings.prodID.inputValue}"
                                                                                             id="ot46"
                                                                                             inlineStyle="color:Navy; margin:0px 0px 0px 8px;"/>
                                                                         </amx:cellFormat>
@@ -234,7 +234,7 @@
                                                             <amx:cellFormat id="cf945" width="30%" height="100px">
                                                                 <amx:spacer id="s94" width="10"/>
                                                                 <amx:image id="i44"
-                                                                           source="/images/#{row.product.bindings.imagePath}.jpg"
+                                                                           source="/images/#{row.product.bindings.imagePath.inputValue}.jpg"
                                                                            inlineStyle="width:70%; height:70%;"/>
                                                             </amx:cellFormat>
                                                             <amx:cellFormat id="cf946" width="70%" height="100px">
@@ -246,7 +246,7 @@
                                                                         </amx:cellFormat>
                                                                         <amx:cellFormat id="cf9143" width="60%"
                                                                                         halign="end">
-                                                                            <amx:outputText value="#{row.product.bindings.listPrice}"
+                                                                            <amx:outputText value="#{row.product.bindings.listPrice.inputValue}"
                                                                                             id="ot441"
                                                                                             inlineStyle="color:Black;">
                                                                                 <amx:convertNumber id="cn41"
@@ -264,13 +264,13 @@
                                                                         </amx:cellFormat>
                                                                     </amx:rowLayout>
                                                                     <amx:rowLayout id="rl140"
-                                                                                   rendered="#{row.product.bindings.listPrice!=row.product.bindings.salePrice}">
+                                                                                   rendered="#{row.product.bindings.listPrice.inputValue!=row.product.bindings.salePrice.inputValue}">
                                                                         <amx:cellFormat id="cf142">
                                                                             <amx:outputText value="Sale:" id="ot47"
                                                                                             inlineStyle="color:Red;"/>
                                                                         </amx:cellFormat>
                                                                         <amx:cellFormat id="cf141" halign="end">
-                                                                            <amx:outputText value="#{row.product.bindings.salePrice}"
+                                                                            <amx:outputText value="#{row.product.bindings.salePrice.inputValue}"
                                                                                             id="ot84"
                                                                                             inlineStyle="color:Red;">
                                                                                 <amx:convertNumber id="cn42"
@@ -310,7 +310,7 @@
                                                                             <amx:commandLink id="cl41"
                                                                                              action="#{Replenishment.IncrementQuantityByProductID}">
                                                                                 <amx:setPropertyListener id="spl426"
-                                                                                                         from="#{row.product.bindings.prodID}"
+                                                                                                         from="#{row.product.bindings.prodID.inputValue}"
                                                                                                          to="#{pageFlowScope.selectedProductID}"
                                                                                                          type="action"/>
                                                                                 <amx:image id="i43"
@@ -323,7 +323,7 @@
                                                                                            source="/images/arrow_down2.png"
                                                                                            inlineStyle="height:20%;"/>
                                                                                 <amx:setPropertyListener id="spl247"
-                                                                                                         from="#{row.product.bindings.prodID}"
+                                                                                                         from="#{row.product.bindings.prodID.inputValue}"
                                                                                                          to="#{pageFlowScope.selectedProductID}"/>
                                                                             </amx:commandLink>
                                                                         </amx:cellFormat>
@@ -339,7 +339,7 @@
                                                         <amx:image id="i6" source="/images/del.png"
                                                                    inlineStyle="width:30px; height:30px;"/>
                                                         <amx:setPropertyListener id="spl4"
-                                                                                 from="#{row.product.bindings.prodID}"
+                                                                                 from="#{row.product.bindings.prodID.inputValue}"
                                                                                  to="#{pageFlowScope.selectedProductID}"/>
                                                     </amx:commandLink>
                                                 </amx:cellFormat>

@@ -56,4 +56,14 @@
          </XmlRefAddr>
       </RefAddresses>
    </Reference>
+   <Reference name="SyncService_base_connection" className="oracle.adf.model.connection.url.HttpURLConnection" xmlns="">
+      <Factory className="oracle.adf.model.connection.url.URLConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="SyncService_base_connection">
+            <Contents>
+               <urlconnection name="SyncService_base_connection" url="http://127.0.0.1"/>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
 </References>

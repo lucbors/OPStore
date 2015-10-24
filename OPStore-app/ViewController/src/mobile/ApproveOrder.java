@@ -67,8 +67,17 @@ public class ApproveOrder {
         {
             String title = "Payment Details Validation";
                     
-            AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-                  "navigator.notification.alert", new Object[] {validationErrorMessage,null,title, "Ok"});
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
+                                     AdfmfJavaUtilities.getFeatureName(),
+                                     "adf.mf.api.amx.addMessage",
+                                     new Object[] {AdfException.ERROR,
+                                     validationErrorMessage,
+                                     null,
+                                     null });
+            
+    
+    //        AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
+    //              "navigator.notification.alert", new Object[] {validationErrorMessage,null,title, "Ok"});
 
             return null;
         }
@@ -92,8 +101,17 @@ public class ApproveOrder {
             String title = "Order Confirmatoin Failed";
             String errorMessage = srvwrp.getSubmitOrderErrorMessage();
             
-            AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-                     "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
+ 
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
+                                     AdfmfJavaUtilities.getFeatureName(),
+                                     "adf.mf.api.amx.addMessage",
+                                     new Object[] {AdfException.ERROR,
+                                     errorMessage,
+                                     null,
+                                     null });
+
+ //           AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
+ //                    "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
         }
         return null;
     }
@@ -233,16 +251,20 @@ public class ApproveOrder {
             //send receipt to sms.
             message = "Feature is available with premium license only. Please contact your sale representative";
         }
-        
+        addJavaScriptMessage(AdfException.INFO, message); 
        
  //       AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon",
  //       "function(){navigator.notification.alert(message,  function(){}, 'Information', 'OK');}", new Object[] { });
        
-      
-        
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-                 "navigator.notification.alert", new Object[] {message,null,title, "Ok"});
+ 
+ //       AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
+ //                "navigator.notification.alert", new Object[] {message,null,title, "Ok"});
 
+    }
+   
+    public static void addJavaScriptMessage(String severity, String message) {
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureName(),
+            "adf.mf.api.amx.addMessage", new Object[] { severity, message, null,null });
     }
 
     public void setPaymentTypeEnum(int paymentTypeEnum) {

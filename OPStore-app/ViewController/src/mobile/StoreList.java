@@ -125,6 +125,7 @@ public class StoreList {
                         try {
                             date = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(theToken);
                         } catch (ParseException e) {
+                            date = null;
                             e.printStackTrace();
                         }
                         newStore.setLastOrderDate(date);break;
