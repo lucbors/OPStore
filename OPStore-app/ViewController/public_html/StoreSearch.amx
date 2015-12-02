@@ -28,10 +28,17 @@
                 </amx:selectOneButton>
                 <amx:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.OPStore.searchBySelection==0}"
                                       inlineStyle="background-color:White;">
-                    <!--
+
+
                     <amx:tableLayout id="tl1" width="100%" shortDesc="Table" inlineStyle="background-color:White;">
                         <amx:rowLayout id="rl1">
-                            <amx:cellFormat id="cf2" width="100%" shortDesc="Cell"
+                                   <amx:cellFormat id="cf16" width="100%" shortDesc="cell">
+                        <amx:inputText id="it1" simple="true" hintText="Enter Name" keyboardDismiss="search"
+                                       autoCapitalize="none" autoCorrect="off" value="#{bindings.filter.inputValue}"/>
+                    </amx:cellFormat>
+
+               
+               <!--             <amx:cellFormat id="cf2" width="100%" shortDesc="Cell"
                                             inlineStyle="background-color:White;">
                                 
                                 <amx:inputText value="#{bindings.Return.inputValue}" simple="true" id="it1"
@@ -60,9 +67,10 @@
                                     <amx:actionListener id="al2" binding="#{bindings.getStoreSearchFilter.execute}"/>
                                 </amx:commandButton>
                             </amx:cellFormat>
+                            -->
                         </amx:rowLayout>
                     </amx:tableLayout>
-                    -->
+                    
 
                     <amx:listView var="row" fetchSize="#{bindings.storesList1.rangeSize}" id="lv1"
                                   rendered="#{pageFlowScope.OPStore.searchBySelection==0}"
